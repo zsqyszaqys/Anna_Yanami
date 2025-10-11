@@ -15,7 +15,7 @@
           </a>
         </li>
 
-      <!--menu-->
+        <!--menu-->
         <li v-for="(item, index) in navItems" :key="index" :class="{ active: activeSection === item.id }">
           <a :href="'#' + item.id" @click="setActive(item.id)">
             <div class="icon">
@@ -44,6 +44,7 @@
              ref="videoRef"
              autoplay loop playsinline muted disablepictureinpicture>
       </video>
+
       <!-- 音量滑块 -->
       <div class="volume-control">
         <div class="volume-icon" @click="toggleMute">
@@ -74,7 +75,7 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed} from 'vue';
 import "@/assets/css/AboutMe/NavBar.css"
 import ConnectCard from "@/components/ConnectCard.vue";
 

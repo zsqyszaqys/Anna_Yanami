@@ -1,66 +1,78 @@
-<template>
-  <div v-if="show" class="image-full-screen">
-    <img :src="imageUrl" alt="Full Screen Image" @click="closeFullScreen" />
-  </div>
-</template>
+<!DOCTYPE html>
+<html lang="en">
 
-<script>
-export default {
-  props: {
-    imageUrl: {
-      type: String,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      show: false,
-    };
-  },
-  methods: {
-    openFullScreen() {
-      this.show = true;
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) {
-        document.documentElement.msRequestFullscreen();
-      }
-    },
-    closeFullScreen() {
-      this.show = false;
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-    },
-  },
-};
-</script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山羊の前端小窝</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    }
 
-<style>
-.image-full-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.image-full-screen img {
-  max-width: 90%;
-  max-height: 90%;
-  cursor: pointer;
-}
-</style>
+    /* 按钮样式 */
+    .button {
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-weight: 600;
+      font-size: 2em;
+      padding: 0.75em 1em;
+      color: blue;
+      border: 0.15em solid blue;
+      border-radius: 2em;
+      transition: 4s;
+    }
+
+    .button:before,
+    .button:after {
+      content: "";
+      position: absolute;
+      top: -1.5em;
+      z-index: -1;
+      width: 200%;
+      aspect-ratio: 1;
+      border: none;
+      border-radius: 40%;
+      background-color: rgba(0, 0, 255, 0.25);
+      transition: 4s;
+    }
+
+    .button:before {
+      left: -80%;
+      transform: translate3d(0, 5em, 0) rotate(-340deg);
+    }
+
+    .button:after {
+      right: -80%;
+      transform: translate3d(0, 5em, 0) rotate(390deg);
+    }
+
+    .button:hover,
+    .button:focus {
+      color: white;
+    }
+
+    .button:hover:before,
+    .button:hover:after,
+    .button:focus:before,
+    .button:focus:after {
+      transform: none;
+      background-color: rgba(0, 0, 255, 0.75);
+    }
+
+  </style>
+</head>
+
+<body>
+<a href="" class="button">Hover me</a>
+</body>
+
+</html>

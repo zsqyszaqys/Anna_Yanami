@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <div class="text">
-        <h3>Connect Me</h3>
+        <h3>Contact Me</h3>
       </div>
       <div class="btn" :class="{ active: isOpen }" @click="toggleOpen">
         <span></span>
@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import QQ_Qrcode from '@/assets/AboutMe/QQ_Qrcode.png';
-import Wechat_Qrcode from '@/assets/AboutMe/Wechat_Qrcode.png';
-import Douyin_Qrcode from '@/assets/AboutMe/Douyin_Qrcode.png';
+import QQ_Qrcode from '@/assets/AboutMe/QRcode/QQ_Qrcode.png';
+import Wechat_Qrcode from '@/assets/AboutMe/QRcode/Wechat_Qrcode.png';
+import Douyin_Qrcode from '@/assets/AboutMe/QRcode/Douyin_Qrcode.png';
 
 export default {
   name: "ConnectCard",
