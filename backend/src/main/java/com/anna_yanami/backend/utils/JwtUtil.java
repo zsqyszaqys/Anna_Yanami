@@ -1,4 +1,4 @@
-package com.anna_yanami.backend.config;
+package com.anna_yanami.backend.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
@@ -21,11 +21,13 @@ public class JwtUtil {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
+    //生成一个JWT令牌
     public static String createJWT(String subject) {
         JwtBuilder builder = getJwtBuilder(subject, null, getUUID());
         return builder.compact();
     }
 
+    //构建JWT
     private static JwtBuilder getJwtBuilder(String subject, Long ttlMillis, String uuid) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         SecretKey secretKey = generalKey();
@@ -46,11 +48,13 @@ public class JwtUtil {
                 .setExpiration(expDate);
     }
 
+    //根据Base64解码后的JWT_KEY生成一个SecretKey对象，用于JWT的签名和验证。
     public static SecretKey generalKey() {
         byte[] encodeKey = Base64.getDecoder().decode(JwtUtil.JWT_KEY);
         return new SecretKeySpec(encodeKey, 0, encodeKey.length, "HmacSHA256");
     }
 
+    //解析JWT字符串，验证签名并返回Claims（包含JWT中存储的声明信息）
     public static Claims parseJWT(String jwt) throws Exception {
         SecretKey secretKey = generalKey();
         return Jwts.parser()

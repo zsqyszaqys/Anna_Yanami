@@ -7,7 +7,8 @@
         <input type="text" class="form_input" placeholder="Name" />
         <input type="text" class="form_input" placeholder="Email" />
         <input type="text" class="form_input" placeholder="Password" />
-        <WaterButton class="form_button button submit">SIGN UP</WaterButton>
+        <div class="error_message">{{ error_message }}</div>
+        <WaterButton type="submit" class="form_button button submit">SIGN UP</WaterButton>
       </form>
     </div>
 
@@ -15,10 +16,10 @@
       <form class="form" id="b-form">
         <h2 class="form_title title">登入账号</h2>
         <span class="form_span">使用电子邮箱登录喵~</span>
-        <input type="text" class="form_input" placeholder="Email" />
-        <input type="text" class="form_input" placeholder="Password" />
+        <input v-model="email" type="text" class="form_input" placeholder="Email" />
+        <input v-model="password" type="text" class="form_input" placeholder="Password" />
         <a class="form_link">忘记密码？</a>
-        <WaterButton class="form_button button submit">SIGN IN</WaterButton>
+        <WaterButton class="form_button button submit" @click="login">SIGN IN</WaterButton>
       </form>
     </div>
 
@@ -54,15 +55,36 @@
 <script>
 import { onMounted, computed, ref } from "vue";
 import WaterButton from "@/components/WaterButton.vue";
+import {useStore} from "vuex";
 
 export default {
-  name:"UserLogin",
+  name:"UserAccountOperateView",
   components: {
     WaterButton,
   },
 
   setup(){
+    const store = useStore();
+    let email = ref("");
+    let password = ref("");
+    let error_message = ref("");
     const isLogin = ref(false);
+
+    const login = () =>{
+
+
+
+      store.dispatch("login",{
+        email: email.value,
+        password: password.value,
+        success(resp){
+          console.log(resp);
+        },
+        error(){
+          error_message.value = "用户名或密码错误";
+        }
+      });
+    }
 
     const switchBackground = computed(() => {
       // 根据isLogin的值选择不同的图片
@@ -110,7 +132,12 @@ export default {
     });
 
     return{
+      email,
+      password,
+      error_message,
       switchBackground,
+
+      login,
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.anna_yanami.backend.config.filter;
 
-import com.anna_yanami.backend.config.JwtUtil;
+import com.anna_yanami.backend.utils.JwtUtil;
 import com.anna_yanami.backend.mapper.UserMapper;
 import com.anna_yanami.backend.pojo.User;
 import com.anna_yanami.backend.service.impl.UserDetailsImpl;
@@ -22,7 +22,7 @@ import java.io.IOException;
 
 
 @Component
-public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {//验证jwt是否合法
 
     @Autowired
     private UserMapper userMapper;
