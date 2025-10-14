@@ -67,7 +67,9 @@
     <section id="wallet">Wallet</section>
     <section id="picture">Picture</section>
     <section id="code">QR code</section>
-    <section id="authentication">Authentication</section>
+    <section id="technology">
+      <TechnologySlider class="technology-slider"></TechnologySlider>
+    </section>
     <section id="me">
       <ConnectCard></ConnectCard>
     </section>
@@ -78,10 +80,12 @@
 import { ref, onMounted, onUnmounted, computed} from 'vue';
 import "@/assets/css/AboutMe/NavBar.css"
 import ConnectCard from "@/components/ConnectCard.vue";
+import TechnologySlider from "@/components/TechnologyImages.vue";
 
 export default {
   name: 'NavBar',
   components: {
+    TechnologySlider,
     ConnectCard,
   },
   setup() {
@@ -94,6 +98,7 @@ export default {
     const lastVolume = ref(0.5); // 记录上次的音量
 
     const activeSection = ref('home');//开始定位到home,home高亮
+
     //头像路径
     const logoImage = require('@/assets/AboutMe/Yanami.png');
     const profileImage = require('@/assets/AboutMe/Yanami.png');
@@ -157,7 +162,8 @@ export default {
       { id: 'wallet', iconClass: 'iconfont icon-xiangmu', text: 'Project' },
       { id: 'picture', iconClass: 'iconfont icon-picture', text: 'Picture' },
       { id: 'code', iconClass: 'iconfont icon-qr-code', text: 'QR code' },
-      { id: 'authentication', iconClass: 'iconfont icon-dunpaibaoxianrenzheng', text: 'Authentication' },
+      { id: 'technology', iconClass: 'iconfont icon-yingyong', text: 'technology' },
+
     ];
 
 
@@ -215,6 +221,7 @@ export default {
       scrollDistance,
       requestId,
       section_ref,
+      TechnologySlider,
 
       toggleMute,
       changeVolume,

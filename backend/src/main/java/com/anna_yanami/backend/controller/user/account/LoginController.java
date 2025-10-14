@@ -1,11 +1,8 @@
 package com.anna_yanami.backend.controller.user.account;
 
 import com.anna_yanami.backend.config.ResponseResult;
-import com.anna_yanami.backend.mapper.UserMapper;
-import com.anna_yanami.backend.pojo.User;
 import com.anna_yanami.backend.service.user.account.LoginService;
 import com.anna_yanami.backend.utils.ServiceException;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,33 +17,26 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @Autowired
-    private UserMapper userMapper;
-
     @PostMapping("/user/account/token")
-    public ResponseResult<String> get_token(@RequestParam Map<String, String> map){
+    public ResponseResult<String> get_token(@RequestParam Map<String, String> map) {
         try {
-            // 从参数中获取用户名和密码
-            String email = map.get("email");
+            // 从参数中获取登录标识和密码
+            String loginId = map.get("loginId");
             String password = map.get("password");
 
             // 参数校验
-            if (email == null || email.trim().isEmpty()) {
-                return ResponseResult.fail("邮箱不能为空");
+            if (loginId == null || loginId.trim().isEmpty()) {
+                return ResponseResult.fail("登录标识不能为空");
             }
             if (password == null || password.trim().isEmpty()) {
                 return ResponseResult.fail("密码不能为空");
             }
 
-            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("email", email);
-            User user = userMapper.selectOne(queryWrapper);
-
-            // 业务逻辑 - 生成token
-            String token = loginService.get_token(user.getName(), password);
+            // 直接调用登录服务，由UserDetailsService处理多种登录方式
+            String token = loginService.get_token(loginId, password);
 
             // 返回成功结果
-            return ResponseResult.success(200,"登录成功", token);
+            return ResponseResult.success(200, "登录成功", token);
 
         } catch (ServiceException e) {
             // 业务异常

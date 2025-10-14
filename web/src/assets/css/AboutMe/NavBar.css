@@ -250,3 +250,10 @@ section video {
      overflow-x: hidden;
      background: #e4e9f5;
  }
+
+ .technology-slider{
+     transform: scale(1.5);
+     transform-origin: center;
+     width: 66.67%;
+     height:66.67%;
+ }

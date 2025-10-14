@@ -14,16 +14,32 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
-    // 传入 username 返回对应的信息，在这里也就是id name pwd
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("name", username);
+
+        // 1. 先按用户名查找
+        queryWrapper.eq("name", loginId);
         User user = userMapper.selectOne(queryWrapper);
 
+        // 2. 如果没找到，按邮箱查找
         if (user == null) {
-            throw new UsernameNotFoundException("用户不存在");
+            queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("email", loginId);
+            user = userMapper.selectOne(queryWrapper);
         }
+
+        // 3. 如果还没找到，按手机号查找
+        if (user == null) {
+            queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("phone", loginId);
+            user = userMapper.selectOne(queryWrapper);
+        }
+
+        if (user == null) {
+            throw new UsernameNotFoundException("用户不存在: " + loginId);
+        }
+
         return new UserDetailsImpl(user);
     }
 }

@@ -22,7 +22,11 @@ public class RegisterController {
         String email = map.get("email");
         String password = map.get("password");
 
-
-        return ResponseResult.success("success", registerService.register(name, email, password));
+        Map<String, String> res = registerService.register(name, email, password);
+        if("success".equals(res.get("error_message"))){
+            return ResponseResult.success(200, "success", res);
+        }else{
+            return ResponseResult.fail("fail",res);
+        }
     }
 }

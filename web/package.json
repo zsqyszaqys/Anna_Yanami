@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.1",
+    "@uivjs/vue-github-corners": "^1.0.1",
     "animejs": "^4.1.4",
     "bootstrap": "^5.3.8",
     "core-js": "^3.8.3",

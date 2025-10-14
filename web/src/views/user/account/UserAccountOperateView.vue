@@ -1,23 +1,26 @@
 <template>
   <div class="shell">
+      <!--    注册表单-->
     <div class="container a-container" id="a-container">
       <form class="form" id="a-form">
         <h2 class="form_title title">创建账号</h2>
         <span class="form_span">使用电子邮箱注册喵~</span>
-        <input type="text" class="form_input" placeholder="Name" />
-        <input type="text" class="form_input" placeholder="Email" />
-        <input type="text" class="form_input" placeholder="Password" />
-        <div class="error_message">{{ error_message }}</div>
-        <WaterButton type="submit" class="form_button button submit">SIGN UP</WaterButton>
+        <input v-model="name" type="text" class="form_input" placeholder="Name" />
+        <input v-model="email" type="text" class="form_input" placeholder="Email" />
+        <input v-model="password"  type="password" class="form_input" placeholder="Password" />
+        <div class="error_message" v-show="error_message">{{ error_message }}</div>
+        <WaterButton class="form_button button submit" @click="register">SIGN UP</WaterButton>
       </form>
     </div>
 
+    <!--    登录表单-->
     <div class="container b-container" id="b-container">
       <form class="form" id="b-form">
         <h2 class="form_title title">登入账号</h2>
-        <span class="form_span">使用电子邮箱登录喵~</span>
-        <input v-model="email" type="text" class="form_input" placeholder="Email" />
-        <input v-model="password" type="text" class="form_input" placeholder="Password" />
+        <span class="form_span">使用用户名、邮箱或手机号登录喵~</span>
+        <input v-model="email" type="text" class="form_input" placeholder="邮箱" />
+        <input v-model="password" type="password" class="form_input" placeholder="密码" />
+        <div class="error_message" v-show="error_message">{{ error_message }}</div>
         <a class="form_link">忘记密码？</a>
         <WaterButton class="form_button button submit" @click="login">SIGN IN</WaterButton>
       </form>
@@ -56,6 +59,7 @@
 import { onMounted, computed, ref } from "vue";
 import WaterButton from "@/components/WaterButton.vue";
 import {useStore} from "vuex";
+import router from "@/router";
 
 export default {
   name:"UserAccountOperateView",
@@ -63,27 +67,49 @@ export default {
     WaterButton,
   },
 
+
   setup(){
     const store = useStore();
+    let name = ref("");
     let email = ref("");
+    let loginId = ref("");
     let password = ref("");
-    let error_message = ref("");
     const isLogin = ref(false);
 
+    const error_message = computed(() => store.state.user.error_message);
+
     const login = () =>{
-
-
-
       store.dispatch("login",{
-        email: email.value,
+        loginId: email.value,
+        password: password.value,
+        success(){
+          store.dispatch("getInfo", {
+            success(){
+              router.push({name:"me"});
+            },
+            error(resp){
+              console.log(resp);
+            }
+          })
+        },
+        error(resp){
+         console.log(resp);
+      }});
+    };
+
+    const register = () =>{
+      store.dispatch("register",{
+        name: name.value,
+        loginId: email.value,
         password: password.value,
         success(resp){
           console.log(resp);
+          login();
         },
-        error(){
-          error_message.value = "用户名或密码错误";
+        error(resp){
+          console.log(resp);
         }
-      });
+        })
     }
 
     const switchBackground = computed(() => {
@@ -129,17 +155,21 @@ export default {
 
       allButtons.forEach((btn) => btn.addEventListener("click", getButtons));
       switchBtn.forEach((btn) => btn.addEventListener("click", changeForm));
+
     });
 
     return{
+      name,
+      loginId,
       email,
       password,
-      error_message,
       switchBackground,
+      error_message,
 
       login,
+      register,
     }
-  }
+  },
 }
 </script>
 
@@ -380,18 +410,17 @@ body {
 .switch:hover .bg-image {
   transform: scale(1); /* 图片缩小到100%，但仍占满容器 */
 }
-
 .switch_circle {
   position: absolute;
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background-color: transparent;
-  box-shadow: none;
+  background-color: #ecf0f3;
+  box-shadow: inset 8px 8px 12px #b8bec7, inset -8px -8px 12px #fff;
   bottom: -60%;
   left: -60%;
   transition: 1.25s;
-  z-index: 2;
+  opacity: 0.3;
 }
 
 .switch_circle-t {
@@ -399,9 +428,9 @@ body {
   left: 60%;
   width: 300px;
   height: 300px;
-  background-color: transparent;
-  box-shadow: none;
-  z-index: 2;
+  background-color: #ecf0f3; /* 添加背景色 */
+  box-shadow: inset 8px 8px 12px #b8bec7, inset -8px -8px 12px #fff; /* 添加阴影 */
+  opacity: 0.3;
 }
 
 .switch_container {
@@ -593,4 +622,229 @@ body {
   box-shadow: 2px 2px 6px #d1d9e6, -2px -2px 6px #f9f9f9;
 }
 
+/* 现代错误提示样式 */
+.error_message {
+  color: #d93025;
+  font-size: 14px;
+  margin: 12px 0;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
+  border-radius: 12px;
+  border: 1.5px solid #ffcdd2;
+  text-align: center;
+  min-height: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow:
+      0 2px 8px rgba(217, 48, 37, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 错误图标 */
+.error_message::before {
+  content: "⚠";
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #d93025, #ea4335);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+}
+
+/* 微妙的闪烁动画 */
+@keyframes gentlePulse {
+  0%, 100% {
+    box-shadow:
+        0 2px 8px rgba(217, 48, 37, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow:
+        0 4px 12px rgba(217, 48, 37, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* 错误信息出现时的动画 */
+.error_message {
+  animation: gentlePulse 2s ease-in-out infinite,
+  slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 悬浮效果 */
+.error_message:hover {
+  transform: translateY(-1px);
+  box-shadow:
+      0 4px 16px rgba(217, 48, 37, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .error_message {
+    font-size: 13px;
+    padding: 10px 12px;
+    margin: 8px 0;
+  }
+}
+
+/* 确保错误信息在表单中的正确位置 */
+.form {
+  position: relative;
+  z-index: 10;
+}
+
+/* 固定高度的错误信息容器 */
+.error-container {
+  height: 0; /* 容器高度为0，不占布局空间 */
+  position: relative; /* 为绝对定位的错误信息提供参考 */
+  margin: 8px 0; /* 保持原有的间距 */
+  min-height: 0; /* 确保不会扩展 */
+}
+
+/* 现代错误提示样式 - 修改为绝对定位 */
+.error_message {
+  color: #d93025;
+  font-size: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
+  border-radius: 12px;
+  border: 1.5px solid #ffcdd2;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow:
+      0 2px 8px rgba(217, 48, 37, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: absolute; /* 改为绝对定位 */
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 显示状态 */
+.error_message.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 错误图标 */
+.error_message::before {
+  content: "⚠";
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #d93025, #ea4335);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+}
+
+/* 微妙的闪烁动画 */
+@keyframes gentlePulse {
+  0%, 100% {
+    box-shadow:
+        0 2px 8px rgba(217, 48, 37, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow:
+        0 4px 12px rgba(217, 48, 37, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* 错误信息出现时的动画 */
+.error_message.show {
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+/* 悬浮效果 */
+.error_message:hover {
+  transform: translateY(-1px);
+  box-shadow:
+      0 4px 16px rgba(217, 48, 37, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .error_message {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+}
+
+/* 为错误信息添加微妙的背景光晕 */
+.error_message::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(217, 48, 37, 0.03) 0%, transparent 70%);
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error_message:hover::after {
+  opacity: 1;
+}
+
+/* 确保表单布局稳定 */
+.form {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 使用 gap 统一控制间距 */
+}
+
+/* 调整输入框和按钮的间距 */
+.form_input {
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  /* 其他样式保持不变 */
+}
+
+.form_button {
+  margin-top: 0;
+}
 </style>

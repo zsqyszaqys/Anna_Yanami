@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "14539263",
+      "name": "backward_filled",
+      "font_class": "backward_filled",
+      "unicode": "e6e0",
+      "unicode_decimal": 59104
+    },
+    {
+      "icon_id": "14539266",
+      "name": "forward_filled",
+      "font_class": "forward_filled",
+      "unicode": "e6e2",
+      "unicode_decimal": 59106
+    },
+    {
+      "icon_id": "32934982",
+      "name": "应用",
+      "font_class": "yingyong",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
       "icon_id": "4937000",
       "name": "github-fill",
       "font_class": "github-fill",

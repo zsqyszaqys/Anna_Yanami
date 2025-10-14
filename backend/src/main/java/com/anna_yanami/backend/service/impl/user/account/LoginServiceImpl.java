@@ -16,14 +16,14 @@ public class LoginServiceImpl implements LoginService {
     private AuthenticationManager authenticationManager;
 
     @Override
-    public String get_token(String username, String password) {
-        UsernamePasswordAuthenticationToken authenticationToken =new UsernamePasswordAuthenticationToken(username, password);
-        //检测是否登入（登入失败，自动处理报异常）
+    public String get_token(String loginId, String password) {
+        // loginId 可以是用户名、邮箱、手机号中的任意一种
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(loginId, password);
+
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
-        //获取登入用户
         UserDetailsImpl loginUser = (UserDetailsImpl) authenticate.getPrincipal();
         User user = loginUser.getUser();
-        //将用户转化为jwttoken
 
         return JwtUtil.createJWT(user.getId().toString());
     }
