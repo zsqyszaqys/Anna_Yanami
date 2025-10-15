@@ -15,7 +15,7 @@ import GithubCorners from '@uivjs/vue-github-corners';
 
 export default defineComponent({
   components: {
-    GithubCorners
+    GithubCorners,
   }
 });
 </script>

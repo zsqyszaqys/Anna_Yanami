@@ -7,10 +7,6 @@
     text-decoration: none;
 }
 
-body {
-    background: #e4e9f5;
-}
-
 section {
     position: relative;
     width: 100%;
@@ -19,8 +15,8 @@ section {
     justify-content: center;
     align-items: center;
     font: 900 100px '';
-    color: #ffa21759;
-    background: #e4e9f5;
+    /*color: #ffa21759;*/
+    /*background: #e4e9f5;*/
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
     transition: clip-path 0.5s ease;
 }
@@ -30,7 +26,7 @@ section {
     width: 84px;
     height: 100%;
     background: #000000;
-    z-index: 9999;
+    z-index: 100;
     transition: width 0.5s;
     padding-left: 10px;
     overflow: hidden;
@@ -119,7 +115,7 @@ section {
 
 .icon i {
     font-size: 30px;
-    z-index: 999;
+    z-index: 2;
 }
 
 .text {
@@ -158,11 +154,12 @@ section video {
     object-fit: cover;
     top: 0;
     left: 0;
-}.volume-control {
+}
+.volume-control {
      position: absolute;
      bottom: 30px;
      right: 30px;
-     z-index: 10000;
+     z-index: 1000 !important;
      display: flex;
      align-items: center;
      gap: 12px;
@@ -173,6 +170,7 @@ section video {
      backdrop-filter: blur(5px);
      border: 1px solid rgba(255, 161, 23, 0.3);
      transition: all 0.3s ease;
+    pointer-events: auto !important;
  }
 
 .volume-control:hover {
@@ -251,9 +249,186 @@ section video {
      background: #e4e9f5;
  }
 
- .technology-slider{
-     transform: scale(1.5);
-     transform-origin: center;
-     width: 66.67%;
-     height:66.67%;
+
+#technology {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+    z-index: 5;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.technology-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}.typing-container {
+     position: absolute;
+     top: 30%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     z-index: 10;
+     text-align: center;
+     width: auto;
+     max-width: 80%;
  }
+
+.typing-text {
+    color: #ffffff;
+    font-size: clamp(2.5rem, 3vw, 4.5rem); /* 响应式字体大小 */
+    font-weight: 700;
+    font-family: 'Inter', 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* 现代化文字阴影效果 */
+    text-shadow:
+            0 0 20px rgba(255, 161, 23, 0.4),
+            0 0 40px rgba(255, 161, 23, 0.2),
+            2px 2px 4px rgba(0, 0, 0, 0.3),
+            4px 4px 8px rgba(0, 0, 0, 0.2);
+
+    /* 文字渐变效果 */
+    background: linear-gradient(135deg,
+    #00f2fe 0%,
+    #4facfe 25%,
+    #9a4dff 50%,
+    #ff6b9d 75%,
+    #ffde59 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+
+    /* 动画效果 */
+    animation: gradientShift 3s ease-in-out infinite,
+    textGlow 2s ease-in-out infinite alternate;
+
+    /* 文字排版 */
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+
+    /* 光标样式 */
+    border-right: 3px solid #ffa117;
+    padding-right: 4px;
+
+    /* 其他效果 */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* 渐变背景动画 */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 添加微光闪烁效果 */
+@keyframes shimmer {
+    0% {
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        filter: brightness(1.1) contrast(1.2);
+    }
+    100% {
+        filter: brightness(1) contrast(1);
+    }
+}
+
+/* 文字光晕动画 */
+@keyframes textGlow {
+    from {
+        filter: drop-shadow(0 4px 8px rgba(255, 161, 23, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 6px 16px rgba(255, 161, 23, 0.5));
+    }
+}
+
+/* 光标闪烁动画 - 更流畅 */
+@keyframes blink-caret {
+    0%, 50% {
+        border-color: #ffa117;
+    }
+    51%, 100% {
+        border-color: transparent;
+    }
+}
+
+.typing-text {
+    animation:
+            gradientShift 3s ease-in-out infinite,
+            textGlow 2s ease-in-out infinite alternate,
+            blink-caret 1.2s step-end infinite;
+}
+
+/* 响应式设计优化 */
+@media (max-width: 1200px) {
+    .typing-container {
+        top: 28%;
+    }
+}
+
+@media (max-width: 768px) {
+    .typing-container {
+        top: 25%;
+        max-width: 90%;
+    }
+
+    .typing-text {
+        letter-spacing: -0.3px;
+        border-right-width: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .typing-container {
+        top: 22%;
+    }
+
+    .typing-text {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        letter-spacing: -0.2px;
+    }
+}
+
+/* 添加加载时的淡入效果 */
+.typing-text {
+    animation:
+            gradientShift 4s ease infinite,
+            blink-caret 1.2s step-end infinite,
+            shimmer 3s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 确保字体加载 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
