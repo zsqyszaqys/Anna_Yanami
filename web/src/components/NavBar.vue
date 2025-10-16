@@ -68,6 +68,7 @@
 
     </section>
     <section id="links">
+      <LinksSection></LinksSection>
     </section>
     <section id="wallet">Wallet</section>
     <section id="picture">Picture</section>
@@ -87,13 +88,15 @@ import "@/assets/css/AboutMe/NavBar.css"
 import ConnectCard from "@/components/ConnectCard.vue";
 import TechnologySlider from "@/components/TechnologyImages.vue";
 import RandomText from "@/components/RandomText.vue";
+import linksSection from "@/views/ME/LinksSection.vue";
 
 export default {
   name: 'NavBar',
   components: {
     TechnologySlider,
     ConnectCard,
-    RandomText
+    RandomText,
+    linksSection,
   },
   setup() {
     const section_ref = ref(null);
