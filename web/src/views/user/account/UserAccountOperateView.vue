@@ -57,7 +57,7 @@
 
 <script>
 import { onMounted, computed, ref } from "vue";
-import WaterButton from "@/components/WaterButton.vue";
+import WaterButton from "@/components/tools/WaterButton.vue";
 import {useStore} from "vuex";
 import router from "@/router";
 

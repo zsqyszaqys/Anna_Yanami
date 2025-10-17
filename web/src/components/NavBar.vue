@@ -68,6 +68,7 @@
 
     </section>
     <section id="links">
+      <InteractiveHoverButton></InteractiveHoverButton>
     </section>
     <section id="wallet">Wallet</section>
     <section id="picture">Picture</section>
@@ -87,6 +88,7 @@ import "@/assets/css/AboutMe/NavBar.css"
 import ConnectCard from "@/components/ConnectCard.vue";
 import TechnologySlider from "@/components/TechnologyImages.vue";
 import RandomText from "@/components/RandomText.vue";
+import InteractiveHoverButton from "@/components/tools/InteractiveHoverButton.vue";
 
 export default {
   name: 'NavBar',
@@ -94,6 +96,7 @@ export default {
     TechnologySlider,
     ConnectCard,
     RandomText,
+    InteractiveHoverButton,
   },
   setup() {
     const section_ref = ref(null);
