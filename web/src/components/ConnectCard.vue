@@ -1,29 +1,68 @@
 <template>
   <div class="card-shell">
     <div class="photo">
-      <img src="@/assets/AboutMe/Yanami.png" alt="">
+      <img
+        src="@/assets/AboutMe/Yanami.png"
+        alt=""
+      >
     </div>
     <div class="content">
       <div class="text">
         <h3>Contact Me</h3>
       </div>
-      <div class="btn" :class="{ active: isOpen }" @click="toggleOpen">
-        <span></span>
+      <div
+        class="btn"
+        :class="{ active: isOpen }"
+        @click="toggleOpen"
+      >
+        <span />
       </div>
     </div>
-    <div class="box" :class="{ open: isOpen }">
-      <i class="iconfont icon-QQ" @click="handleQQClick"></i>
-      <i class="iconfont icon-weixin" @click="handleWeixinClick"></i>
-      <i class="iconfont icon-douyin" @click="handleDouyinClick"></i>
-      <i class="iconfont icon-bilibili" @click="handleBilibiliClick"></i>
-      <i class="iconfont icon-github-fill" @click="handleGithubClick"></i>
+    <div
+      class="box"
+      :class="{ open: isOpen }"
+    >
+      <i
+        class="iconfont icon-QQ"
+        @click="handleQQClick"
+      />
+      <i
+        class="iconfont icon-weixin"
+        @click="handleWeixinClick"
+      />
+      <i
+        class="iconfont icon-douyin"
+        @click="handleDouyinClick"
+      />
+      <i
+        class="iconfont icon-bilibili"
+        @click="handleBilibiliClick"
+      />
+      <i
+        class="iconfont icon-github-fill"
+        @click="handleGithubClick"
+      />
     </div>
 
     <!-- 使用Teleport将图片传送到body根部，确保在全屏中心显示 -->
     <teleport to="body">
-      <div v-if="showFullscreenImage" class="global-fullscreen-overlay" @click="closeFullscreen">
-        <img :src="currentImage" alt="Fullscreen Image" class="global-centered-image" @click.stop>
-        <button class="global-close-btn" @click="closeFullscreen">×</button>
+      <div
+        v-if="showFullscreenImage"
+        class="global-fullscreen-overlay"
+        @click="closeFullscreen"
+      >
+        <img
+          :src="currentImage"
+          alt="Fullscreen Image"
+          class="global-centered-image"
+          @click.stop
+        >
+        <button
+          class="global-close-btn"
+          @click="closeFullscreen"
+        >
+          ×
+        </button>
       </div>
     </teleport>
   </div>

@@ -1,55 +1,142 @@
 <template>
   <div class="shell">
-      <!--    注册表单-->
-    <div class="container a-container" id="a-container">
-      <form class="form" id="a-form">
-        <h2 class="form_title title">创建账号</h2>
+    <!--    注册表单-->
+    <div
+      id="a-container"
+      class="container a-container"
+    >
+      <form
+        id="a-form"
+        class="form"
+      >
+        <h2 class="form_title title">
+          创建账号
+        </h2>
         <span class="form_span">使用电子邮箱注册喵~</span>
-        <input v-model="name" type="text" class="form_input" placeholder="Name" />
-        <input v-model="email" type="text" class="form_input" placeholder="Email" />
-        <input v-model="password"  type="password" class="form_input" placeholder="Password" />
-        <div class="error_message" v-show="error_message">{{ error_message }}</div>
-        <WaterButton class="form_button button submit" @click="register">SIGN UP</WaterButton>
+        <input
+          v-model="name"
+          type="text"
+          class="form_input"
+          placeholder="Name"
+        >
+        <input
+          v-model="email"
+          type="text"
+          class="form_input"
+          placeholder="Email"
+        >
+        <input
+          v-model="password"
+          type="password"
+          class="form_input"
+          placeholder="Password"
+        >
+        <div
+          v-show="error_message"
+          class="error_message"
+        >
+          {{ error_message }}
+        </div>
+        <WaterButton
+          class="form_button button submit"
+          @click="register"
+        >
+          SIGN UP
+        </WaterButton>
       </form>
     </div>
 
     <!--    登录表单-->
-    <div class="container b-container" id="b-container">
-      <form class="form" id="b-form">
-        <h2 class="form_title title">登入账号</h2>
+    <div
+      id="b-container"
+      class="container b-container"
+    >
+      <form
+        id="b-form"
+        class="form"
+      >
+        <h2 class="form_title title">
+          登入账号
+        </h2>
         <span class="form_span">使用用户名、邮箱或手机号登录喵~</span>
-        <input v-model="email" type="text" class="form_input" placeholder="邮箱" />
-        <input v-model="password" type="password" class="form_input" placeholder="密码" />
-        <div class="error_message" v-show="error_message">{{ error_message }}</div>
+        <input
+          v-model="email"
+          type="text"
+          class="form_input"
+          placeholder="邮箱"
+        >
+        <input
+          v-model="password"
+          type="password"
+          class="form_input"
+          placeholder="密码"
+        >
+        <div
+          v-show="error_message"
+          class="error_message"
+        >
+          {{ error_message }}
+        </div>
         <a class="form_link">忘记密码？</a>
-        <WaterButton class="form_button button submit" @click="login">SIGN IN</WaterButton>
+        <WaterButton
+          class="form_button button submit"
+          @click="login"
+        >
+          SIGN IN
+        </WaterButton>
       </form>
     </div>
 
-    <div class="switch" id="switch-cnt">
+    <div
+      id="switch-cnt"
+      class="switch"
+    >
       <!-- 背景图片层 -->
-      <div class="bg-image" :style="switchBackground"></div>
+      <div
+        class="bg-image"
+        :style="switchBackground"
+      />
 
       <!-- 毛玻璃层 -->
-      <div class="glass-layer"></div>
+      <div class="glass-layer" />
 
-      <div class="switch_circle"></div>
-      <div class="switch_circle switch_circle-t"></div>
+      <div class="switch_circle" />
+      <div class="switch_circle switch_circle-t" />
 
-      <div class="switch_container" id="switch-c1">
-        <h2 class="switch_title title floating-text" style="letter-spacing: 0;">Welcome Back！</h2>
+      <div
+        id="switch-c1"
+        class="switch_container"
+      >
+        <h2
+          class="switch_title title floating-text"
+          style="letter-spacing: 0;"
+        >
+          Welcome Back！
+        </h2>
         <p class="switch_description description floating-text">
           已经有账号了嘛，去登入账号来进入奇妙世界吧！！！
         </p>
-        <WaterButton class="switch_button button switch-btn floating-text">SIGN IN</WaterButton>
+        <WaterButton class="switch_button button switch-btn floating-text">
+          SIGN IN
+        </WaterButton>
       </div>
 
-      <div class="switch_container is-hidden" id="switch-c2">
-        <h2 class="switch_title title floating-text" style="letter-spacing: 0;">Hello Friend！</h2>
+      <div
+        id="switch-c2"
+        class="switch_container is-hidden"
+      >
+        <h2
+          class="switch_title title floating-text"
+          style="letter-spacing: 0;"
+        >
+          Hello Friend！
+        </h2>
         <p class="switch_description description floating-text">
           去注册一个账号，进入我的世界喵~
         </p>
-        <WaterButton class="switch_button button switch-btn floating-text">SIGN UP</WaterButton>
+        <WaterButton class="switch_button button switch-btn floating-text">
+          SIGN UP
+        </WaterButton>
       </div>
     </div>
   </div>

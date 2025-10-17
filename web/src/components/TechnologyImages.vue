@@ -2,21 +2,38 @@
   <div class="technology-shell">
     <div class="shell_body">
       <div class="button">
-        <div class="prev" @click="prev"><i class="iconfont icon-backward_filled"></i></div>
-        <div class="next" @click="next"><i class="iconfont icon-forward_filled"></i></div>
+        <div
+          class="prev"
+          @click="prev"
+        >
+          <i class="iconfont icon-backward_filled" />
+        </div>
+        <div
+          class="next"
+          @click="next"
+        >
+          <i class="iconfont icon-forward_filled" />
+        </div>
       </div>
 
-      <div class="shell_slider" ref="slider">
-        <div class="item" v-for="(tech, index) in Technology" :key="index">
+      <div
+        ref="slider"
+        class="shell_slider"
+      >
+        <div
+          v-for="(tech, index) in Technology"
+          :key="index"
+          class="item"
+        >
           <div class="frame">
             <div class="box front">
-              <h1>{{ tech}}</h1>
+              <h1>{{ tech }}</h1>
               <span>
                 {{ description[index] }}
               </span>
             </div>
-            <div class="box left"></div>
-            <div class="box right"></div>
+            <div class="box left" />
+            <div class="box right" />
           </div>
         </div>
       </div>

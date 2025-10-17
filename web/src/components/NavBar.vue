@@ -4,11 +4,20 @@
     <div class="shell">
       <ul class="nav">
         <!--logo-->
-        <li :class="{ active: activeSection === 'logo' }" id="logo">
-          <a href="#" @click="setActive('logo')">
+        <li
+          id="logo"
+          :class="{ active: activeSection === 'logo' }"
+        >
+          <a
+            href="#"
+            @click="setActive('logo')"
+          >
             <div class="icon">
               <div class="imageBox">
-                <img :src="logoImage" alt=""/>
+                <img
+                  :src="logoImage"
+                  alt=""
+                >
               </div>
             </div>
             <div class="text">Anna_Yanami</div>
@@ -16,20 +25,33 @@
         </li>
 
         <!--menu-->
-        <li v-for="(item, index) in navItems" :key="index" :class="{ active: activeSection === item.id }">
-          <a :href="'#' + item.id" @click="setActive(item.id)">
+        <li
+          v-for="(item, index) in navItems"
+          :key="index"
+          :class="{ active: activeSection === item.id }"
+        >
+          <a
+            :href="'#' + item.id"
+            @click="setActive(item.id)"
+          >
             <div class="icon">
-              <i :class="item.iconClass"></i>
+              <i :class="item.iconClass" />
             </div>
             <div class="text">{{ item.text }}</div>
           </a>
         </li>
 
         <li :class="{ active: activeSection === 'me' }">
-          <a href="#me" @click="setActive('me')">
+          <a
+            href="#me"
+            @click="setActive('me')"
+          >
             <div class="icon">
               <div class="imageBox">
-                <img :src="profileImage" alt=""/>
+                <img
+                  :src="profileImage"
+                  alt=""
+                >
               </div>
             </div>
             <div class="text">ME</div>
@@ -39,54 +61,71 @@
     </div>
 
     <!-- 内容区域 -->
-    <section id="home" ref="section_ref">
-      <RandomText/>
+    <section
+      id="home"
+      ref="section_ref"
+    >
+      <RandomText />
       <video
-          class="video"
-          :src="videoSrc"
-          type="video/mp4"
-          ref="videoRef"
-          autoplay
-          loop
-          playsinline
-          muted
-          disablepictureinpicture
-      ></video>
+        ref="videoRef"
+        class="video"
+        :src="videoSrc"
+        type="video/mp4"
+        autoplay
+        loop
+        playsinline
+        muted
+        disablepictureinpicture
+      />
 
       <!-- 打字机特效 -->
       <div class="typing-container">
-        <h1 class="typing-text" ref="typingTextRef"></h1>
+        <h1
+          ref="typingTextRef"
+          class="typing-text"
+        />
       </div>
 
       <!-- 音量滑块 -->
       <div class="volume-control">
-        <div class="volume-icon" @click="toggleMute">
-          <i :class="volumeIcon"></i>
+        <div
+          class="volume-icon"
+          @click="toggleMute"
+        >
+          <i :class="volumeIcon" />
         </div>
         <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            v-model="volume"
-            @input="changeVolume"
-            class="volume-slider"
-        />
-        <div class="volume-value">{{ Math.round(volume * 100) }}%</div>
+          v-model="volume"
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          class="volume-slider"
+          @input="changeVolume"
+        >
+        <div class="volume-value">
+          {{ Math.round(volume * 100) }}%
+        </div>
       </div>
     </section>
 
     <section id="links">
-      <InteractiveHoverButton/>
+      <InteractiveHoverButton />
     </section>
-    <section id="wallet">Wallet</section>
-    <section id="picture">Picture</section>
-    <section id="code">QR code</section>
+    <section id="wallet">
+      Wallet
+    </section>
+    <section id="picture">
+      Picture
+    </section>
+    <section id="code">
+      QR code
+    </section>
     <section id="technology">
-      <TechnologySlider class="technology-slider"/>
+      <TechnologySlider class="technology-slider" />
     </section>
     <section id="me">
-      <ConnectCard/>
+      <ConnectCard />
     </section>
   </div>
 </template>
