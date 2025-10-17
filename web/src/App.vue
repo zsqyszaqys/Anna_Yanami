@@ -1,12 +1,12 @@
 <template>
   <github-corners
-      fixed
-      target="__blank"
-      href="https://github.com/zsqyszaqys/Anna_Yanami"
-      :z-index="9999"
-      class="global-github-corner"
+    fixed
+    target="__blank"
+    href="https://github.com/zsqyszaqys/Anna_Yanami"
+    :z-index="9999"
+    class="global-github-corner"
   />
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
