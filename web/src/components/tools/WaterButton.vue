@@ -1,6 +1,10 @@
 <template>
   <!-- 移除外层容器，只保留按钮 -->
-  <a href="#" class="water-button" :class="customClass">
+  <a
+    href="#"
+    class="water-button"
+    :class="customClass"
+  >
     <slot>Button</slot>
   </a>
 </template>

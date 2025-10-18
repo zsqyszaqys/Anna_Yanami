@@ -2,7 +2,7 @@
   <div class="card-shell">
     <div class="photo">
       <img
-        src="@/assets/AboutMe/Yanami.png"
+        src="../../assets/AboutMe/Yanami.png"
         alt=""
       >
     </div>

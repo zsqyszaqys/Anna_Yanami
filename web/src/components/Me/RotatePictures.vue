@@ -1,9 +1,12 @@
 <template>
   <div class="Rotate-shell">
-    <div class="content" :style="{ transform: `translateZ(-35vw) rotateY(${currentAngle}deg)` }">
-      <div class="item"></div>
-      <div class="item"></div>
-      <div class="item"></div>
+    <div
+      class="content"
+      :style="{ transform: `translateZ(-35vw) rotateY(${currentAngle}deg)` }"
+    >
+      <div class="item" />
+      <div class="item" />
+      <div class="item" />
     </div>
   </div>
 </template>

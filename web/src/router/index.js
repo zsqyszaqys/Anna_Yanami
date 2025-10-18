@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import UserAccountOperateView from "@/views/user/account/UserAccountOperateView.vue";
-import navBar from "@/components/NavBar.vue";
+import navBar from "@/components/Me/NavBar.vue";
 import store from "@/store";
+import GroupLinksView from "@/components/tools/Groups/GroupLinksView.vue"
 
 const routes = [
   {
@@ -12,15 +13,13 @@ const routes = [
       requestAuth: false,
     }
   },
-
   {
     path: "/",
     redirect: "/me",
     meta:{
-      requestAuth: true,
+      requestAuth: false,
     }
   },
-
   {
     path: "/me",
     name:"me",
@@ -29,6 +28,16 @@ const routes = [
       requestAuth: true,
     }
   },
+  {
+    path: "/me/groups/{groupid}",
+    name:"GroupLinks",
+    component: GroupLinksView,
+    meta:{
+      requestAuth: false,
+    }
+  }
+
+
 ]
 
 const router = createRouter({

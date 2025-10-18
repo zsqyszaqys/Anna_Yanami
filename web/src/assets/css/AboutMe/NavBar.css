@@ -427,4 +427,28 @@ section video {
         transform: translateY(0);
     }
 }
+
+section:not(#home) {
+    margin-left: 84px;
+    width: calc(100% - 84px);
+    box-sizing: border-box;
+}
+
+/* 确保 LinkSectionView 内部内容填满容器 */
+#links >>> .link-section-container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+#links {
+    margin-left: 84px;
+    width: calc(100vw - 84px);
+    min-height: 100vh;
+    margin-top: 100px; /* 为分页按钮预留空间 */
+    padding: 2rem;
+    position: relative; /* 为分页按钮定位做准备 */
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');

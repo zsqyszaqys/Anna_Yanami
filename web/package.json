@@ -16,6 +16,7 @@
     "core-js": "^3.8.3",
     "jquery": "^3.7.1",
     "motion-v": "^1.7.2",
+    "simplex-noise": "^4.0.3",
     "typed.js": "^2.1.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",

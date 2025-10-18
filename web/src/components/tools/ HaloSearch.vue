@@ -1,35 +1,35 @@
 <template>
   <div
-      id="halo-search"
-      :class="props.class"
+    id="halo-search"
+    :class="props.class"
   >
-    <div class="aurora-glow"></div>
-    <div class="outer-ring"></div>
-    <div class="outer-ring"></div>
-    <div class="outer-ring"></div>
+    <div class="aurora-glow" />
+    <div class="outer-ring" />
+    <div class="outer-ring" />
+    <div class="outer-ring" />
 
-    <div class="inner-glow"></div>
+    <div class="inner-glow" />
 
-    <div class="main-border"></div>
+    <div class="main-border" />
 
     <div id="search-wrapper">
       <input
-          placeholder="Search..."
-          type="text"
-          name="text"
-          class="search-field"
-      />
-      <div id="text-mask"></div>
-      <div class="search-btn-border"></div>
+        placeholder="Search..."
+        type="text"
+        name="text"
+        class="search-field"
+      >
+      <div id="text-mask" />
+      <div class="search-btn-border" />
       <span
-          :class="[
+        :class="[
           'absolute top-2 right-2 flex items-center justify-center z-[2] max-h-10 max-w-10 size-full isolate overflow-hidden rounded-lg border border-transparent border-solid',
         ]"
-          style="background: linear-gradient(180deg, #161329, black, #1d1b4b)"
+        style="background: linear-gradient(180deg, #161329, black, #1d1b4b)"
       >
         <Icon
-            name="lucide:search"
-            size="24"
+          name="lucide:search"
+          size="24"
         />
       </span>
     </div>
