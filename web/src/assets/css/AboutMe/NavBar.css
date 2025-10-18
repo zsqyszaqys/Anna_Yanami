@@ -14,9 +14,6 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    font: 900 100px '';
-    /*color: #ffa21759;*/
-    /*background: #e4e9f5;*/
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
     transition: clip-path 0.5s ease;
 }
@@ -274,7 +271,8 @@ section video {
     left: 0;
     right: 0;
     bottom: 0;
-}.typing-container {
+}
+.typing-container {
      position: absolute;
      top: 30%;
      left: 50%;
@@ -429,6 +427,4 @@ section video {
         transform: translateY(0);
     }
 }
-
-/* 确保字体加载 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
