@@ -40,7 +40,13 @@ public class LinksServiceImpl implements LinksService {
                     .orderByAsc(Links::getOrderIndex)
                     .orderByDesc(Links::getCreatedAt);
         }
-        return linksMapper.selectPage(page, qw);
+        Page<Links> result = linksMapper.selectPage(page, qw);
+
+        if (!result.getRecords().isEmpty() && result.getTotal() == 0) {
+            result.setTotal(result.getRecords().size());
+        }
+
+        return result;
     }
 
     @Override

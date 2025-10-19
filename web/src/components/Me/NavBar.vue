@@ -5,18 +5,18 @@
       <ul class="nav">
         <!--logo-->
         <li
-          id="logo"
-          :class="{ active: activeSection === 'logo' }"
+            id="logo"
+            :class="{ active: activeSection === 'logo' }"
         >
           <a
-            href="#"
-            @click="setActive('logo')"
+              href="#"
+              @click="setActive('logo')"
           >
             <div class="icon">
               <div class="imageBox">
                 <img
-                  :src="logoImage"
-                  alt=""
+                    :src="logoImage"
+                    alt=""
                 >
               </div>
             </div>
@@ -26,16 +26,16 @@
 
         <!--menu-->
         <li
-          v-for="(item, index) in navItems"
-          :key="index"
-          :class="{ active: activeSection === item.id }"
+            v-for="(item, index) in navItems"
+            :key="index"
+            :class="{ active: activeSection === item.id }"
         >
           <a
-            :href="'#' + item.id"
-            @click="setActive(item.id)"
+              :href="'#' + item.id"
+              @click="setActive(item.id)"
           >
             <div class="icon">
-              <i :class="item.iconClass" />
+              <i :class="item.iconClass"/>
             </div>
             <div class="text">{{ item.text }}</div>
           </a>
@@ -43,14 +43,14 @@
 
         <li :class="{ active: activeSection === 'me' }">
           <a
-            href="#me"
-            @click="setActive('me')"
+              href="#me"
+              @click="setActive('me')"
           >
             <div class="icon">
               <div class="imageBox">
                 <img
-                  :src="profileImage"
-                  alt=""
+                    :src="profileImage"
+                    alt=""
                 >
               </div>
             </div>
@@ -60,48 +60,60 @@
       </ul>
     </div>
 
+    <Live2DModel
+        ref="live2dModelRef"
+        :model-path="currentModelPath"
+        :scale="0.08"
+        :position="[0, 60]"
+        :stage-height="450"
+        :auto-show-tips="true"
+        @stage-slide-in="onStageSlideIn"
+        @model-load="onModelLoad"
+        @tips-show="onTipsShow"
+    />
+
     <!-- 内容区域 -->
     <section
-      id="home"
-      ref="section_ref"
+        id="home"
+        ref="section_ref"
     >
-      <RandomText />
+      <RandomText/>
       <video
-        ref="videoRef"
-        class="video"
-        :src="videoSrc"
-        type="video/mp4"
-        autoplay
-        loop
-        playsinline
-        muted
-        disablepictureinpicture
+          ref="videoRef"
+          class="video"
+          :src="videoSrc"
+          type="video/mp4"
+          autoplay
+          loop
+          playsinline
+          muted
+          disablepictureinpicture
       />
 
       <!-- 打字机特效 -->
       <div class="typing-container">
         <h1
-          ref="typingTextRef"
-          class="typing-text"
+            ref="typingTextRef"
+            class="typing-text"
         />
       </div>
 
       <!-- 音量滑块 -->
       <div class="volume-control">
         <div
-          class="volume-icon"
-          @click="toggleMute"
+            class="volume-icon"
+            @click="toggleMute"
         >
-          <i :class="volumeIcon" />
+          <i :class="volumeIcon"/>
         </div>
         <input
-          v-model="volume"
-          type="range"
-          min="0"
-          max="1"
-          step="0.1"
-          class="volume-slider"
-          @input="changeVolume"
+            v-model="volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            class="volume-slider"
+            @input="changeVolume"
         >
         <div class="volume-value">
           {{ Math.round(volume * 100) }}%
@@ -110,10 +122,10 @@
     </section>
 
     <section
-      id="links"
-      class="links-container"
+        id="links"
+        class="links-container"
     >
-      <LinkSectionView />
+      <LinkSectionView/>
     </section>
     <section id="wallet">
       Wallet
@@ -125,16 +137,17 @@
       QR code
     </section>
     <section id="technology">
-      <TechnologySlider class="technology-slider" />
+      <TechnologySlider class="technology-slider"/>
     </section>
     <section id="me">
-      <ConnectCard />
+      <ConnectCard/>
     </section>
   </div>
 </template>
 
 <script>
-import {ref, onMounted, onUnmounted, computed, nextTick} from 'vue';
+import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue';
+import Live2DModel from '@/components/tools/live/OmltwoD.vue'; // 导入 Live2D 组件
 import '@/assets/css/AboutMe/NavBar.css';
 import ConnectCard from '@/components/Me/ConnectCard.vue';
 import TechnologySlider from '@/components/Me/TechnologyImages.vue';
@@ -148,6 +161,7 @@ import videoSrc from '@/assets/AboutMe/Mitsuha.mp4';
 export default {
   name: 'NavBar',
   components: {
+    Live2DModel, // 注册 Live2D 组件
     TechnologySlider,
     ConnectCard,
     RandomText,
@@ -163,6 +177,10 @@ export default {
     const lastVolume = ref(0.5);
 
     const activeSection = ref('home');
+
+    // Live2D 相关
+    const live2dModelRef = ref(null);
+    const currentModelPath = ref('https://model.oml2d.com/HK416-1-normal/model.json');
 
     // 打字机效果
     const typingTextRef = ref(null);
@@ -182,6 +200,26 @@ export default {
     let typingIndex = 0;
     let typingTimer = null;
     let isDeleting = false;
+
+    // Live2D 事件处理
+    const onStageSlideIn = () => {
+      console.log("Live2D 舞台滑入完成");
+    };
+
+    const onModelLoad = () => {
+      console.log("Live2D 模型加载完成");
+    };
+
+    const onTipsShow = (message) => {
+      console.log("显示提示:", message);
+    };
+
+    // 通过 ref 调用 Live2D 组件的方法
+    const showCustomTips = () => {
+      if (live2dModelRef.value) {
+        live2dModelRef.value.showTips("兄弟，你好香啊");
+      }
+    };
 
     const typeWriter = () => {
       if (!typingTextRef.value) return;
@@ -305,6 +343,10 @@ export default {
 
       nextTick(() => {
         typeWriter();
+        // 可以在特定时机显示自定义提示
+        setTimeout(() => {
+          showCustomTips();
+        }, 3000);
       });
     });
 
@@ -317,6 +359,7 @@ export default {
       // 状态
       activeSection,
       navItems,
+      currentModelPath,
       // 资源
       logoImage,
       profileImage,
@@ -329,12 +372,18 @@ export default {
       requestId,
       section_ref,
       typingTextRef,
+      live2dModelRef,
       // 方法
       toggleMute,
       changeVolume,
       setActive,
       updateHeaderClipPath,
-      scrollHandler
+      scrollHandler,
+      showCustomTips,
+      // Live2D 事件
+      onStageSlideIn,
+      onModelLoad,
+      onTipsShow
     };
   }
 };

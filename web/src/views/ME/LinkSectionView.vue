@@ -171,7 +171,7 @@ const IMAGE_POOL = [
   "https://cc-img.townimg.com/uploads/2025/09/20250918111851185.webp",//乃乃
   "https://cc-img.townimg.com/uploads/2025/09/20250928223258828.webp",//长夜月
   "https://cc-img.townimg.com/uploads/2025/09/20250928223251542.webp",//哥伦比亚
-  "https://cc-img.townimg.com/uploads/2025/09/20250928223155484.webp",//艾莉
+  "https://cc-img.townimg.com/uploads/2025/09/20250901154149139.webp",
   "https://cc-img.townimg.com/uploads/2025/09/20250901154217704.webp",//乃乃
   "https://cc-img.townimg.com/uploads/2025/05/20250511192718645.webp",
   "https://cc-img.townimg.com/uploads/2025/06/20250613161609412.webp",//流萤
@@ -282,7 +282,6 @@ async function fetchGroups() {
     page.value = 1;
     getFeatures(); // 逐个赋值
   } catch (e: any) {
-    error.value = e?.message || "加载失败，请稍后重试";
     groups.value = [];
     features.value = [];
   } finally {
@@ -292,8 +291,17 @@ async function fetchGroups() {
 
 //打开group,按住ctrl可以再新标签页打开
 function openGroup(f:Feature, e?:MouseEvent){
+  let groupId = f.groupId;
+  if (typeof groupId === 'string') {
+    if (groupId === '{groupid}' || groupId === '%7Bgroupid%7D') {
+      return;
+    }
+    // 尝试转换字符串为数字
+    groupId = Number(groupId);
+  }
+
   const newTab = !!(e && (e.ctrlKey || e.metaKey));
-  const to = { name: 'GroupLinks', params: { id: f.groupId }, query: { pageNo: '1' } };
+  const to = { name: 'GroupLinks', params: { groupId: f.groupId }, query: { pageNo: '1' } };
 
   if(newTab){
     const url = router.resolve(to).href;

@@ -25,19 +25,17 @@ const routes = [
     name:"me",
     component: navBar,
     meta:{
-      requestAuth: true,
+      requestAuth: false,
     }
   },
   {
-    path: "/me/groups/{groupid}",
+    path: "/me/groups/:groupId",
     name:"GroupLinks",
     component: GroupLinksView,
     meta:{
       requestAuth: false,
-    }
+    },
   }
-
-
 ]
 
 const router = createRouter({
