@@ -1,0 +1,23 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "鲨鱼 comp.moc3",
+		"Textures": [
+			"鲨鱼 comp.8192/texture_00.png"
+		],
+		"Physics": "鲨鱼 comp.physics3.json",
+		"DisplayInfo": "鲨鱼 comp.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		}
+	]
+}

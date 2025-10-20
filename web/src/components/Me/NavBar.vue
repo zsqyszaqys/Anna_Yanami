@@ -59,19 +59,6 @@
         </li>
       </ul>
     </div>
-
-    <Live2DModel
-        ref="live2dModelRef"
-        :model-path="currentModelPath"
-        :scale="0.08"
-        :position="[0, 60]"
-        :stage-height="450"
-        :auto-show-tips="true"
-        @stage-slide-in="onStageSlideIn"
-        @model-load="onModelLoad"
-        @tips-show="onTipsShow"
-    />
-
     <!-- 内容区域 -->
     <section
         id="home"
@@ -147,7 +134,6 @@
 
 <script>
 import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue';
-import Live2DModel from '@/components/tools/live/OmltwoD.vue'; // 导入 Live2D 组件
 import '@/assets/css/AboutMe/NavBar.css';
 import ConnectCard from '@/components/Me/ConnectCard.vue';
 import TechnologySlider from '@/components/Me/TechnologyImages.vue';
@@ -161,7 +147,6 @@ import videoSrc from '@/assets/AboutMe/Mitsuha.mp4';
 export default {
   name: 'NavBar',
   components: {
-    Live2DModel, // 注册 Live2D 组件
     TechnologySlider,
     ConnectCard,
     RandomText,
@@ -177,10 +162,6 @@ export default {
     const lastVolume = ref(0.5);
 
     const activeSection = ref('home');
-
-    // Live2D 相关
-    const live2dModelRef = ref(null);
-    const currentModelPath = ref('https://model.oml2d.com/HK416-1-normal/model.json');
 
     // 打字机效果
     const typingTextRef = ref(null);
@@ -200,26 +181,6 @@ export default {
     let typingIndex = 0;
     let typingTimer = null;
     let isDeleting = false;
-
-    // Live2D 事件处理
-    const onStageSlideIn = () => {
-      console.log("Live2D 舞台滑入完成");
-    };
-
-    const onModelLoad = () => {
-      console.log("Live2D 模型加载完成");
-    };
-
-    const onTipsShow = (message) => {
-      console.log("显示提示:", message);
-    };
-
-    // 通过 ref 调用 Live2D 组件的方法
-    const showCustomTips = () => {
-      if (live2dModelRef.value) {
-        live2dModelRef.value.showTips("兄弟，你好香啊");
-      }
-    };
 
     const typeWriter = () => {
       if (!typingTextRef.value) return;
@@ -328,6 +289,8 @@ export default {
       }
     };
 
+
+
     onMounted(() => {
       const observer = new IntersectionObserver(
           (entries) => {
@@ -343,10 +306,6 @@ export default {
 
       nextTick(() => {
         typeWriter();
-        // 可以在特定时机显示自定义提示
-        setTimeout(() => {
-          showCustomTips();
-        }, 3000);
       });
     });
 
@@ -359,7 +318,7 @@ export default {
       // 状态
       activeSection,
       navItems,
-      currentModelPath,
+
       // 资源
       logoImage,
       profileImage,
@@ -372,18 +331,13 @@ export default {
       requestId,
       section_ref,
       typingTextRef,
-      live2dModelRef,
+
       // 方法
       toggleMute,
       changeVolume,
       setActive,
       updateHeaderClipPath,
       scrollHandler,
-      showCustomTips,
-      // Live2D 事件
-      onStageSlideIn,
-      onModelLoad,
-      onTipsShow
     };
   }
 };

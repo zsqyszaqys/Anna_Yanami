@@ -1,0 +1,496 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "Param14",
+			"GroupId": "ParamGroup",
+			"Name": "法杖"
+		},
+		{
+			"Id": "Param17",
+			"GroupId": "ParamGroup",
+			"Name": "打招呼"
+		},
+		{
+			"Id": "Param18",
+			"GroupId": "ParamGroup",
+			"Name": "爱心"
+		},
+		{
+			"Id": "Param19",
+			"GroupId": "ParamGroup",
+			"Name": "捂胸"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "ParamGroup",
+			"Name": "qf"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "ParamGroup",
+			"Name": "qf2"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "ParamGroup",
+			"Name": "qf3"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "ParamGroup",
+			"Name": "yf"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "ParamGroup",
+			"Name": "yf2"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "ParamGroup",
+			"Name": "yf3"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "ParamGroup",
+			"Name": "sp"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "ParamGroup",
+			"Name": "sp2"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "ParamGroup",
+			"Name": "sp3"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "ParamGroup",
+			"Name": "hf"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "ParamGroup",
+			"Name": "hf2"
+		},
+		{
+			"Id": "Param12",
+			"GroupId": "ParamGroup",
+			"Name": "hf3"
+		},
+		{
+			"Id": "Param13",
+			"GroupId": "ParamGroup",
+			"Name": "hf4"
+		},
+		{
+			"Id": "Param15",
+			"GroupId": "ParamGroup",
+			"Name": "RY"
+		},
+		{
+			"Id": "Param16",
+			"GroupId": "ParamGroup",
+			"Name": "RY2"
+		},
+		{
+			"Id": "Param20",
+			"GroupId": "ParamGroup",
+			"Name": "zgg"
+		},
+		{
+			"Id": "Param21",
+			"GroupId": "ParamGroup",
+			"Name": "zgg2"
+		},
+		{
+			"Id": "Param22",
+			"GroupId": "ParamGroup",
+			"Name": "ygg"
+		},
+		{
+			"Id": "Param23",
+			"GroupId": "ParamGroup",
+			"Name": "ygg2"
+		},
+		{
+			"Id": "Param24",
+			"GroupId": "",
+			"Name": "参数50"
+		},
+		{
+			"Id": "Param25",
+			"GroupId": "",
+			"Name": "参数51"
+		},
+		{
+			"Id": "Param26",
+			"GroupId": "",
+			"Name": "参数52"
+		},
+		{
+			"Id": "Param27",
+			"GroupId": "",
+			"Name": "参数53"
+		},
+		{
+			"Id": "Param28",
+			"GroupId": "",
+			"Name": "参数54"
+		},
+		{
+			"Id": "Param29",
+			"GroupId": "",
+			"Name": "参数55"
+		},
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左眼　开闭"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "",
+			"Name": "左眼　微笑"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右眼"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "",
+			"Name": "右眼　微笑"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "眼珠 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "眼珠 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "千叶和鸢免费模型"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "禁止直播"
+		},
+		{
+			"Id": "ParamBrowLX",
+			"GroupId": "",
+			"Name": "版权：米哈游"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "",
+			"Name": "b站工房：千叶和鸢"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "免费模型"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "米画师：寻屿vup计划"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "淘宝：寻屿vup计划"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "禁止售卖此模型"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "嘴　变形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "嘴　张开和闭合"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "",
+			"Name": "脸颊泛红"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "身体旋转　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "身体旋转　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "身体旋转　Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "摇动 前发"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "摇动 侧发"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "摇动 后发"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "Folder 1"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Part2",
+			"Name": "权杖"
+		},
+		{
+			"Id": "Part3",
+			"Name": "人物"
+		},
+		{
+			"Id": "Part52",
+			"Name": "翅膀"
+		},
+		{
+			"Id": "Part4",
+			"Name": "打招呼【前】"
+		},
+		{
+			"Id": "Part5",
+			"Name": "比心【前】"
+		},
+		{
+			"Id": "Part8",
+			"Name": "捂胸【前】"
+		},
+		{
+			"Id": "Part9",
+			"Name": "头"
+		},
+		{
+			"Id": "Part31",
+			"Name": "文件夹1"
+		},
+		{
+			"Id": "Part32",
+			"Name": "脖子"
+		},
+		{
+			"Id": "Part33",
+			"Name": "躯干"
+		},
+		{
+			"Id": "Part37",
+			"Name": "腿部"
+		},
+		{
+			"Id": "Part43",
+			"Name": "打招呼"
+		},
+		{
+			"Id": "Part44",
+			"Name": "比心【后】"
+		},
+		{
+			"Id": "Part47",
+			"Name": "捂胸【后】"
+		},
+		{
+			"Id": "Part50",
+			"Name": "手臂"
+		},
+		{
+			"Id": "Part51",
+			"Name": "后发"
+		},
+		{
+			"Id": "Part6",
+			"Name": "左手"
+		},
+		{
+			"Id": "Part7",
+			"Name": "右手"
+		},
+		{
+			"Id": "Part10",
+			"Name": "前发"
+		},
+		{
+			"Id": "Part13",
+			"Name": "五官"
+		},
+		{
+			"Id": "Part28",
+			"Name": "脸皮"
+		},
+		{
+			"Id": "Part29",
+			"Name": "耳朵"
+		},
+		{
+			"Id": "Part30",
+			"Name": "发纱"
+		},
+		{
+			"Id": "Part34",
+			"Name": "衣饰"
+		},
+		{
+			"Id": "Part35",
+			"Name": "胸部"
+		},
+		{
+			"Id": "Part36",
+			"Name": "腰部"
+		},
+		{
+			"Id": "Part38",
+			"Name": "右腿"
+		},
+		{
+			"Id": "Part40",
+			"Name": "左腿"
+		},
+		{
+			"Id": "Part45",
+			"Name": "左手(3)"
+		},
+		{
+			"Id": "Part46",
+			"Name": "左手"
+		},
+		{
+			"Id": "Part48",
+			"Name": "图层组9"
+		},
+		{
+			"Id": "Part49",
+			"Name": "图层组8"
+		},
+		{
+			"Id": "Part11",
+			"Name": "发饰"
+		},
+		{
+			"Id": "Part12",
+			"Name": "发饰【？"
+		},
+		{
+			"Id": "Part14",
+			"Name": "鼻子"
+		},
+		{
+			"Id": "Part15",
+			"Name": "眉毛"
+		},
+		{
+			"Id": "Part16",
+			"Name": "上睫毛 副本"
+		},
+		{
+			"Id": "Part21",
+			"Name": "双眼皮 副本"
+		},
+		{
+			"Id": "Part22",
+			"Name": "下眼皮 副本"
+		},
+		{
+			"Id": "Part23",
+			"Name": "眼珠 副本"
+		},
+		{
+			"Id": "Part24",
+			"Name": "眼白 副本"
+		},
+		{
+			"Id": "Part25",
+			"Name": "嘴"
+		},
+		{
+			"Id": "Part27",
+			"Name": "腮红"
+		},
+		{
+			"Id": "Part39",
+			"Name": "图层组5"
+		},
+		{
+			"Id": "Part41",
+			"Name": "图层组6"
+		},
+		{
+			"Id": "Part42",
+			"Name": "图层组7"
+		},
+		{
+			"Id": "Part17",
+			"Name": "图层组3(2)"
+		},
+		{
+			"Id": "Part26",
+			"Name": "图层组4"
+		},
+		{
+			"Id": "Part18",
+			"Name": "图层组2"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamMouthForm",
+			"ParamMouthOpenY"
+		]
+	]
+}

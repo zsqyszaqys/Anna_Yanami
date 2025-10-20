@@ -1,19 +1,19 @@
 <template>
   <div
-    class="text-overlay"
-    @click="createText($event)"
+      class="text-overlay"
+      @click="createText($event)"
   >
     <span
-      v-for="item in texts"
-      :key="item.id"
-      :style="{
+        v-for="item in texts"
+        :key="item.id"
+        :style="{
         left: item.x + 'px',
         top: item.y + 'px',
         opacity: item.opacity,
         transform: item.transform,
         '--hue': item.hue
       }"
-      class="floating-text"
+        class="floating-text"
     >
       {{ item.content }}
     </span>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import {ref} from "vue";
 
 export default {
   name: "RandomText",
@@ -32,6 +32,7 @@ export default {
     const arr = [
       "最是人间留不住，朱颜辞镜花辞树",
       "君住长江头，我住长江尾，日日思君不见君，共饮长江水",
+      "赠君茉莉，愿君莫离",
       "少言自寡，胜过千言万语",
       "千万不要在奋斗的年纪选择安逸",
       "除了你自己，没人会时刻在意你",
@@ -129,12 +130,11 @@ export default {
   position: absolute;
   font-size: 18px;
   font-weight: 600;
-  font-family:
-      'SF Pro Display',
-      'Segoe UI',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+  font-family: 'SF Pro Display',
+  'Segoe UI',
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
   user-select: none;
   cursor: default;
   transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -155,10 +155,9 @@ export default {
   background-size: 200% auto;
 
   /* 多重阴影增强立体感 */
-  text-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.2),
-      0 0 20px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+  0 4px 12px rgba(0, 0, 0, 0.2),
+  0 0 20px rgba(255, 255, 255, 0.1);
 
   /* 边框效果 */
   padding: 12px 20px;

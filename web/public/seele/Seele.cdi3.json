@@ -1,0 +1,2769 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamBodyInput",
+			"GroupId": "ParamGroup",
+			"Name": "身体输入"
+		},
+		{
+			"Id": "ParamSwitchBodyCtrl",
+			"GroupId": "ParamGroup",
+			"Name": "反绑开关"
+		},
+		{
+			"Id": "ParamPhysicsRAM",
+			"GroupId": "ParamGroup",
+			"Name": "运算暂存"
+		},
+		{
+			"Id": "ParamBodyOutput",
+			"GroupId": "ParamGroup",
+			"Name": "身体输出"
+		},
+		{
+			"Id": "Param14",
+			"GroupId": "ParamGroup10",
+			"Name": "形态切"
+		},
+		{
+			"Id": "Param15",
+			"GroupId": "ParamGroup10",
+			"Name": "镰刀"
+		},
+		{
+			"Id": "Param16",
+			"GroupId": "ParamGroup10",
+			"Name": "球"
+		},
+		{
+			"Id": "Param13",
+			"GroupId": "ParamGroup10",
+			"Name": "豆豆眼"
+		},
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "ParamGroup2",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "ParamGroup2",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "ParamGroup2",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "ParamGroup2",
+			"Name": "身体旋转　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "ParamGroup2",
+			"Name": "身体旋转　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "ParamGroup2",
+			"Name": "身体旋转　Z"
+		},
+		{
+			"Id": "Param17",
+			"GroupId": "ParamGroup2",
+			"Name": "手型"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "ParamGroup2",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "ParamGroup3",
+			"Name": "嘴　变形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "ParamGroup3",
+			"Name": "嘴　张开和闭合"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "ParamGroup3",
+			"Name": "左眼　开闭"
+		},
+		{
+			"Id": "ParamEyeLSmile",
+			"GroupId": "ParamGroup3",
+			"Name": "左眼　微笑"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "ParamGroup3",
+			"Name": "右眼   开闭"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "ParamGroup3",
+			"Name": "右眼　微笑"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "ParamGroup3",
+			"Name": "上睫毛边R"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "ParamGroup3",
+			"Name": "上睫毛边L"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "ParamGroup3",
+			"Name": "睫毛尖R1"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "ParamGroup3",
+			"Name": "睫毛尖R2"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "ParamGroup3",
+			"Name": "眼珠 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "ParamGroup3",
+			"Name": "眼珠 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "ParamGroup3",
+			"Name": "左眉   上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "ParamGroup3",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "ParamGroup3",
+			"Name": "左眉　角度"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "ParamGroup3",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "ParamGroup3",
+			"Name": "左眉　変形"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "ParamGroup3",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "ParamGroup3",
+			"Name": "果冻1"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "ParamGroup3",
+			"Name": "果冻2"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "ParamGroup3",
+			"Name": "果冻3"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "ParamGroup3",
+			"Name": "果冻4"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "ParamGroup3",
+			"Name": "高光1"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "ParamGroup3",
+			"Name": "高光2"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "ParamGroup3",
+			"Name": "歪嘴"
+		},
+		{
+			"Id": "Param12",
+			"GroupId": "ParamGroup3",
+			"Name": "嘟嘴"
+		},
+		{
+			"Id": "Param21",
+			"GroupId": "ParamGroup6",
+			"Name": "右手抬手"
+		},
+		{
+			"Id": "Param25",
+			"GroupId": "ParamGroup6",
+			"Name": "左手抬手"
+		},
+		{
+			"Id": "Param18",
+			"GroupId": "ParamGroup6",
+			"Name": "右手晃动1"
+		},
+		{
+			"Id": "Param19",
+			"GroupId": "ParamGroup6",
+			"Name": "右手晃动2"
+		},
+		{
+			"Id": "Param20",
+			"GroupId": "ParamGroup6",
+			"Name": "右手晃动3"
+		},
+		{
+			"Id": "Param22",
+			"GroupId": "ParamGroup6",
+			"Name": "左手晃动1"
+		},
+		{
+			"Id": "Param23",
+			"GroupId": "ParamGroup6",
+			"Name": "左手晃动2"
+		},
+		{
+			"Id": "Param24",
+			"GroupId": "ParamGroup6",
+			"Name": "左手晃动3"
+		},
+		{
+			"Id": "Param230",
+			"GroupId": "ParamGroup6",
+			"Name": "左腿晃动1"
+		},
+		{
+			"Id": "Param231",
+			"GroupId": "ParamGroup6",
+			"Name": "左腿晃动2"
+		},
+		{
+			"Id": "Param234",
+			"GroupId": "ParamGroup6",
+			"Name": "右腿晃动1"
+		},
+		{
+			"Id": "Param235",
+			"GroupId": "ParamGroup6",
+			"Name": "右腿晃动2"
+		},
+		{
+			"Id": "Param233",
+			"GroupId": "ParamGroup6",
+			"Name": "左腿晃动12补丁"
+		},
+		{
+			"Id": "Param236",
+			"GroupId": "ParamGroup6",
+			"Name": "右腿晃动12补丁"
+		},
+		{
+			"Id": "Param232",
+			"GroupId": "ParamGroup6",
+			"Name": "腿x"
+		},
+		{
+			"Id": "Param237",
+			"GroupId": "ParamGroup6",
+			"Name": "胸x"
+		},
+		{
+			"Id": "Param238",
+			"GroupId": "ParamGroup6",
+			"Name": "胸y"
+		},
+		{
+			"Id": "Param239",
+			"GroupId": "ParamGroup6",
+			"Name": "球叶1"
+		},
+		{
+			"Id": "Param240",
+			"GroupId": "ParamGroup6",
+			"Name": "球叶2"
+		},
+		{
+			"Id": "Param241",
+			"GroupId": "ParamGroup6",
+			"Name": "球叶3"
+		},
+		{
+			"Id": "Param242",
+			"GroupId": "ParamGroup6",
+			"Name": "球"
+		},
+		{
+			"Id": "Param229",
+			"GroupId": "ParamGroup7",
+			"Name": "脚环"
+		},
+		{
+			"Id": "Param90",
+			"GroupId": "ParamGroup7",
+			"Name": "项圈黑花"
+		},
+		{
+			"Id": "Param89",
+			"GroupId": "ParamGroup7",
+			"Name": "项圈花"
+		},
+		{
+			"Id": "Param91",
+			"GroupId": "ParamGroup7",
+			"Name": "项圈黑花"
+		},
+		{
+			"Id": "Param92",
+			"GroupId": "ParamGroup7",
+			"Name": "胸翅膀R1"
+		},
+		{
+			"Id": "Param93",
+			"GroupId": "ParamGroup7",
+			"Name": "胸翅膀R2"
+		},
+		{
+			"Id": "Param94",
+			"GroupId": "ParamGroup7",
+			"Name": "胸翅膀L1"
+		},
+		{
+			"Id": "Param95",
+			"GroupId": "ParamGroup7",
+			"Name": "胸翅膀L2"
+		},
+		{
+			"Id": "Param32",
+			"GroupId": "ParamGroup7",
+			"Name": "头花"
+		},
+		{
+			"Id": "Param37",
+			"GroupId": "ParamGroup7",
+			"Name": "头叶尖"
+		},
+		{
+			"Id": "Param38",
+			"GroupId": "ParamGroup7",
+			"Name": "头蝴蝶"
+		},
+		{
+			"Id": "Param56",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣1.1"
+		},
+		{
+			"Id": "Param57",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣1.2"
+		},
+		{
+			"Id": "Param58",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣1.3"
+		},
+		{
+			"Id": "Param59",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣2.1"
+		},
+		{
+			"Id": "Param60",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣2.2"
+		},
+		{
+			"Id": "Param61",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣2.3"
+		},
+		{
+			"Id": "Param62",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣3.1"
+		},
+		{
+			"Id": "Param63",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣3.2"
+		},
+		{
+			"Id": "Param64",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣3.3"
+		},
+		{
+			"Id": "Param65",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣4.1"
+		},
+		{
+			"Id": "Param66",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣4.2"
+		},
+		{
+			"Id": "Param67",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣4.3"
+		},
+		{
+			"Id": "Param68",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣5.1"
+		},
+		{
+			"Id": "Param69",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣5.2"
+		},
+		{
+			"Id": "Param70",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣5.3"
+		},
+		{
+			"Id": "Param71",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣6.1"
+		},
+		{
+			"Id": "Param72",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣6.2"
+		},
+		{
+			"Id": "Param73",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣6.3"
+		},
+		{
+			"Id": "Param74",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣7.1"
+		},
+		{
+			"Id": "Param75",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣7.2"
+		},
+		{
+			"Id": "Param76",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣7.3"
+		},
+		{
+			"Id": "Param77",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣8.1"
+		},
+		{
+			"Id": "Param78",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣8.2"
+		},
+		{
+			"Id": "Param79",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣8.3"
+		},
+		{
+			"Id": "Param80",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣9.1"
+		},
+		{
+			"Id": "Param81",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣9.2"
+		},
+		{
+			"Id": "Param82",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣9.3"
+		},
+		{
+			"Id": "Param83",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣10.1"
+		},
+		{
+			"Id": "Param84",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣10.2"
+		},
+		{
+			"Id": "Param85",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣10.3"
+		},
+		{
+			"Id": "Param86",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣11.1"
+		},
+		{
+			"Id": "Param87",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣11.2"
+		},
+		{
+			"Id": "Param88",
+			"GroupId": "ParamGroup7",
+			"Name": "头花瓣11.3"
+		},
+		{
+			"Id": "Param39",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带1.1"
+		},
+		{
+			"Id": "Param40",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带1.2"
+		},
+		{
+			"Id": "Param41",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带1.3"
+		},
+		{
+			"Id": "Param42",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带1.4"
+		},
+		{
+			"Id": "Param43",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带2.1"
+		},
+		{
+			"Id": "Param44",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带2.2"
+		},
+		{
+			"Id": "Param45",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带2.3"
+		},
+		{
+			"Id": "Param46",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰线带2.4"
+		},
+		{
+			"Id": "Param47",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰布1"
+		},
+		{
+			"Id": "Param48",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰布2"
+		},
+		{
+			"Id": "Param49",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰布3"
+		},
+		{
+			"Id": "Param50",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰布4"
+		},
+		{
+			"Id": "Param52",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰带1"
+		},
+		{
+			"Id": "Param53",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰带2"
+		},
+		{
+			"Id": "Param54",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰带3"
+		},
+		{
+			"Id": "Param55",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰带4"
+		},
+		{
+			"Id": "Param51",
+			"GroupId": "ParamGroup7",
+			"Name": "头饰蓝带"
+		},
+		{
+			"Id": "Param26",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶下1"
+		},
+		{
+			"Id": "Param28",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶下2"
+		},
+		{
+			"Id": "Param29",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶下3"
+		},
+		{
+			"Id": "Param30",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶下4"
+		},
+		{
+			"Id": "Param31",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶下5"
+		},
+		{
+			"Id": "Param27",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶上1"
+		},
+		{
+			"Id": "Param33",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶上2"
+		},
+		{
+			"Id": "Param34",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶上3"
+		},
+		{
+			"Id": "Param35",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶上4"
+		},
+		{
+			"Id": "Param36",
+			"GroupId": "ParamGroup7",
+			"Name": "手叶上5"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh109",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]头带2L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh109",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]头带2L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh109",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]头带2L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh109",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]头带2L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh109",
+			"GroupId": "ParamGroup7",
+			"Name": "[4]头带2L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh109",
+			"GroupId": "ParamGroup7",
+			"Name": "[5]头带2L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh111",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]头带1L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh111",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]头带1L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh111",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]头带1L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh111",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]头带1L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh108",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]头带2R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh108",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]头带2R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh108",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]头带2R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh108",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]头带2R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh108",
+			"GroupId": "ParamGroup7",
+			"Name": "[4]头带2R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh108",
+			"GroupId": "ParamGroup7",
+			"Name": "[5]头带2R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh110",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]头带1R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh110",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]头带1R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh110",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]头带1R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh110",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]头带1R"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh103",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]头饰蓝带"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh103",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]头饰蓝带"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh103",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]头饰蓝带"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh103",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]头饰蓝带"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh103",
+			"GroupId": "ParamGroup7",
+			"Name": "[4]头饰蓝带"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh106",
+			"GroupId": "ParamGroup7",
+			"Name": "[0]头饰深蓝"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh106",
+			"GroupId": "ParamGroup7",
+			"Name": "[1]头饰深蓝"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh106",
+			"GroupId": "ParamGroup7",
+			"Name": "[2]头饰深蓝"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh106",
+			"GroupId": "ParamGroup7",
+			"Name": "[3]头饰深蓝"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh106",
+			"GroupId": "ParamGroup7",
+			"Name": "[4]头饰深蓝"
+		},
+		{
+			"Id": "Param226",
+			"GroupId": "ParamGroup8",
+			"Name": "腰长摆1"
+		},
+		{
+			"Id": "Param227",
+			"GroupId": "ParamGroup8",
+			"Name": "腰长摆2"
+		},
+		{
+			"Id": "Param228",
+			"GroupId": "ParamGroup8",
+			"Name": "腰长摆3"
+		},
+		{
+			"Id": "Param219",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后1"
+		},
+		{
+			"Id": "Param220",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后2"
+		},
+		{
+			"Id": "Param221",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后3"
+		},
+		{
+			"Id": "Param222",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后4"
+		},
+		{
+			"Id": "Param223",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后5"
+		},
+		{
+			"Id": "Param224",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后y"
+		},
+		{
+			"Id": "Param225",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆后Y"
+		},
+		{
+			"Id": "Param210",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L1.1"
+		},
+		{
+			"Id": "Param211",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L1.2"
+		},
+		{
+			"Id": "Param212",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L1.3"
+		},
+		{
+			"Id": "Param213",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L2.1"
+		},
+		{
+			"Id": "Param214",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L2.2"
+		},
+		{
+			"Id": "Param215",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L2.3"
+		},
+		{
+			"Id": "Param216",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L3.1"
+		},
+		{
+			"Id": "Param217",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L3.2"
+		},
+		{
+			"Id": "Param218",
+			"GroupId": "ParamGroup8",
+			"Name": "腰饰L3.3"
+		},
+		{
+			"Id": "Param171",
+			"GroupId": "ParamGroup8",
+			"Name": "小深花L1"
+		},
+		{
+			"Id": "Param172",
+			"GroupId": "ParamGroup8",
+			"Name": "小深花L2"
+		},
+		{
+			"Id": "Param173",
+			"GroupId": "ParamGroup8",
+			"Name": "小深花L3"
+		},
+		{
+			"Id": "Param201",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L1.1"
+		},
+		{
+			"Id": "Param204",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L1.2"
+		},
+		{
+			"Id": "Param205",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L1.3"
+		},
+		{
+			"Id": "Param202",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L2.1"
+		},
+		{
+			"Id": "Param206",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L2.2"
+		},
+		{
+			"Id": "Param207",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L2.3"
+		},
+		{
+			"Id": "Param203",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L3.1"
+		},
+		{
+			"Id": "Param208",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L3.2"
+		},
+		{
+			"Id": "Param209",
+			"GroupId": "ParamGroup8",
+			"Name": "叶L3.3"
+		},
+		{
+			"Id": "Param174",
+			"GroupId": "ParamGroup8",
+			"Name": "花L1.1"
+		},
+		{
+			"Id": "Param175",
+			"GroupId": "ParamGroup8",
+			"Name": "花L1.2"
+		},
+		{
+			"Id": "Param176",
+			"GroupId": "ParamGroup8",
+			"Name": "花L1.3"
+		},
+		{
+			"Id": "Param177",
+			"GroupId": "ParamGroup8",
+			"Name": "花L2.1"
+		},
+		{
+			"Id": "Param178",
+			"GroupId": "ParamGroup8",
+			"Name": "花L2.2"
+		},
+		{
+			"Id": "Param179",
+			"GroupId": "ParamGroup8",
+			"Name": "花L2.3"
+		},
+		{
+			"Id": "Param180",
+			"GroupId": "ParamGroup8",
+			"Name": "花L3.1"
+		},
+		{
+			"Id": "Param186",
+			"GroupId": "ParamGroup8",
+			"Name": "花L3.2"
+		},
+		{
+			"Id": "Param187",
+			"GroupId": "ParamGroup8",
+			"Name": "花L3.3"
+		},
+		{
+			"Id": "Param181",
+			"GroupId": "ParamGroup8",
+			"Name": "花L4.1"
+		},
+		{
+			"Id": "Param188",
+			"GroupId": "ParamGroup8",
+			"Name": "花L4.2"
+		},
+		{
+			"Id": "Param189",
+			"GroupId": "ParamGroup8",
+			"Name": "花L4.3"
+		},
+		{
+			"Id": "Param182",
+			"GroupId": "ParamGroup8",
+			"Name": "花L5.1"
+		},
+		{
+			"Id": "Param190",
+			"GroupId": "ParamGroup8",
+			"Name": "花L5.2"
+		},
+		{
+			"Id": "Param191",
+			"GroupId": "ParamGroup8",
+			"Name": "花L5.3"
+		},
+		{
+			"Id": "Param183",
+			"GroupId": "ParamGroup8",
+			"Name": "花L6.1"
+		},
+		{
+			"Id": "Param192",
+			"GroupId": "ParamGroup8",
+			"Name": "花L6.2"
+		},
+		{
+			"Id": "Param193",
+			"GroupId": "ParamGroup8",
+			"Name": "花L6.3"
+		},
+		{
+			"Id": "Param184",
+			"GroupId": "ParamGroup8",
+			"Name": "花L7.1"
+		},
+		{
+			"Id": "Param195",
+			"GroupId": "ParamGroup8",
+			"Name": "花L7.2"
+		},
+		{
+			"Id": "Param196",
+			"GroupId": "ParamGroup8",
+			"Name": "花L7.3"
+		},
+		{
+			"Id": "Param185",
+			"GroupId": "ParamGroup8",
+			"Name": "花L8.1"
+		},
+		{
+			"Id": "Param197",
+			"GroupId": "ParamGroup8",
+			"Name": "花L8.2"
+		},
+		{
+			"Id": "Param198",
+			"GroupId": "ParamGroup8",
+			"Name": "花L8.3"
+		},
+		{
+			"Id": "Param194",
+			"GroupId": "ParamGroup8",
+			"Name": "花L9.1"
+		},
+		{
+			"Id": "Param199",
+			"GroupId": "ParamGroup8",
+			"Name": "花L9.2"
+		},
+		{
+			"Id": "Param200",
+			"GroupId": "ParamGroup8",
+			"Name": "花L9.3"
+		},
+		{
+			"Id": "Param96",
+			"GroupId": "ParamGroup8",
+			"Name": "腰边"
+		},
+		{
+			"Id": "Param97",
+			"GroupId": "ParamGroup8",
+			"Name": "腰石花摆"
+		},
+		{
+			"Id": "Param98",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆R1"
+		},
+		{
+			"Id": "Param100",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆R2"
+		},
+		{
+			"Id": "Param101",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆R3"
+		},
+		{
+			"Id": "Param99",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆石大"
+		},
+		{
+			"Id": "Param103",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆石大"
+		},
+		{
+			"Id": "Param104",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆石小"
+		},
+		{
+			"Id": "Param105",
+			"GroupId": "ParamGroup8",
+			"Name": "腰摆石小"
+		},
+		{
+			"Id": "Param106",
+			"GroupId": "ParamGroup8",
+			"Name": "腰结上1"
+		},
+		{
+			"Id": "Param107",
+			"GroupId": "ParamGroup8",
+			"Name": "腰结上2"
+		},
+		{
+			"Id": "Param108",
+			"GroupId": "ParamGroup8",
+			"Name": "腰结上3"
+		},
+		{
+			"Id": "Param109",
+			"GroupId": "ParamGroup8",
+			"Name": "腰结下1"
+		},
+		{
+			"Id": "Param110",
+			"GroupId": "ParamGroup8",
+			"Name": "腰结下2"
+		},
+		{
+			"Id": "Param111",
+			"GroupId": "ParamGroup8",
+			"Name": "腰结下3"
+		},
+		{
+			"Id": "Param102",
+			"GroupId": "ParamGroup8",
+			"Name": "小深花R"
+		},
+		{
+			"Id": "Param113",
+			"GroupId": "ParamGroup8",
+			"Name": "小深花R"
+		},
+		{
+			"Id": "Param114",
+			"GroupId": "ParamGroup8",
+			"Name": "小深花R"
+		},
+		{
+			"Id": "Param115",
+			"GroupId": "ParamGroup8",
+			"Name": "花R1.1"
+		},
+		{
+			"Id": "Param119",
+			"GroupId": "ParamGroup8",
+			"Name": "花R1.2"
+		},
+		{
+			"Id": "Param120",
+			"GroupId": "ParamGroup8",
+			"Name": "花R1.3"
+		},
+		{
+			"Id": "Param116",
+			"GroupId": "ParamGroup8",
+			"Name": "花R2.1"
+		},
+		{
+			"Id": "Param121",
+			"GroupId": "ParamGroup8",
+			"Name": "花R2.2"
+		},
+		{
+			"Id": "Param122",
+			"GroupId": "ParamGroup8",
+			"Name": "花R2.3"
+		},
+		{
+			"Id": "Param117",
+			"GroupId": "ParamGroup8",
+			"Name": "花R3.1"
+		},
+		{
+			"Id": "Param123",
+			"GroupId": "ParamGroup8",
+			"Name": "花R3.2"
+		},
+		{
+			"Id": "Param124",
+			"GroupId": "ParamGroup8",
+			"Name": "花R3.3"
+		},
+		{
+			"Id": "Param118",
+			"GroupId": "ParamGroup8",
+			"Name": "花R4.1"
+		},
+		{
+			"Id": "Param128",
+			"GroupId": "ParamGroup8",
+			"Name": "花R4.2"
+		},
+		{
+			"Id": "Param129",
+			"GroupId": "ParamGroup8",
+			"Name": "花R4.3"
+		},
+		{
+			"Id": "Param125",
+			"GroupId": "ParamGroup8",
+			"Name": "花R5.1"
+		},
+		{
+			"Id": "Param130",
+			"GroupId": "ParamGroup8",
+			"Name": "花R5.2"
+		},
+		{
+			"Id": "Param131",
+			"GroupId": "ParamGroup8",
+			"Name": "花R5.3"
+		},
+		{
+			"Id": "Param126",
+			"GroupId": "ParamGroup8",
+			"Name": "花R6.1"
+		},
+		{
+			"Id": "Param134",
+			"GroupId": "ParamGroup8",
+			"Name": "花R6.2"
+		},
+		{
+			"Id": "Param135",
+			"GroupId": "ParamGroup8",
+			"Name": "花R6.3"
+		},
+		{
+			"Id": "Param132",
+			"GroupId": "ParamGroup8",
+			"Name": "花R7.1"
+		},
+		{
+			"Id": "Param136",
+			"GroupId": "ParamGroup8",
+			"Name": "花R7.2"
+		},
+		{
+			"Id": "Param137",
+			"GroupId": "ParamGroup8",
+			"Name": "花R7.3"
+		},
+		{
+			"Id": "Param127",
+			"GroupId": "ParamGroup8",
+			"Name": "花R8.1"
+		},
+		{
+			"Id": "Param138",
+			"GroupId": "ParamGroup8",
+			"Name": "花R8.2"
+		},
+		{
+			"Id": "Param139",
+			"GroupId": "ParamGroup8",
+			"Name": "花R8.3"
+		},
+		{
+			"Id": "Param133",
+			"GroupId": "ParamGroup8",
+			"Name": "花R9.1"
+		},
+		{
+			"Id": "Param140",
+			"GroupId": "ParamGroup8",
+			"Name": "花R9.2"
+		},
+		{
+			"Id": "Param141",
+			"GroupId": "ParamGroup8",
+			"Name": "花R9.3"
+		},
+		{
+			"Id": "Param142",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R1.1"
+		},
+		{
+			"Id": "Param145",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R1.2"
+		},
+		{
+			"Id": "Param146",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R1.3"
+		},
+		{
+			"Id": "Param143",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R2.1"
+		},
+		{
+			"Id": "Param147",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R2.2"
+		},
+		{
+			"Id": "Param148",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R2.3"
+		},
+		{
+			"Id": "Param144",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R3.1"
+		},
+		{
+			"Id": "Param149",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R3.2"
+		},
+		{
+			"Id": "Param150",
+			"GroupId": "ParamGroup8",
+			"Name": "叶R3.3"
+		},
+		{
+			"Id": "Param112",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R1.1"
+		},
+		{
+			"Id": "Param151",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R1.2"
+		},
+		{
+			"Id": "Param152",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R1.3"
+		},
+		{
+			"Id": "Param153",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R1.4"
+		},
+		{
+			"Id": "Param154",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R1.5"
+		},
+		{
+			"Id": "Param155",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R2.1"
+		},
+		{
+			"Id": "Param156",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R2.2"
+		},
+		{
+			"Id": "Param157",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R2.3"
+		},
+		{
+			"Id": "Param158",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R2.4"
+		},
+		{
+			"Id": "Param159",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆R2.5"
+		},
+		{
+			"Id": "Param160",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L1.1"
+		},
+		{
+			"Id": "Param161",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L1.2"
+		},
+		{
+			"Id": "Param162",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L1.3"
+		},
+		{
+			"Id": "Param163",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L1.4"
+		},
+		{
+			"Id": "Param164",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L1.5"
+		},
+		{
+			"Id": "Param165",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L2.1"
+		},
+		{
+			"Id": "Param166",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L2.2"
+		},
+		{
+			"Id": "Param167",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L2.3"
+		},
+		{
+			"Id": "Param168",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L2.4"
+		},
+		{
+			"Id": "Param169",
+			"GroupId": "ParamGroup8",
+			"Name": "长裙摆L2.5"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh55",
+			"GroupId": "ParamGroup8",
+			"Name": "[0]长裙摆R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh55",
+			"GroupId": "ParamGroup8",
+			"Name": "[1]长裙摆R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh55",
+			"GroupId": "ParamGroup8",
+			"Name": "[2]长裙摆R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh55",
+			"GroupId": "ParamGroup8",
+			"Name": "[3]长裙摆R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh55",
+			"GroupId": "ParamGroup8",
+			"Name": "[4]长裙摆R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh55",
+			"GroupId": "ParamGroup8",
+			"Name": "[5]长裙摆R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh309",
+			"GroupId": "ParamGroup8",
+			"Name": "[0]长裙摆L3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh309",
+			"GroupId": "ParamGroup8",
+			"Name": "[1]长裙摆L3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh309",
+			"GroupId": "ParamGroup8",
+			"Name": "[2]长裙摆L3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh309",
+			"GroupId": "ParamGroup8",
+			"Name": "[3]长裙摆L3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh309",
+			"GroupId": "ParamGroup8",
+			"Name": "[4]长裙摆L3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh309",
+			"GroupId": "ParamGroup8",
+			"Name": "[5]长裙摆L3"
+		},
+		{
+			"Id": "ParamHairFront5",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海1.1"
+		},
+		{
+			"Id": "ParamHairFront6",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海1.2"
+		},
+		{
+			"Id": "ParamHairFront7",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海1.3"
+		},
+		{
+			"Id": "ParamHairFront8",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海1.4"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海2.1"
+		},
+		{
+			"Id": "ParamHairFront2",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海2.2"
+		},
+		{
+			"Id": "ParamHairFront3",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海2.3"
+		},
+		{
+			"Id": "ParamHairFront4",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海2.4"
+		},
+		{
+			"Id": "ParamHairFront9",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海3.1"
+		},
+		{
+			"Id": "ParamHairFront10",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海3.2"
+		},
+		{
+			"Id": "ParamHairFront11",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海3.3"
+		},
+		{
+			"Id": "ParamHairFront12",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海3.4"
+		},
+		{
+			"Id": "ParamHairFront13",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海4.1"
+		},
+		{
+			"Id": "ParamHairFront14",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海4.2"
+		},
+		{
+			"Id": "ParamHairFront15",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海4.3"
+		},
+		{
+			"Id": "ParamHairFront16",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海4.4"
+		},
+		{
+			"Id": "ParamHairFront17",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海5.1"
+		},
+		{
+			"Id": "ParamHairFront18",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海5.2"
+		},
+		{
+			"Id": "ParamHairFront19",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海5.3"
+		},
+		{
+			"Id": "ParamHairFront20",
+			"GroupId": "ParamGroup4",
+			"Name": "刘海5.4"
+		},
+		{
+			"Id": "ParamHairFront21",
+			"GroupId": "ParamGroup4",
+			"Name": "鬓发R1"
+		},
+		{
+			"Id": "ParamHairFront23",
+			"GroupId": "ParamGroup4",
+			"Name": "鬓发R2"
+		},
+		{
+			"Id": "ParamHairFront24",
+			"GroupId": "ParamGroup4",
+			"Name": "鬓发R3"
+		},
+		{
+			"Id": "ParamHairFront22",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L1.1"
+		},
+		{
+			"Id": "ParamHairFront25",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L1.2"
+		},
+		{
+			"Id": "ParamHairFront26",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L1.3"
+		},
+		{
+			"Id": "ParamHairFront27",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L1.4"
+		},
+		{
+			"Id": "ParamHairFront28",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L1.5"
+		},
+		{
+			"Id": "ParamHairFront34",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L2.0"
+		},
+		{
+			"Id": "ParamHairFront29",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L2.1"
+		},
+		{
+			"Id": "ParamHairFront31",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L2.2"
+		},
+		{
+			"Id": "ParamHairFront32",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L2.3"
+		},
+		{
+			"Id": "ParamHairFront33",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L2.4"
+		},
+		{
+			"Id": "ParamHairFront30",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L3.1"
+		},
+		{
+			"Id": "ParamHairFront35",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L3.2"
+		},
+		{
+			"Id": "ParamHairFront36",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L3.3"
+		},
+		{
+			"Id": "ParamHairFront37",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L4.1"
+		},
+		{
+			"Id": "ParamHairFront38",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L4.2"
+		},
+		{
+			"Id": "ParamHairFront39",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L4.3"
+		},
+		{
+			"Id": "ParamHairFront40",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L5.1"
+		},
+		{
+			"Id": "ParamHairFront41",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L5.2"
+		},
+		{
+			"Id": "ParamHairFront42",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L5.3"
+		},
+		{
+			"Id": "ParamHairFront43",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L5.4"
+		},
+		{
+			"Id": "ParamHairFront44",
+			"GroupId": "ParamGroup4",
+			"Name": "边发L5.5"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh124",
+			"GroupId": "ParamGroup4",
+			"Name": "[1]边发R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh124",
+			"GroupId": "ParamGroup4",
+			"Name": "[2]边发R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh124",
+			"GroupId": "ParamGroup4",
+			"Name": "[3]边发R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh124",
+			"GroupId": "ParamGroup4",
+			"Name": "[4]边发R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh124",
+			"GroupId": "ParamGroup4",
+			"Name": "[5]边发R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[1]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[2]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[3]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[4]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[5]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[6]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_ArtMesh125",
+			"GroupId": "ParamGroup4",
+			"Name": "[7]边发R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[1]边发R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[2]边发R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[3]边发R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[4]边发R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[5]边发R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[6]边发R3"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_ArtMesh126",
+			"GroupId": "ParamGroup4",
+			"Name": "[7]边发R3"
+		},
+		{
+			"Id": "ParamHairSide38",
+			"GroupId": "ParamGroup5",
+			"Name": "短发后Y"
+		},
+		{
+			"Id": "ParamHairSide39",
+			"GroupId": "ParamGroup5",
+			"Name": "短发后y"
+		},
+		{
+			"Id": "ParamHairSide40",
+			"GroupId": "ParamGroup5",
+			"Name": "短发后1"
+		},
+		{
+			"Id": "ParamHairSide41",
+			"GroupId": "ParamGroup5",
+			"Name": "短发后2"
+		},
+		{
+			"Id": "ParamHairSide42",
+			"GroupId": "ParamGroup5",
+			"Name": "短发后3"
+		},
+		{
+			"Id": "ParamHairSide28",
+			"GroupId": "ParamGroup5",
+			"Name": "短发L1"
+		},
+		{
+			"Id": "ParamHairSide29",
+			"GroupId": "ParamGroup5",
+			"Name": "短发L2"
+		},
+		{
+			"Id": "ParamHairSide30",
+			"GroupId": "ParamGroup5",
+			"Name": "短发L3"
+		},
+		{
+			"Id": "ParamHairSide31",
+			"GroupId": "ParamGroup5",
+			"Name": "短发L4"
+		},
+		{
+			"Id": "ParamHairSide32",
+			"GroupId": "ParamGroup5",
+			"Name": "短发L5"
+		},
+		{
+			"Id": "ParamHairSide33",
+			"GroupId": "ParamGroup5",
+			"Name": "短发R1"
+		},
+		{
+			"Id": "ParamHairSide34",
+			"GroupId": "ParamGroup5",
+			"Name": "短发R2"
+		},
+		{
+			"Id": "ParamHairSide35",
+			"GroupId": "ParamGroup5",
+			"Name": "短发R3"
+		},
+		{
+			"Id": "ParamHairSide36",
+			"GroupId": "ParamGroup5",
+			"Name": "短发R4"
+		},
+		{
+			"Id": "ParamHairSide37",
+			"GroupId": "ParamGroup5",
+			"Name": "短发R5"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R1.1"
+		},
+		{
+			"Id": "ParamHairSide2",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R1.2"
+		},
+		{
+			"Id": "ParamHairSide3",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R1.3"
+		},
+		{
+			"Id": "ParamHairSide4",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R1.4"
+		},
+		{
+			"Id": "ParamHairSide5",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R1.5"
+		},
+		{
+			"Id": "ParamHairSide6",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L1.1"
+		},
+		{
+			"Id": "ParamHairSide7",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L1.2"
+		},
+		{
+			"Id": "ParamHairSide8",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L1.3"
+		},
+		{
+			"Id": "ParamHairSide9",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L1.4"
+		},
+		{
+			"Id": "ParamHairSide10",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L1.5"
+		},
+		{
+			"Id": "ParamHairSide11",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R2.1"
+		},
+		{
+			"Id": "ParamHairSide12",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R2.2"
+		},
+		{
+			"Id": "ParamHairSide13",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R2.3"
+		},
+		{
+			"Id": "ParamHairSide14",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R2.4"
+		},
+		{
+			"Id": "ParamHairSide15",
+			"GroupId": "ParamGroup5",
+			"Name": "长发R2.5"
+		},
+		{
+			"Id": "ParamHairSide16",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L2.1"
+		},
+		{
+			"Id": "ParamHairSide17",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L2.2"
+		},
+		{
+			"Id": "ParamHairSide18",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L2.3"
+		},
+		{
+			"Id": "ParamHairSide19",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L2.4"
+		},
+		{
+			"Id": "ParamHairSide20",
+			"GroupId": "ParamGroup5",
+			"Name": "长发L2.5"
+		},
+		{
+			"Id": "ParamHairSide22",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后Y"
+		},
+		{
+			"Id": "ParamHairSide21",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后y"
+		},
+		{
+			"Id": "ParamHairSide23",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后1"
+		},
+		{
+			"Id": "ParamHairSide24",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后2"
+		},
+		{
+			"Id": "ParamHairSide25",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后3"
+		},
+		{
+			"Id": "ParamHairSide26",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后4"
+		},
+		{
+			"Id": "ParamHairSide27",
+			"GroupId": "ParamGroup5",
+			"Name": "长发后5"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆R1.1"
+		},
+		{
+			"Id": "ParamHairBack2",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆R1.2"
+		},
+		{
+			"Id": "ParamHairBack3",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆R1.3"
+		},
+		{
+			"Id": "ParamHairBack22",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆L1.1"
+		},
+		{
+			"Id": "ParamHairBack23",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆L1.2"
+		},
+		{
+			"Id": "ParamHairBack24",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆L1.3"
+		},
+		{
+			"Id": "ParamHairBack4",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆R2.1"
+		},
+		{
+			"Id": "ParamHairBack5",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆R2.2"
+		},
+		{
+			"Id": "ParamHairBack6",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆R2.3"
+		},
+		{
+			"Id": "ParamHairBack25",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆L2.1"
+		},
+		{
+			"Id": "ParamHairBack26",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆L2.2"
+		},
+		{
+			"Id": "ParamHairBack27",
+			"GroupId": "ParamGroup9",
+			"Name": "短腰摆L2.3"
+		},
+		{
+			"Id": "ParamHairBack10",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后R2.1"
+		},
+		{
+			"Id": "ParamHairBack11",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后R2.2"
+		},
+		{
+			"Id": "ParamHairBack12",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后R2.3"
+		},
+		{
+			"Id": "ParamHairBack13",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后R2.4"
+		},
+		{
+			"Id": "ParamHairBack14",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后R2.5"
+		},
+		{
+			"Id": "ParamHairBack28",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后L2.1"
+		},
+		{
+			"Id": "ParamHairBack29",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后L2.2"
+		},
+		{
+			"Id": "ParamHairBack30",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后L2.3"
+		},
+		{
+			"Id": "ParamHairBack31",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后L2.4"
+		},
+		{
+			"Id": "ParamHairBack32",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆后L2.5"
+		},
+		{
+			"Id": "ParamHairBack7",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R1.1"
+		},
+		{
+			"Id": "ParamHairBack8",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R1.2"
+		},
+		{
+			"Id": "ParamHairBack9",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R1.3"
+		},
+		{
+			"Id": "ParamHairBack33",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L1.1"
+		},
+		{
+			"Id": "ParamHairBack34",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L1.2"
+		},
+		{
+			"Id": "ParamHairBack35",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L1.3"
+		},
+		{
+			"Id": "ParamHairBack15",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R3.1"
+		},
+		{
+			"Id": "ParamHairBack16",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R3.2"
+		},
+		{
+			"Id": "ParamHairBack17",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R3.3"
+		},
+		{
+			"Id": "ParamHairBack18",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰R3.4"
+		},
+		{
+			"Id": "ParamHairBack36",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L3.1"
+		},
+		{
+			"Id": "ParamHairBack37",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L3.2"
+		},
+		{
+			"Id": "ParamHairBack38",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L3.3"
+		},
+		{
+			"Id": "ParamHairBack39",
+			"GroupId": "ParamGroup9",
+			"Name": "黑腰L3.4"
+		},
+		{
+			"Id": "ParamHairBack19",
+			"GroupId": "ParamGroup9",
+			"Name": "蓝花摆1"
+		},
+		{
+			"Id": "ParamHairBack20",
+			"GroupId": "ParamGroup9",
+			"Name": "蓝花摆2"
+		},
+		{
+			"Id": "ParamHairBack21",
+			"GroupId": "ParamGroup9",
+			"Name": "蓝花摆3"
+		},
+		{
+			"Id": "ParamHairBack40",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆下R"
+		},
+		{
+			"Id": "ParamHairBack41",
+			"GroupId": "ParamGroup9",
+			"Name": "腰摆下L"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[0]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[1]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[2]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[3]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[4]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[5]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[6]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_ArtMesh77",
+			"GroupId": "ParamGroup9",
+			"Name": "[7]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[0]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[1]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[2]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[3]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[4]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_6_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[5]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_7_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[6]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_8_ArtMesh339",
+			"GroupId": "ParamGroup9",
+			"Name": "[7]短裙摆R1"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh78",
+			"GroupId": "ParamGroup9",
+			"Name": "[0]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh78",
+			"GroupId": "ParamGroup9",
+			"Name": "[1]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh78",
+			"GroupId": "ParamGroup9",
+			"Name": "[2]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh78",
+			"GroupId": "ParamGroup9",
+			"Name": "[3]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh78",
+			"GroupId": "ParamGroup9",
+			"Name": "[4]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_1_ArtMesh356",
+			"GroupId": "ParamGroup9",
+			"Name": "[0]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_2_ArtMesh356",
+			"GroupId": "ParamGroup9",
+			"Name": "[1]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_3_ArtMesh356",
+			"GroupId": "ParamGroup9",
+			"Name": "[2]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_4_ArtMesh356",
+			"GroupId": "ParamGroup9",
+			"Name": "[3]短裙摆R2"
+		},
+		{
+			"Id": "Param_Angle_Rotation_5_ArtMesh356",
+			"GroupId": "ParamGroup9",
+			"Name": "[4]短裙摆R2"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "z轴反绑"
+		},
+		{
+			"Id": "ParamGroup10",
+			"GroupId": "",
+			"Name": "按键"
+		},
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "九轴"
+		},
+		{
+			"Id": "ParamGroup3",
+			"GroupId": "",
+			"Name": "五官"
+		},
+		{
+			"Id": "ParamGroup6",
+			"GroupId": "",
+			"Name": "动作"
+		},
+		{
+			"Id": "ParamGroup7",
+			"GroupId": "",
+			"Name": "衣服"
+		},
+		{
+			"Id": "ParamGroup8",
+			"GroupId": "",
+			"Name": "长裙"
+		},
+		{
+			"Id": "ParamGroup4",
+			"GroupId": "",
+			"Name": "前发"
+		},
+		{
+			"Id": "ParamGroup5",
+			"GroupId": "",
+			"Name": "后发"
+		},
+		{
+			"Id": "ParamGroup9",
+			"GroupId": "",
+			"Name": "短裙"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "长"
+		},
+		{
+			"Id": "Part11",
+			"Name": "短"
+		},
+		{
+			"Id": "Part18",
+			"Name": "共同部件"
+		},
+		{
+			"Id": "Part2",
+			"Name": "长裙"
+		},
+		{
+			"Id": "Part10",
+			"Name": "长发"
+		},
+		{
+			"Id": "Part12",
+			"Name": "短裙"
+		},
+		{
+			"Id": "Part17",
+			"Name": "短发"
+		},
+		{
+			"Id": "Part19",
+			"Name": "头饰"
+		},
+		{
+			"Id": "Part23",
+			"Name": "前发"
+		},
+		{
+			"Id": "Part27",
+			"Name": "五官"
+		},
+		{
+			"Id": "Part33",
+			"Name": "项圈"
+		},
+		{
+			"Id": "Part34",
+			"Name": "身体"
+		},
+		{
+			"Id": "Part46",
+			"Name": "手L"
+		},
+		{
+			"Id": "Part35",
+			"Name": "手臂R"
+		},
+		{
+			"Id": "Part37",
+			"Name": "腿"
+		},
+		{
+			"Id": "Part38",
+			"Name": "背后部件"
+		},
+		{
+			"Id": "Part3",
+			"Name": "腰饰R"
+		},
+		{
+			"Id": "Part4",
+			"Name": "腰饰L"
+		},
+		{
+			"Id": "Part5",
+			"Name": "花L"
+		},
+		{
+			"Id": "Part6",
+			"Name": "花R"
+		},
+		{
+			"Id": "Part7",
+			"Name": "叶L"
+		},
+		{
+			"Id": "Part8",
+			"Name": "叶R"
+		},
+		{
+			"Id": "Part9",
+			"Name": "裙摆"
+		},
+		{
+			"Id": "Part13",
+			"Name": "短腰摆"
+		},
+		{
+			"Id": "Part55",
+			"Name": "短腰摆L"
+		},
+		{
+			"Id": "ArtMesh77_Skinning",
+			"Name": "短裙摆R1(蒙皮)"
+		},
+		{
+			"Id": "Part56",
+			"Name": "短裙摆R1(旋转)"
+		},
+		{
+			"Id": "ArtMesh339_Skinning",
+			"Name": "短裙摆R1(蒙皮)"
+		},
+		{
+			"Id": "Part57",
+			"Name": "短裙摆R1(旋转)"
+		},
+		{
+			"Id": "ArtMesh356_Skinning",
+			"Name": "短裙摆R2(蒙皮)"
+		},
+		{
+			"Id": "Part59",
+			"Name": "短裙摆R2(旋转)"
+		},
+		{
+			"Id": "ArtMesh78_Skinning",
+			"Name": "短裙摆R2(蒙皮)"
+		},
+		{
+			"Id": "Part58",
+			"Name": "短裙摆R2(旋转)"
+		},
+		{
+			"Id": "Part15",
+			"Name": "短花L"
+		},
+		{
+			"Id": "Part16",
+			"Name": "短花R"
+		},
+		{
+			"Id": "Part20",
+			"Name": "头花"
+		},
+		{
+			"Id": "ArtMesh103_Skinning",
+			"Name": "头饰蓝带(蒙皮)"
+		},
+		{
+			"Id": "Part51",
+			"Name": "头饰蓝带(旋转)"
+		},
+		{
+			"Id": "ArtMesh106_Skinning",
+			"Name": "头饰深蓝(蒙皮)"
+		},
+		{
+			"Id": "Part52",
+			"Name": "头饰深蓝(旋转)"
+		},
+		{
+			"Id": "Part21",
+			"Name": "贴头"
+		},
+		{
+			"Id": "Part22",
+			"Name": "头鹿角"
+		},
+		{
+			"Id": "Part24",
+			"Name": "边发L"
+		},
+		{
+			"Id": "Part25",
+			"Name": "边发R"
+		},
+		{
+			"Id": "Part26",
+			"Name": "刘海"
+		},
+		{
+			"Id": "Part28",
+			"Name": "豆豆"
+		},
+		{
+			"Id": "Part42",
+			"Name": "眼L"
+		},
+		{
+			"Id": "Part29",
+			"Name": "眼R"
+		},
+		{
+			"Id": "Part32",
+			"Name": "嘴"
+		},
+		{
+			"Id": "Part36",
+			"Name": "手R"
+		},
+		{
+			"Id": "Part39",
+			"Name": "球"
+		},
+		{
+			"Id": "Part40",
+			"Name": "镰刀"
+		},
+		{
+			"Id": "ArtMesh55_Skinning",
+			"Name": "长裙摆R3(蒙皮)"
+		},
+		{
+			"Id": "Part53",
+			"Name": "长裙摆R3(旋转)"
+		},
+		{
+			"Id": "ArtMesh309_Skinning",
+			"Name": "长裙摆L3(蒙皮)"
+		},
+		{
+			"Id": "Part54",
+			"Name": "长裙摆L3(旋转)"
+		},
+		{
+			"Id": "Part14",
+			"Name": "黑腰"
+		},
+		{
+			"Id": "ArtMesh110_Skinning",
+			"Name": "头带1R(蒙皮)"
+		},
+		{
+			"Id": "Part50",
+			"Name": "头带1R(旋转)"
+		},
+		{
+			"Id": "ArtMesh108_Skinning",
+			"Name": "头带2R(蒙皮)"
+		},
+		{
+			"Id": "Part49",
+			"Name": "头带2R(旋转)"
+		},
+		{
+			"Id": "ArtMesh111_Skinning",
+			"Name": "头带1L(蒙皮)"
+		},
+		{
+			"Id": "Part48",
+			"Name": "头带1L(旋转)"
+		},
+		{
+			"Id": "ArtMesh109_Skinning",
+			"Name": "头带2L(蒙皮)"
+		},
+		{
+			"Id": "Part47",
+			"Name": "头带2L(旋转)"
+		},
+		{
+			"Id": "ArtMesh124_Skinning",
+			"Name": "边发R1(蒙皮)"
+		},
+		{
+			"Id": "Part43",
+			"Name": "边发R1(旋转)"
+		},
+		{
+			"Id": "ArtMesh125_Skinning",
+			"Name": "边发R2(蒙皮)"
+		},
+		{
+			"Id": "Part44",
+			"Name": "边发R2(旋转)"
+		},
+		{
+			"Id": "ArtMesh126_Skinning",
+			"Name": "边发R3(蒙皮)"
+		},
+		{
+			"Id": "Part45",
+			"Name": "边发R3(旋转)"
+		},
+		{
+			"Id": "Part30",
+			"Name": "眼眶"
+		},
+		{
+			"Id": "Part31",
+			"Name": "眼内"
+		},
+		{
+			"Id": "Part41",
+			"Name": "嘟嘴"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamMouthForm",
+			"ParamMouthOpenY"
+		],
+		[
+			"ParamEyeBallX",
+			"ParamEyeBallY"
+		],
+		[
+			"Param9",
+			"Param10"
+		]
+	]
+}

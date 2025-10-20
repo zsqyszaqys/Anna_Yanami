@@ -1,0 +1,24 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Seele.moc3",
+		"Textures": [
+			"Seele.4096/texture_00.png",
+			"Seele.4096/texture_01.png"
+		],
+		"Physics": "Seele.physics3.json",
+		"DisplayInfo": "Seele.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		}
+	]
+}
