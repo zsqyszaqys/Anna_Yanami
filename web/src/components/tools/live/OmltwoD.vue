@@ -15,26 +15,6 @@ const oml2dRes = ref<HTMLElement>();
 const currentScale = ref(0.1);
 let oml2dInstance: any = null;
 
-const hideWatermark = (model) => {
-  setTimeout(() => {
-    try {
-      const watermarkParts = ['Part17']; // 可以添加更多可能的水印部件ID
-
-      watermarkParts.forEach(partId => {
-        try {
-          model.setPartOpacity(partId, 0);
-          console.log(`已隐藏部件: ${partId}`);
-        } catch (e) {
-          // 部件可能不存在，忽略错误
-        }
-      });
-    } catch (e) {
-      console.log('隐藏水印时出错:', e);
-    }
-  }, 500);
-};
-
-
 // 初始化 Live2D
 const initLive2D = () => {
   if (!oml2dRes.value) return;
@@ -95,7 +75,7 @@ const initLive2D = () => {
           width: "100%",
           height: "100%",
         },
-        position[500, 200],
+        position:[400, 0],
       },
       {
         path: '/Ellen/Ellencomp.model3.json',
@@ -105,28 +85,29 @@ const initLive2D = () => {
           width: "100%",
           height: "100%",
         },
-        position:[400, -50],
+        position:[300, -100],
       },
       {
         path: '/kafuka/kafuka1.model3.json',
-        scale: 0.1,
+        scale: 0.16,
         name:"卡芙卡",
         stageStyle:{
           width: "100%",
           height: "100%",
         },
-        position:[400, -50],
+        position:[550, -110],
       },
     ],
   });
 
   oml2dInstance.onModelLoad?.((model: any) => {
-    hideWatermark(model);
+    console.log("success!");
   });
 
   oml2dInstance.onStageSlideIn(() => {
     oml2dInstance.tipsMessage(`舞台已全部滑入`, 3000, 10);
   });
+
 };
 
 onMounted(() => {
