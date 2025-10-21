@@ -1,19 +1,19 @@
 <template>
   <div
-      class="text-overlay"
-      @click="createText($event)"
+    class="text-overlay"
+    @click="createText($event)"
   >
     <span
-        v-for="item in texts"
-        :key="item.id"
-        :style="{
+      v-for="item in texts"
+      :key="item.id"
+      :style="{
         left: item.x + 'px',
         top: item.y + 'px',
         opacity: item.opacity,
         transform: item.transform,
         '--hue': item.hue
       }"
-        class="floating-text"
+      class="floating-text"
     >
       {{ item.content }}
     </span>

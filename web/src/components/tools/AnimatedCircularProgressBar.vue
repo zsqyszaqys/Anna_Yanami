@@ -1,40 +1,40 @@
 <template>
   <div
-      class="progress-circle-base"
-      :class="cn('relative size-40 text-2xl font-semibold', props.class)"
+    class="progress-circle-base"
+    :class="cn('relative size-40 text-2xl font-semibold', props.class)"
   >
     <svg
-        fill="none"
-        class="size-full"
-        stroke-width="2"
-        viewBox="0 0 100 100"
+      fill="none"
+      class="size-full"
+      stroke-width="2"
+      viewBox="0 0 100 100"
     >
       <circle
-          v-if="currentPercent <= 90 && currentPercent >= 0"
-          cx="50"
-          cy="50"
-          r="45"
-          :stroke-width="circleStrokeWidth"
-          stroke-dashoffset="0"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="gauge-secondary-stroke opacity-100"
+        v-if="currentPercent <= 90 && currentPercent >= 0"
+        cx="50"
+        cy="50"
+        r="45"
+        :stroke-width="circleStrokeWidth"
+        stroke-dashoffset="0"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="gauge-secondary-stroke opacity-100"
       />
       <circle
-          cx="50"
-          cy="50"
-          r="45"
-          :stroke-width="circleStrokeWidth"
-          stroke-dashoffset="0"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="gauge-primary-stroke opacity-100"
+        cx="50"
+        cy="50"
+        r="45"
+        :stroke-width="circleStrokeWidth"
+        stroke-dashoffset="0"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="gauge-primary-stroke opacity-100"
       />
     </svg>
     <span
-        v-if="showPercentage"
-        :data-current-value="currentPercent"
-        class="absolute inset-0 m-auto size-fit delay-0 duration-1000 ease-linear animate-in fade-in"
+      v-if="showPercentage"
+      :data-current-value="currentPercent"
+      class="absolute inset-0 m-auto size-fit delay-0 duration-1000 ease-linear animate-in fade-in"
     >
       {{ currentPercent }}
     </span>

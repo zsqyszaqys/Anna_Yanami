@@ -1,6 +1,6 @@
 <template>
   <button
-      :class="
+    :class="
       cn(
         'relative flex items-center justify-center min-w-28 min-h-10 overflow-hidden before:absolute before:-inset-[200%] animate-rainbow rainbow-btn',
         props.class,
@@ -8,7 +8,7 @@
     "
   >
     <span class="btn-content inline-flex size-full items-center justify-center px-4 py-2">
-      <slot/>
+      <slot />
     </span>
   </button>
 </template>

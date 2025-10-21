@@ -5,18 +5,18 @@
       <ul class="nav">
         <!--logo-->
         <li
-            id="logo"
-            :class="{ active: activeSection === 'logo' }"
+          id="logo"
+          :class="{ active: activeSection === 'logo' }"
         >
           <a
-              href="#"
-              @click="setActive('logo')"
+            href="#"
+            @click="setActive('logo')"
           >
             <div class="icon">
               <div class="imageBox">
                 <img
-                    :src="logoImage"
-                    alt=""
+                  :src="logoImage"
+                  alt=""
                 >
               </div>
             </div>
@@ -26,16 +26,16 @@
 
         <!--menu-->
         <li
-            v-for="(item, index) in navItems"
-            :key="index"
-            :class="{ active: activeSection === item.id }"
+          v-for="(item, index) in navItems"
+          :key="index"
+          :class="{ active: activeSection === item.id }"
         >
           <a
-              :href="'#' + item.id"
-              @click="setActive(item.id)"
+            :href="'#' + item.id"
+            @click="setActive(item.id)"
           >
             <div class="icon">
-              <i :class="item.iconClass"/>
+              <i :class="item.iconClass" />
             </div>
             <div class="text">{{ item.text }}</div>
           </a>
@@ -43,14 +43,14 @@
 
         <li :class="{ active: activeSection === 'me' }">
           <a
-              href="#me"
-              @click="setActive('me')"
+            href="#me"
+            @click="setActive('me')"
           >
             <div class="icon">
               <div class="imageBox">
                 <img
-                    :src="profileImage"
-                    alt=""
+                  :src="profileImage"
+                  alt=""
                 >
               </div>
             </div>
@@ -61,46 +61,46 @@
     </div>
     <!-- 内容区域 -->
     <section
-        id="home"
-        ref="section_ref"
+      id="home"
+      ref="section_ref"
     >
-      <RandomText/>
+      <RandomText />
       <video
-          ref="videoRef"
-          class="video"
-          :src="videoSrc"
-          type="video/mp4"
-          autoplay
-          loop
-          playsinline
-          muted
-          disablepictureinpicture
+        ref="videoRef"
+        class="video"
+        :src="videoSrc"
+        type="video/mp4"
+        autoplay
+        loop
+        playsinline
+        muted
+        disablepictureinpicture
       />
 
       <!-- 打字机特效 -->
       <div class="typing-container">
         <h1
-            ref="typingTextRef"
-            class="typing-text"
+          ref="typingTextRef"
+          class="typing-text"
         />
       </div>
 
       <!-- 音量滑块 -->
       <div class="volume-control">
         <div
-            class="volume-icon"
-            @click="toggleMute"
+          class="volume-icon"
+          @click="toggleMute"
         >
-          <i :class="volumeIcon"/>
+          <i :class="volumeIcon" />
         </div>
         <input
-            v-model="volume"
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            class="volume-slider"
-            @input="changeVolume"
+          v-model="volume"
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          class="volume-slider"
+          @input="changeVolume"
         >
         <div class="volume-value">
           {{ Math.round(volume * 100) }}%
@@ -109,10 +109,10 @@
     </section>
 
     <section
-        id="links"
-        class="links-container"
+      id="links"
+      class="links-container"
     >
-      <LinkSectionView/>
+      <LinkSectionView />
     </section>
     <section id="wallet">
       Wallet
@@ -124,10 +124,10 @@
       QR code
     </section>
     <section id="technology">
-      <TechnologySlider class="technology-slider"/>
+      <TechnologySlider class="technology-slider" />
     </section>
     <section id="me">
-      <ConnectCard/>
+      <ConnectCard />
     </section>
   </div>
 </template>
@@ -268,7 +268,7 @@ export default {
       {id: 'home', iconClass: 'iconfont icon-home', text: 'Home'},
       {id: 'links', iconClass: 'iconfont icon-link', text: 'Links'},
       {id: 'wallet', iconClass: 'iconfont icon-xiangmu', text: 'Project'},
-      {id: 'picture', iconClass: 'iconfont icon-picture', text: 'Picture'},
+      {id: 'live-2d', iconClass: 'iconfont icon-picture', text: 'live-2d'},
       {id: 'code', iconClass: 'iconfont icon-qr-code', text: 'QR code'},
       {id: 'technology', iconClass: 'iconfont icon-yingyong', text: 'technology'}
     ];

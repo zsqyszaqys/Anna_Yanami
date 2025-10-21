@@ -1,19 +1,72 @@
 <template>
-  <div>
-    <div
-        class="oh-my-live2d"
-        ref="oml2dRes"
-    ></div>
+  <div class="relative w-full h-screen overflow-hidden custom-background">
+    <!-- Live2D 舞台：置底 -->
+    <div ref="oml2dRes" class="absolute inset-0"></div>
+
+    <!-- Slider 组件 -->
+    <div class="absolute left-8 top-20 z-10 w-[560px] max-w-[45vw]">
+      <TestimonialSlider class="slider"
+          :testimonials="testimonials"
+          @model-change="loadModelByIndex"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { loadOml2d } from "oh-my-live2d";
-import { ref, onMounted } from "vue";
+import {loadOml2d} from "oh-my-live2d";
+import {ref, onMounted} from "vue";
+import '@/assets/fonts/iconfont';
+import TestimonialSlider from "@/components/tools/Slider/TestimonialSlider.vue";
 
 const oml2dRes = ref<HTMLElement>();
 const currentScale = ref(0.1);
 let oml2dInstance: any = null;
+
+const testimonials = [
+  {
+    img: 'https://media.9game.cn/gamebase/ieu-gdc-pre-process/images/20231106/11/27/7db02a0c83e4f7890fdc5ef19c3b575e.jpg',
+    quote: '欢迎来到水的国度，我芙卡洛斯将承认你们旅途的价值与意义，现在，你们可以尽情欢呼了。',
+    name: '芙宁娜',
+    id: 0,
+  },
+  {
+    img: '',
+    quote: '嗨，我又来啦。多夸夸我好吗？我会很开心的～♪',
+    name: '爱里希雅',
+    id: 1,
+  },
+  {
+    img: '',
+    quote: '我叫纳西妲，别看我像个孩子，我比任何一位大人都了解这个世界。所以，我可以用我的知识，换取你路上的见闻吗？',
+    name: '纳西妲',
+    id: 2,
+  },
+  {
+    img: '',
+    quote: '又见面了，这回想听什么歌？',
+    name: '知更鸟',
+    id: 3,
+  },
+  {
+    img: '',
+    quote: '在量子之海中，时间与空间都失去了意义。但此刻，我只想守护在你身边。',
+    name: '希尔',
+    id: 4,
+  },
+  {
+    img: '',
+    quote: '欢迎来到水的国度，我芙卡洛斯将承认你们旅途的价值与意义，现在，你们可以尽情欢呼了。',
+    name: '艾莲',
+    id: 5,
+  },
+  {
+    img: '',
+    quote: '命运就像蜘蛛丝，看似脆弱却连接着一切。那么，你准备好接受命运的安排了么？',
+    name: '卡芙卡',
+    id: 5,
+  },
+]
 
 // 初始化 Live2D
 const initLive2D = () => {
@@ -30,85 +83,255 @@ const initLive2D = () => {
       {
         path: '/Furina/Furina.model3.json',
         scale: 0.4,
-        name:"芙宁娜",
-        stageStyle:{
+        name: "芙宁娜",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[320, -30],
+        position: [520, -30],
       },
       {
         path: '/Elysia/Elysia.model3.json',
         scale: 0.12,
-        name:"爱莉希雅",
-        stageStyle:{
+        name: "爱莉希雅",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[400, 25],
+        position: [600, 25],
       },
       {
         path: '/Nahida/Nahida_1080.model3.json',
         scale: 0.2,
-        name:"纳西妲",
-        stageStyle:{
+        name: "纳西妲",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[500, -50]
+        position: [700, -50]
       },
       {
         path: '/Robin/Robin.model3.json',
         scale: currentScale.value,
-        name:"知更鸟",
-        stageStyle:{
+        name: "知更鸟",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[500, 0],
+        position: [700, 0],
       },
       {
         path: '/seele/Seele.model3.json',
         scale: 0.23,
-        name:"希尔",
-        stageStyle:{
+        name: "希尔",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[400, 0],
+        position: [700, 0],
       },
       {
         path: '/Ellen/Ellencomp.model3.json',
         scale: 0.18,
-        name:"艾莲",
-        stageStyle:{
+        name: "艾莲",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[300, -100],
+        position: [500, -100],
       },
       {
         path: '/kafuka/kafuka1.model3.json',
         scale: 0.16,
-        name:"卡芙卡",
-        stageStyle:{
+        name: "卡芙卡",
+        stageStyle: {
           width: "100%",
           height: "100%",
         },
-        position:[550, -110],
+        position: [750, -50],
       },
     ],
-  });
+    mobileDisplay: false,
+    menus: {
+      items: (defaultItems) => {
+        const newItems = [...defaultItems];
 
-  oml2dInstance.onModelLoad?.((model: any) => {
-    console.log("success!");
+        newItems[1] = {
+          ...newItems[1],
+          title: "上一个模型",
+          icon: "icon-shangyige",
+          onClick: (oml2dInstance) => {
+            let idx = oml2dInstance.modelIndex;
+            let tot = oml2dInstance.options.models.length;
+
+            oml2dInstance.loadModelByIndex((idx + tot - 1) % tot);
+          },
+        };
+        newItems[2] = {
+          ...newItems[2],
+          title: "下一个模型",
+          icon: "icon-next",
+        };
+        newItems[3] = {
+          ...newItems[3],
+          title: "github",
+          icon: "icon-github-fill",
+          onClick: () => {
+            window.open("https://github.com/zsqyszaqys/Anna_Yanami", "_blank");
+          }
+        };
+
+        newItems.push({
+          id: "随机模型",
+          title: "随机切换模型",
+          icon: "icon-switch",
+          onClick: (oml2dInstance) => {
+            oml2dInstance.loadRandomModel();
+          },
+        })
+
+        return newItems;
+      },
+      style:{
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: '16px',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+      },
+    },
+    statusBar:{
+      style:{
+        zIndex:100,
+      },
+    },
+    tips:(_, modelIndex)=>{
+      const characterMessages = {
+        0: [ // 芙宁娜
+          "欢迎来到水的国度~",
+          "今天也要尽情享受戏剧哦~",
+          "我的表演可是很精彩的！",
+          "水面之下，藏着无数秘密呢~"
+        ],
+        1: [ // 爱莉希雅
+          "嗨，想我了吗？♪",
+          "今天的你也很可爱呢~",
+          "要听听我新学的歌吗？",
+          "快乐的时间总是过得特别快呢~"
+        ],
+        2: [ // 纳西妲
+          "知识就是最好的礼物~",
+          "想要了解这个世界吗？",
+          "每个生命都值得被珍视~",
+          "智慧之树正在生长呢~"
+        ],
+        3: [ // 知更鸟
+          "音乐是心灵的翅膀~",
+          "想听什么歌呢？",
+          "旋律中藏着无数故事~",
+          "歌声能够治愈一切~"
+        ],
+        4: [ // 希尔
+          "量子之海在呼唤~",
+          "时间与空间的界限~",
+          "此刻即是永恒~",
+          "在虚数中寻找真实~"
+        ],
+        5: [ // 艾莲
+          "冰雪之下是炽热的心~",
+          "寒冷无法冻结意志~",
+          "北风带来了远方消息~",
+          "在冰原上起舞吧~"
+        ],
+        6: [ // 卡芙卡
+          "命运之线交织缠绕~",
+          "每个选择都有意义~",
+          "在蛛网上漫步~",
+          "未来早已注定~"
+        ]
+      };
+
+      return{
+        style: {
+          zIndex:100,
+          pointerEvents: 'none',
+          // 背景和边框
+          backgroundColor: "rgba(255, 255, 255, 0.4)",
+          backdropFilter: "blur(20px)",
+          border: "2px solid rgba(255, 255, 255, 0.5)",
+          borderRadius: "20px",
+          boxShadow: `
+            0 25px 50px rgba(0, 0, 0, 0.15),
+            0 10px 25px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8)
+          `,
+
+          // 文字样式
+          color: "#374151",
+          fontSize: "15px",
+          fontWeight: "500",
+          lineHeight: "1.5",
+          fontFamily: "'Segoe UI', system-ui, sans-serif",
+
+          // 内边距和尺寸
+          padding: "16px 20px",
+          maxWidth: "320px",
+          minHeight: "60px",
+
+          // 动画过渡
+          transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+
+          // 文字阴影
+          textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)",
+        },
+        copyTips:{
+          message: [
+            "复制了什么有趣的内容呢？🎉",
+            "记得要注明出处哦~ 📝",
+            "知识需要分享，但也要尊重原创~ 💫",
+            "复制成功！想要保存什么秘密呢？✨"
+          ],
+          priority: 10,
+        },
+        idleTips:{
+          message:characterMessages[modelIndex],
+          interval:10000,
+          wordTheDay:true,
+          priority:2,
+        },
+        messageLine:4,
+      }
+    }
   });
 
   oml2dInstance.onStageSlideIn(() => {
-    oml2dInstance.tipsMessage(`舞台已全部滑入`, 3000, 10);
+    oml2dInstance.showModelHitAreaFrames();
+    console.log(oml2dInstance.options);
   });
-
 };
+
+const loadModelByIndex = (index: number) => {
+  if (!oml2dInstance) return;
+  const total = oml2dInstance.options?.models?.length ?? 0;
+  if (index < 0 || index >= total) return;
+
+  if (oml2dInstance.modelIndex === index) {
+    oml2dInstance.clearTips();
+    oml2dInstance.tipsMessage('为什么要重复选择我呢~,你不会忘了我的名字吧，我好伤心~', 3000, 10);
+    return;
+  }
+
+  // 一次性回调
+  const once = () => {
+    oml2dInstance.offStageSlideIn?.(once); // 如果版本不支持 off，可忽略
+    oml2dInstance.clearTips?.();
+    oml2dInstance.tipsMessage?.('你是想我了吗~', 3000, 10);
+  };
+  oml2dInstance.onStageSlideIn?.(once);
+
+  // 立刻切换
+  oml2dInstance.loadModelByIndex(index);
+}
 
 onMounted(() => {
   initLive2D();
@@ -117,5 +340,42 @@ onMounted(() => {
 </script>
 
 <style scoped>
-</style>
+.custom-background {
+  background-image: url('@/assets/AboutMe/background.png'); /* 替换为你的图片路径 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 可选：固定背景 */
 
+  /* 添加暗色遮罩，确保前方内容清晰可见 */
+  position: relative;
+}
+
+.custom-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* 暗色遮罩，可根据需要调整透明度 */
+  z-index: 0;
+}
+
+/* 确保其他元素在遮罩之上 */
+.absolute.inset-0,
+.absolute.left-8 {
+  z-index: 1;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .custom-background {
+    background-attachment: scroll; /* 移动端取消固定背景 */
+  }
+}
+.slider{
+  opacity: 0.6;
+}
+
+</style>

@@ -6,16 +6,20 @@
     :z-index="9999"
     class="global-github-corner"
   />
+  <SleekLineCursor />
   <router-view />
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import GithubCorners from '@uivjs/vue-github-corners';
+import SleekLineCursor from "@/components/tools/cursor/SleekLineCursor.vue";
+import "@/assets/fonts/iconfont.css";
 
 export default defineComponent({
   components: {
     GithubCorners,
+    SleekLineCursor,
   }
 });
 </script>

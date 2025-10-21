@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "14679313",
+      "name": "sparkles",
+      "font_class": "sparkles",
+      "unicode": "e6b8",
+      "unicode_decimal": 59064
+    },
+    {
+      "icon_id": "9928525",
+      "name": "next",
+      "font_class": "next",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "16136932",
+      "name": "上一个",
+      "font_class": "shangyige",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
       "icon_id": "26845391",
       "name": "返回",
       "font_class": "fanhui_fanhui",
