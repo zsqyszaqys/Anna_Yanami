@@ -1,4 +1,15 @@
 <template>
+  <!--  新增分组-->
+  <div class="fixed top-5 right-5 z-20">
+    <button @click="isAddModalOpen = true" class="add-group-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2">
+        <path
+            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
+      </svg>
+      新建分组
+    </button>
+  </div>
+
   <!--  分组-->
   <BentoGrid class="grid w-full auto-rows-[18rem] grid-cols-4 gap-4 lg:grid-rows-4">
     <BentoGridCard
@@ -107,14 +118,22 @@
     </div>
   </nav>
 
+  <!--  设置模态框-->
   <GroupSettingsModal
-      v-model="isModalOpen"
+      v-model="isSettingModalOpen"
       :group="selectedGroup"
       @group-updated="handleGroupUpdated"
       @group-deleted="handleGroupDeleted"
   >
-
   </GroupSettingsModal>
+
+  <!--    新增模态框-->
+  <GroupAddModal
+      v-model="isAddModalOpen"
+      @group-created="handleGroupCreated"
+  >
+
+  </GroupAddModal>
 </template>
 
 <script lang="ts" setup>
@@ -122,6 +141,7 @@ import BentoGridCard from "@/components/tools/Groups/BentoGridCard.vue";
 import {ref, computed, onMounted, watch} from "vue";
 import router from "@/router";
 import GroupSettingsModal from "@/components/tools/Groups/GroupSettingsModal.vue";
+import GroupAddModal from "@/components/tools/Groups/GroupAddModal.vue";
 
 type Group = {
   id: number;
@@ -153,8 +173,10 @@ const error = ref<string | null>(null);
 const groups = ref<Group[]>([]);
 const features = ref<Feature[]>([]);
 
-const isModalOpen = ref(false);  // 控制模态框是否显示
+const isSettingModalOpen = ref(false);  // 控制模态框是否显示
+const isAddModalOpen = ref(false);
 const selectedGroup = ref<Group | null>(null); // 存储当前正在编辑的那个 group 对象
+
 
 // 分页
 const page = ref(1);
@@ -202,6 +224,13 @@ const IMAGE_BY_SLUG: Record<string, string> = {
 const canPrev = computed(() => page.value > 0);
 const canNext = computed(() => page.value < totalPages.value);
 
+function handleGroupCreated(){
+  console.log("新分组已创建，正在重新拉取列表...");
+  fetchGroups();
+}
+
+
+
 function goto(p: number) {
   const clamped = Math.min(Math.max(1, p), totalPages.value);
   if (clamped !== page.value) {
@@ -246,10 +275,10 @@ const pageList = computed<PagerItem[]>(() => {
 });
 
 // 打开模态框
-function openSettingsModal(groupId: number){
+function openSettingsModal(groupId: number) {
   const groupToEdit = groups.value.find(g => g.id === groupId);
 
-  if(groupToEdit){
+  if (groupToEdit) {
     selectedGroup.value = {
       id: groupToEdit.id,
       name: groupToEdit.name,
@@ -260,8 +289,8 @@ function openSettingsModal(groupId: number){
       orderIndex: 1,
       isPinned: false,
     };
-    isModalOpen.value = true;
-  }else{
+    isSettingModalOpen.value = true;
+  } else {
     console.error("无法找到要编辑的分组，ID:", groupId);
     alert("出错了，无法找到要编辑的分组。");
   }
@@ -278,7 +307,7 @@ function handleGroupDeleted(deletedGroupId: number) {
   console.log(`分组 ${deletedGroupId} 已删除，正在从UI移除...`);
   const index = groups.value.findIndex(g => g.id === deletedGroupId);
 
-  if(index > -1) groups.value.splice(index, 1);
+  if (index > -1) groups.value.splice(index, 1);
 
   // 注意：因为 `features` 依赖于 `groups`，当你修改 `groups` 时，
   // `watch([groups, ...], getFeatures)` 会自动触发，重新生成 `features`，UI 也会随之更新。
@@ -512,5 +541,25 @@ onMounted(fetchGroups);
     height: 32px;
     font-size: 0.8rem;
   }
+}
+
+add-group-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #38a169; /* 绿色 */
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(56, 161, 105, 0.4);
+  transition: all 0.3s ease;
+}
+
+.add-group-button:hover {
+  background-color: #2f855a;
+  box-shadow: 0 6px 20px rgba(56, 161, 105, 0.5);
+  transform: translateY(-2px);
 }
 </style>

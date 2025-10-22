@@ -10,7 +10,6 @@
 
       <!-- 表单区域 -->
       <div class="modal-body">
-        <!-- 注意：这里的 @submit.prevent 调用的是 handleCreate -->
         <form @submit.prevent="handleCreate">
           <!-- 分组名称 -->
           <div class="form-group">
@@ -24,7 +23,7 @@
             <textarea id="new-group-description" v-model="newGroup.description" rows="3" placeholder="输入分组描述 (可选)"></textarea>
           </div>
 
-          <!-- 你可以在这里添加更多字段，如 slug, color, is_pinned 等 -->
+          <!-- 可以在这里添加更多字段，如 slug, color, is_pinned 等 -->
 
           <!-- 表单操作按钮 -->
           <div class="form-actions">
@@ -110,13 +109,6 @@ async function handleCreate() {
 </script>
 
 <style scoped>
-/*
-  你可以直接从 GroupSettingsModal.vue 复制所有样式过来，
-  它们是完全兼容的。
-  .modal-overlay { ... }
-  .modal-content { ... }
-  ...等等
-*/
 .modal-overlay {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.6); display: flex;
