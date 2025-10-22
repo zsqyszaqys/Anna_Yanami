@@ -2,20 +2,21 @@
   <!--  分组-->
   <BentoGrid class="grid w-full auto-rows-[18rem] grid-cols-4 gap-4 lg:grid-rows-4">
     <BentoGridCard
-      v-for="(feature, index) in features"
-      :key="index"
-      v-bind="feature"
-      :class="feature.class"
-      @click="openGroup(feature, $event)"
+        v-for="(feature, index) in features"
+        :key="index"
+        v-bind="feature"
+        :class="feature.class"
+        @click="openGroup(feature, $event)"
+        @settings-click="openSettingsModal(feature.groupId)"
     >
       <template
-        v-if="feature.image"
-        #background
+          v-if="feature.image"
+          #background
       >
         <div class="absolute inset-0 overflow-hidden">
           <div
-            class="w-full h-full transition-all duration-300 ease-in-out transform opacity-90 group-hover:opacity-20 group-hover:scale-105"
-            :style="{
+              class="w-full h-full transition-all duration-300 ease-in-out transform opacity-90 group-hover:opacity-20 group-hover:scale-105"
+              :style="{
               backgroundImage: `url('${feature.image}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -29,75 +30,75 @@
 
   <!--  分页按钮-->
   <nav
-    class="pagination-container"
-    aria-label="Pagination"
+      class="pagination-container"
+      aria-label="Pagination"
   >
     <!-- 首页按钮 -->
     <button
-      class="pagination-btn"
-      :disabled="page === 1"
-      title="首页"
-      @click="goto(1)"
+        class="pagination-btn"
+        :disabled="page === 1"
+        title="首页"
+        @click="goto(1)"
     >
-      <i class="fas fa-angle-double-left" />
+      <i class="fas fa-angle-double-left"/>
     </button>
 
     <!-- 上一页按钮 -->
     <button
-      class="pagination-btn"
-      :disabled="page === 1"
-      title="上一页"
-      @click="prev"
+        class="pagination-btn"
+        :disabled="page === 1"
+        title="上一页"
+        @click="prev"
     >
-      <i class="fas fa-angle-left" />
+      <i class="fas fa-angle-left"/>
     </button>
 
     <!-- 数字页码（带省略号） -->
     <template
-      v-for="item in pageList"
-      :key="item.key"
+        v-for="item in pageList"
+        :key="item.key"
     >
       <button
-        v-if="item.type === 'page'"
-        class="pagination-page"
-        :class="item.page === page ? 'active' : ''"
-        @click="goto(item.page!)"
+          v-if="item.type === 'page'"
+          class="pagination-page"
+          :class="item.page === page ? 'active' : ''"
+          @click="goto(item.page!)"
       >
         {{ item.page }}
       </button>
       <span
-        v-else
-        class="pagination-dots"
+          v-else
+          class="pagination-dots"
       >…</span>
     </template>
 
     <!-- 下一页按钮 -->
     <button
-      class="pagination-btn"
-      :disabled="page === totalPages"
-      title="下一页"
-      @click="next"
+        class="pagination-btn"
+        :disabled="page === totalPages"
+        title="下一页"
+        @click="next"
     >
-      <i class="fas fa-angle-right" />
+      <i class="fas fa-angle-right"/>
     </button>
 
     <!-- 末页按钮 -->
     <button
-      class="pagination-btn"
-      :disabled="page === totalPages"
-      title="末页"
-      @click="goto(totalPages)"
+        class="pagination-btn"
+        :disabled="page === totalPages"
+        title="末页"
+        @click="goto(totalPages)"
     >
-      <i class="fas fa-angle-double-right" />
+      <i class="fas fa-angle-double-right"/>
     </button>
 
     <!-- 页码信息 -->
     <div class="pagination-text">
       <span
-        v-if="loading"
-        class="loading-text"
+          v-if="loading"
+          class="loading-text"
       >
-        <div class="loading-indicator" />
+        <div class="loading-indicator"/>
         加载中...
       </span>
       <span v-else>
@@ -105,12 +106,22 @@
       </span>
     </div>
   </nav>
+
+  <GroupSettingsModal
+      v-model="isModalOpen"
+      :group="selectedGroup"
+      @group-updated="handleGroupUpdated"
+      @group-deleted="handleGroupDeleted"
+  >
+
+  </GroupSettingsModal>
 </template>
 
 <script lang="ts" setup>
 import BentoGridCard from "@/components/tools/Groups/BentoGridCard.vue";
 import {ref, computed, onMounted, watch} from "vue";
 import router from "@/router";
+import GroupSettingsModal from "@/components/tools/Groups/GroupSettingsModal.vue";
 
 type Group = {
   id: number;
@@ -141,6 +152,9 @@ const loading = ref(true);
 const error = ref<string | null>(null);
 const groups = ref<Group[]>([]);
 const features = ref<Feature[]>([]);
+
+const isModalOpen = ref(false);  // 控制模态框是否显示
+const selectedGroup = ref<Group | null>(null); // 存储当前正在编辑的那个 group 对象
 
 // 分页
 const page = ref(1);
@@ -231,6 +245,45 @@ const pageList = computed<PagerItem[]>(() => {
   return out;
 });
 
+// 打开模态框
+function openSettingsModal(groupId: number){
+  const groupToEdit = groups.value.find(g => g.id === groupId);
+
+  if(groupToEdit){
+    selectedGroup.value = {
+      id: groupToEdit.id,
+      name: groupToEdit.name,
+      description: groupToEdit.description,
+      slug: groupToEdit.slug,
+      color: groupToEdit.color,
+      icon: groupToEdit.icon,
+      orderIndex: 1,
+      isPinned: false,
+    };
+    isModalOpen.value = true;
+  }else{
+    console.error("无法找到要编辑的分组，ID:", groupId);
+    alert("出错了，无法找到要编辑的分组。");
+  }
+}
+
+// 当模态框通知“更新成功”时
+function handleGroupUpdated() {
+  console.log("分组已更新，正在重新拉取列表...");
+  fetchGroups();
+}
+
+// 当模态框通知“删除成功”时
+function handleGroupDeleted(deletedGroupId: number) {
+  console.log(`分组 ${deletedGroupId} 已删除，正在从UI移除...`);
+  const index = groups.value.findIndex(g => g.id === deletedGroupId);
+
+  if(index > -1) groups.value.splice(index, 1);
+
+  // 注意：因为 `features` 依赖于 `groups`，当你修改 `groups` 时，
+  // `watch([groups, ...], getFeatures)` 会自动触发，重新生成 `features`，UI 也会随之更新。
+}
+
 // 决定每个卡片的 class（逐项）
 function pickClass(g: Group, globalIndex: number): string {
   return CLASS_PATTERN[globalIndex % CLASS_PATTERN.length];
@@ -290,7 +343,7 @@ async function fetchGroups() {
 }
 
 //打开group,按住ctrl可以再新标签页打开
-function openGroup(f:Feature, e?:MouseEvent){
+function openGroup(f: Feature, e?: MouseEvent) {
   let groupId = f.groupId;
   if (typeof groupId === 'string') {
     if (groupId === '{groupid}' || groupId === '%7Bgroupid%7D') {
@@ -301,12 +354,12 @@ function openGroup(f:Feature, e?:MouseEvent){
   }
 
   const newTab = !!(e && (e.ctrlKey || e.metaKey));
-  const to = { name: 'GroupLinks', params: { groupId: f.groupId }, query: { pageNo: '1' } };
+  const to = {name: 'GroupLinks', params: {groupId: f.groupId}, query: {pageNo: '1'}};
 
-  if(newTab){
+  if (newTab) {
     const url = router.resolve(to).href;
     window.open(url, '_blank');
-  }else{
+  } else {
     router.push(to);
   }
 }
