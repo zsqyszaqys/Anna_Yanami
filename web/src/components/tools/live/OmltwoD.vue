@@ -1,13 +1,25 @@
 <template>
   <div class="relative w-full h-screen overflow-hidden custom-background">
+<!--  返回主页-->
+    <div class="absolute top-4 left-4 z-20">
+      <GradientButton @click="handleGradientButtonClick">
+        <i class="iconfont icon-fanhui_fanhui mr-2" />
+        返回主页
+      </GradientButton>
+    </div>
+
     <!-- Live2D 舞台：置底 -->
-    <div ref="oml2dRes" class="absolute inset-0"></div>
+    <div
+      ref="oml2dRes"
+      class="absolute inset-0"
+    />
 
     <!-- Slider 组件 -->
     <div class="absolute left-8 top-20 z-10 w-[560px] max-w-[45vw]">
-      <TestimonialSlider class="slider"
-          :testimonials="testimonials"
-          @model-change="loadModelByIndex"
+      <TestimonialSlider
+        class="slider"
+        :testimonials="testimonials"
+        @model-change="loadModelByIndex"
       />
     </div>
   </div>
@@ -18,55 +30,68 @@ import {loadOml2d} from "oh-my-live2d";
 import {ref, onMounted} from "vue";
 import '@/assets/fonts/iconfont';
 import TestimonialSlider from "@/components/tools/Slider/TestimonialSlider.vue";
+import GradientButton from "@/components/tools/Button/GradientButton.vue";
+import {useRouter} from "vue-router";
 
+
+const router = useRouter();
 const oml2dRes = ref<HTMLElement>();
 const currentScale = ref(0.1);
 let oml2dInstance: any = null;
 
 const testimonials = [
   {
-    img: 'https://media.9game.cn/gamebase/ieu-gdc-pre-process/images/20231106/11/27/7db02a0c83e4f7890fdc5ef19c3b575e.jpg',
+    img: '/Gallery/Furina.jpg',
     quote: '欢迎来到水的国度，我芙卡洛斯将承认你们旅途的价值与意义，现在，你们可以尽情欢呼了。',
     name: '芙宁娜',
     id: 0,
   },
   {
-    img: '',
+    img: '/Gallery/Elysia.png',
     quote: '嗨，我又来啦。多夸夸我好吗？我会很开心的～♪',
     name: '爱里希雅',
     id: 1,
   },
   {
-    img: '',
+    img: '/Gallery/Nahida.jpg',
     quote: '我叫纳西妲，别看我像个孩子，我比任何一位大人都了解这个世界。所以，我可以用我的知识，换取你路上的见闻吗？',
     name: '纳西妲',
     id: 2,
   },
   {
-    img: '',
+    img: '/Gallery/Robin.png',
     quote: '又见面了，这回想听什么歌？',
     name: '知更鸟',
     id: 3,
   },
   {
-    img: '',
+    img: '/Gallery/Seele.png',
     quote: '在量子之海中，时间与空间都失去了意义。但此刻，我只想守护在你身边。',
     name: '希尔',
     id: 4,
   },
   {
-    img: '',
-    quote: '欢迎来到水的国度，我芙卡洛斯将承认你们旅途的价值与意义，现在，你们可以尽情欢呼了。',
+    img: '/Gallery/Ellen.png',
+    quote: '为了主人的愿望！打工的加班费，要双倍才行！',
     name: '艾莲',
     id: 5,
   },
   {
-    img: '',
+    img: '/Gallery/Kafuka.jpg',
     quote: '命运就像蜘蛛丝，看似脆弱却连接着一切。那么，你准备好接受命运的安排了么？',
     name: '卡芙卡',
-    id: 5,
+    id: 6,
   },
 ]
+
+const handleGradientButtonClick = () => {
+  if (oml2dInstance) {
+    oml2dInstance.tipsMessage('你要离开我吗?再陪我一秒好不好', 3000, 10);
+  }
+  setTimeout(()=>{
+    router.back()
+  }, 1000);
+}
 
 // 初始化 Live2D
 const initLive2D = () => {
@@ -306,7 +331,6 @@ const initLive2D = () => {
 
   oml2dInstance.onStageSlideIn(() => {
     oml2dInstance.showModelHitAreaFrames();
-    console.log(oml2dInstance.options);
   });
 };
 
@@ -317,7 +341,7 @@ const loadModelByIndex = (index: number) => {
 
   if (oml2dInstance.modelIndex === index) {
     oml2dInstance.clearTips();
-    oml2dInstance.tipsMessage('为什么要重复选择我呢~,你不会忘了我的名字吧，我好伤心~', 3000, 10);
+    oml2dInstance.tipsMessage('为什么要重复选择我呢~,看来你真的很喜欢我呢~', 3000, 10);
     return;
   }
 

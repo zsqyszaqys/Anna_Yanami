@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1111736",
+      "name": "exit",
+      "font_class": "exit",
+      "unicode": "e7cb",
+      "unicode_decimal": 59339
+    },
+    {
       "icon_id": "14679313",
       "name": "sparkles",
       "font_class": "sparkles",

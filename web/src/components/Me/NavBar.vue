@@ -117,8 +117,12 @@
     <section id="wallet">
       Wallet
     </section>
-    <section id="picture">
-      Picture
+    <section id="live-2d">
+      <BendingGallery
+        :items="items"
+        :bend="2"
+        :border-radius="0.1"
+      />
     </section>
     <section id="code">
       QR code
@@ -133,12 +137,22 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue';
+import {ref, onMounted, onUnmounted, computed, nextTick} from 'vue';
 import '@/assets/css/AboutMe/NavBar.css';
 import ConnectCard from '@/components/Me/ConnectCard.vue';
 import TechnologySlider from '@/components/Me/TechnologyImages.vue';
 import RandomText from '@/components/Me/RandomText.vue';
 import LinkSectionView from "@/views/ME/LinkSectionView.vue";
+import BendingGallery from "@/components/tools/Card/BendingGallery.vue";
+
+import Furina from '/public/Gallery/Furina.jpg';
+import Elysia from '/public/Gallery/Elysia.png';
+import Nahida from '/public/Gallery/Nahida.jpg'
+import Robin from '/public/Gallery/Robin.png'
+import Seele from '/public/Gallery/Seele.png'
+import Ellen from '/public/Gallery/Ellen.png'
+import Kafuka from '/public/Gallery/Kafuka.jpg'
+
 
 import logoImage from '@/assets/AboutMe/Yanami.png';
 import profileImage from '@/assets/AboutMe/Yanami.png';
@@ -151,6 +165,7 @@ export default {
     ConnectCard,
     RandomText,
     LinkSectionView,
+    BendingGallery,
   },
   setup() {
     const section_ref = ref(null);
@@ -175,12 +190,46 @@ export default {
       '通过不断的交流来加大我们的权重吧',
       '如果是可爱的小姐姐的的话就更好了嘿嘿，我愿意被小姐姐骗',
       '点击右上角可跳转本项目github仓库',
-      'MADE BY @SDU ANNA_YANAMI IN 2025/10'
+      '本项目内置了live2c模型，在live-2d区块查看',
+      "live-2d模型对话功能开发ing",
+      'MADE BY @SDU ANNA_YANAMI IN 2025/10',
     ];
     let currentLineIndex = 0;
     let typingIndex = 0;
     let typingTimer = null;
     let isDeleting = false;
+
+    //live-2d
+    const items = ref([
+      {
+        image: Furina,
+        text: "",
+      },
+      {
+        image:Elysia,
+        text: "",
+      },
+      {
+        image: Nahida,
+        text: "",
+      },
+      {
+        image:Robin,
+        text: "",
+      },
+      {
+        image: Seele,
+        text: "",
+      },
+      {
+        image: Ellen,
+        text: "",
+      },
+      {
+        image: Kafuka,
+        text: "",
+      },
+    ]);
 
     const typeWriter = () => {
       if (!typingTextRef.value) return;
@@ -290,7 +339,6 @@ export default {
     };
 
 
-
     onMounted(() => {
       const observer = new IntersectionObserver(
           (entries) => {
@@ -331,6 +379,7 @@ export default {
       requestId,
       section_ref,
       typingTextRef,
+      items,
 
       // 方法
       toggleMute,

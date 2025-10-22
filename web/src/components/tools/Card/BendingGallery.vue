@@ -1,8 +1,21 @@
 <template>
-  <div
+  <div class="relative w-full h-full">
+    <WaterButton
+      class="!absolute z-10 top-auto right-auto bottom-6 left-1/2 -translate-x-1/2 z-20
+             bg-white/90 backdrop-blur-sm text-purple-600 px-4 py-2 rounded-lg
+             font-medium shadow-lg hover:bg-white hover:shadow-xl
+             transition-all duration-300 hover:scale-105 border border-purple-200"
+      @click="goToOtherPage"
+    >
+      <i class="iconfont icon-exit mr-2" />
+      查看live2d模型
+    </WaterButton>
+
+    <div
       ref="containerRef"
-      class="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
-  />
+      class="absolute inset-0 overflow-hidden cursor-grab active:cursor-grabbing"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,8 +23,13 @@
 
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import {useRouter} from "vue-router";
+import WaterButton from "@/components/tools/Button/WaterButton.vue";
+import {Router} from "vue-router";
+import omltwoD from "@/components/tools/live/OmltwoD.vue";
 
 type GL = Renderer["gl"];
+const router = useRouter();
 
 // Props definition
 interface CircularGalleryProps {
@@ -21,13 +39,20 @@ interface CircularGalleryProps {
   borderRadius?: number;
   font?: string;
 }
-
+const goToOtherPage = () => {
+  console.log("goToOtherPage");
+  router.push({name: "live2d"});
+}
 const props = withDefaults(defineProps<CircularGalleryProps>(), {
+  items: () => [],
   bend: 3,
   textColor: "#ffffff",
   borderRadius: 0.05,
   font: "bold 30px DM Sans",
 });
+
+
+
 
 // Refs
 const containerRef = ref<HTMLDivElement | null>(null);
@@ -63,8 +88,8 @@ function getFontSize(font: string): number {
 function createTextTexture(
     gl: GL,
     text: string,
-    font: string = "bold 30px monospace",
-    color: string = "black",
+    font = "bold 30px monospace",
+    color = "black",
 ): { texture: Texture; width: number; height: number } {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
@@ -199,7 +224,7 @@ interface MediaProps {
 }
 
 class Media {
-  extra: number = 0;
+  extra = 0;
   geometry: Plane;
   gl: GL;
   image: string;
@@ -222,9 +247,9 @@ class Media {
   width!: number;
   widthTotal!: number;
   x!: number;
-  speed: number = 0;
-  isBefore: boolean = false;
-  isAfter: boolean = false;
+  speed = 0;
+  isBefore = false;
+  isAfter = false;
 
   constructor({
                 geometry,
@@ -446,7 +471,7 @@ class App {
   mediasImages: { image: string; text: string }[] = [];
   screen!: { width: number; height: number };
   viewport!: { width: number; height: number };
-  raf: number = 0;
+  raf = 0;
 
   boundOnResize!: () => void;
   boundOnWheel!: () => void;
@@ -454,8 +479,8 @@ class App {
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
 
-  isDown: boolean = false;
-  start: number = 0;
+  isDown = false;
+  start = 0;
 
   constructor(
       container: HTMLElement,
@@ -506,7 +531,7 @@ class App {
 
   createMedias(
       items: { image: string; text: string }[] | undefined,
-      bend: number = 1,
+      bend = 1,
       textColor: string,
       borderRadius: number,
       font: string,
@@ -682,7 +707,6 @@ class App {
 // Vue lifecycle hooks
 onMounted(() => {
   if (!containerRef.value) return;
-
   app = new App(containerRef.value, {
     items: props.items,
     bend: props.bend,
