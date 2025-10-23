@@ -1,24 +1,55 @@
 <template>
   <!-- 模态框容器，v-if 控制显示/隐藏 -->
-  <div v-if="modelValue && group" class="modal-overlay" @click.self="close">
+  <div
+    v-if="modelValue && group"
+    class="modal-overlay"
+    @click.self="close"
+  >
     <div class="modal-content">
       <!-- 头部 -->
       <div class="modal-header">
         <div class="header-content">
           <div class="title-section">
             <div class="icon-wrapper">
-              <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              <svg
+                class="edit-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                />
               </svg>
             </div>
             <div>
-              <h3 class="modal-title">编辑分组</h3>
-              <p class="group-subtitle">{{ group.name }}</p>
+              <h3 class="modal-title">
+                编辑分组
+              </h3>
+              <p class="group-subtitle">
+                {{ group.name }}
+              </p>
             </div>
           </div>
-          <button class="close-button" @click="close">
-            <svg class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <button
+            class="close-button"
+            @click="close"
+          >
+            <svg
+              class="close-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -26,45 +57,57 @@
 
       <!-- 表单区域 -->
       <div class="modal-body">
-        <form @submit.prevent="handleUpdate" class="edit-form">
+        <form
+          class="edit-form"
+          @submit.prevent="handleUpdate"
+        >
           <!-- 分组名称 -->
           <div class="form-group">
-            <label for="group-name" class="form-label">
+            <label
+              for="group-name"
+              class="form-label"
+            >
               <span class="label-text">分组名称</span>
               <span class="required-indicator">*</span>
             </label>
             <div class="input-wrapper">
               <input
-                  id="group-name"
-                  v-model="editableGroup.name"
-                  type="text"
-                  class="form-input"
-                  placeholder="为分组起一个好听的名字..."
-                  required
-                  :disabled="isUpdating"
+                id="group-name"
+                v-model="editableGroup.name"
+                type="text"
+                class="form-input"
+                placeholder="为分组起一个好听的名字..."
+                required
+                :disabled="isUpdating"
               >
-              <div class="input-focus-border"></div>
+              <div class="input-focus-border" />
             </div>
           </div>
 
           <!-- 描述信息 -->
           <div class="form-group">
-            <label for="group-description" class="form-label">
+            <label
+              for="group-description"
+              class="form-label"
+            >
               <span class="label-text">描述信息</span>
               <span class="optional-indicator">可选</span>
             </label>
             <div class="input-wrapper">
               <textarea
-                  id="group-description"
-                  v-model="editableGroup.description"
-                  rows="3"
-                  class="form-textarea"
-                  placeholder="描述这个分组的用途或特点..."
-                  :disabled="isUpdating"
-              ></textarea>
-              <div class="input-focus-border"></div>
+                id="group-description"
+                v-model="editableGroup.description"
+                rows="3"
+                class="form-textarea"
+                placeholder="描述这个分组的用途或特点..."
+                :disabled="isUpdating"
+              />
+              <div class="input-focus-border" />
             </div>
-            <div class="character-count" v-if="editableGroup.description">
+            <div
+              v-if="editableGroup.description"
+              class="character-count"
+            >
               {{ editableGroup.description.length }}/200
             </div>
           </div>
@@ -72,18 +115,45 @@
           <!-- 表单操作按钮 -->
           <div class="form-actions">
             <button
-                type="submit"
-                class="button button-primary"
-                :class="{ 'button-loading': isUpdating }"
-                :disabled="isUpdating"
+              type="submit"
+              class="button button-primary"
+              :class="{ 'button-loading': isUpdating }"
+              :disabled="isUpdating"
             >
               <span class="button-content">
-                <svg v-if="isUpdating" class="button-spinner" fill="none" viewBox="0 0 24 24">
-                  <circle class="spinner-circle" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                <svg
+                  v-if="isUpdating"
+                  class="button-spinner"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="spinner-circle"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <path
+                    class="spinner-path"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
-                <svg v-else class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                <svg
+                  v-else
+                  class="button-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
                 {{ isUpdating ? '保存中...' : '保存更改' }}
               </span>
@@ -96,28 +166,68 @@
       <div class="danger-zone">
         <div class="danger-header">
           <div class="danger-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            <svg
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"
+              />
             </svg>
           </div>
           <div class="danger-text">
-            <h4 class="danger-title">危险操作</h4>
-            <p class="danger-description">删除分组后，所有相关数据将永久丢失且无法恢复</p>
+            <h4 class="danger-title">
+              危险操作
+            </h4>
+            <p class="danger-description">
+              删除分组后，所有相关数据将永久丢失且无法恢复
+            </p>
           </div>
         </div>
         <button
-            class="button button-danger"
-            :class="{ 'button-loading': isDeleting }"
-            :disabled="isDeleting"
-            @click="showDeleteConfirm"
+          class="button button-danger"
+          :class="{ 'button-loading': isDeleting }"
+          :disabled="isDeleting"
+          @click="showDeleteConfirm"
         >
           <span class="button-content">
-            <svg v-if="isDeleting" class="button-spinner" fill="none" viewBox="0 0 24 24">
-              <circle class="spinner-circle" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            <svg
+              v-if="isDeleting"
+              class="button-spinner"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="spinner-circle"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="spinner-path"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              />
             </svg>
-            <svg v-else class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            <svg
+              v-else
+              class="button-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+              />
             </svg>
             {{ isDeleting ? '删除中...' : '删除此分组' }}
           </span>
@@ -128,13 +238,13 @@
 
   <!-- 自定义 Confirm 组件 -->
   <CustomConfirm
-      v-model:visible="showConfirm"
-      :title="confirmTitle"
-      :message="confirmMessage"
-      :type="confirmType"
-      :confirm-text="confirmButtonText"
-      @confirm="handleConfirm"
-      @cancel="handleConfirmCancel"
+    v-model:visible="showConfirm"
+    :title="confirmTitle"
+    :message="confirmMessage"
+    :type="confirmType"
+    :confirm-text="confirmButtonText"
+    @confirm="handleConfirm"
+    @cancel="handleConfirmCancel"
   />
 </template>
 

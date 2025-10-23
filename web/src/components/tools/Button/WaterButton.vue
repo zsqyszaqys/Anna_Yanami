@@ -1,9 +1,9 @@
 <template>
   <a
-      class="water-button"
-      :class="customClass"
-      href="javascript:void(0)"
-      @click="handleClick"
+    class="water-button"
+    :class="customClass"
+    href="javascript:void(0)"
+    @click="handleClick"
   >
     <slot>Button</slot>
   </a>

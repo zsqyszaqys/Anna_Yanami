@@ -157,8 +157,8 @@ body {
   width: 500px; /* 从 330px 增大 */
   height: 150px; /* 从 100px 增大 */
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  left: 20%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
   background-color: #fafafa;
@@ -279,7 +279,7 @@ body {
   height: 3px; /* 从 2px 增大线条厚度 */
   position: absolute;
   background-color: white;
-  top: 50%;
+  top: 70%;
   left: 20%;
   transform: translateY(-50%);
   animation: to-hamburger 0.3s forwards ease-in-out;

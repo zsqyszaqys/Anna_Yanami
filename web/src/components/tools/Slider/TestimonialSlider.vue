@@ -2,37 +2,41 @@
   <div class="mx-auto w-full max-w-4xl text-left px-4">
     <!-- 整体容器 -->
     <div
-        class="relative bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-zinc-700/30"
+      class="relative bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-zinc-700/30"
     >
       <!-- 头像区域 -->
       <div
-          class="relative mb-6"
-          style="--av-size: 200px; --av-gap: 8px; height: calc(var(--av-size) + var(--av-gap)*2)"
+        class="relative mb-6"
+        style="--av-size: 200px; --av-gap: 8px; height: calc(var(--av-size) + var(--av-gap)*2)"
       >
         <div
-            class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
-            style="width:520px;height:calc(var(--av-size) + var(--av-gap)*2)"
+          class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
+          style="width:520px;height:calc(var(--av-size) + var(--av-gap)*2)"
         >
           <!-- 发光背景 -->
           <div
-              class="absolute inset-0 rounded-full bg-gradient-to-b from-purple-400/20 via-pink-300/10 to-transparent blur-xl"/>
+            class="absolute inset-0 rounded-full bg-gradient-to-b from-purple-400/20 via-pink-300/10 to-transparent blur-xl"
+          />
 
           <div
-              class="flex h-full items-start justify-center [mask-image:_linear-gradient(0deg,transparent,theme(colors.white)_30%,theme(colors.white))]">
+            class="flex h-full items-start justify-center [mask-image:_linear-gradient(0deg,transparent,theme(colors.white)_30%,theme(colors.white))]"
+          >
             <transition name="testimonial-image">
               <div
-                  :key="active"
-                  class="absolute left-1/2 -translate-x-1/2 avatar-pos"
+                :key="active"
+                class="absolute left-1/2 -translate-x-1/2 avatar-pos"
               >
                 <div class="relative">
                   <div
-                      class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-sm scale-110"/>
+                    class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-sm scale-110"
+                  />
                   <div
-                      class="relative rounded-full border-4 border-white/80 dark:border-zinc-800/80 shadow-2xl avatar-container">
+                    class="relative rounded-full border-4 border-white/80 dark:border-zinc-800/80 shadow-2xl avatar-container"
+                  >
                     <img
-                        :src="testimonials[active].img"
-                        :alt="testimonials[active].name"
-                        class="avatar-img"
+                      :src="testimonials[active].img"
+                      :alt="testimonials[active].name"
+                      class="avatar-img"
                     >
                   </div>
                 </div>
@@ -45,22 +49,22 @@
       <!-- 引用文字区域 -->
       <div class="mb-8 transition-all duration-500 ease-out">
         <div
-            ref="testimonialsRef"
-            class="relative flex flex-col items-center"
+          ref="testimonialsRef"
+          class="relative flex flex-col items-center"
         >
           <transition-group name="testimonial-text">
             <div
-                v-for="(testimonial, index) in testimonials"
-                v-show="active === index"
-                :key="`text-${index}`"
-                class="w-full text-center"
+              v-for="(testimonial, index) in testimonials"
+              v-show="active === index"
+              :key="`text-${index}`"
+              class="w-full text-center"
             >
               <!-- 引用符号装饰 -->
               <div class="text-6xl text-purple-300/40 dark:text-pink-400/30 mb-2 leading-none">
                 "
               </div>
               <div
-                  class="text-2xl md:text-3xl font-light text-zinc-800 dark:text-zinc-200 leading-relaxed italic px-4"
+                class="text-2xl md:text-3xl font-light text-zinc-800 dark:text-zinc-200 leading-relaxed italic px-4"
               >
                 {{ testimonial.quote }}
               </div>
@@ -73,10 +77,10 @@
       <div class="flex items-center justify-between pt-6 border-t border-zinc-200/50 dark:border-zinc-700/50">
         <!-- 左侧箭头 -->
         <button
-            class="group/button flex size-12 items-center justify-center rounded-2xl bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm border border-zinc-200/60 dark:border-zinc-600/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-purple-50 dark:hover:bg-purple-900/20"
-            @click="handlePrev"
+          class="group/button flex size-12 items-center justify-center rounded-2xl bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm border border-zinc-200/60 dark:border-zinc-600/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+          @click="handlePrev"
         >
-          <i class="iconfont icon-shangyige text-zinc-600 dark:text-zinc-400 text-lg group-hover/button:-translate-x-0.5 transition-transform duration-300"/>
+          <i class="iconfont icon-shangyige text-zinc-600 dark:text-zinc-400 text-lg group-hover/button:-translate-x-0.5 transition-transform duration-300" />
         </button>
 
         <!-- 中央信息区域 -->
@@ -93,43 +97,43 @@
 
           <!-- 召唤按钮 -->
           <button
-              v-for="(testimonial, index) in testimonials"
-              v-show="active === index"
-              :key="`indicator-${testimonial.id}`"
-              class="group/action relative overflow-hidden bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600"
-              @click="handleButtonClick(testimonial.id)"
+            v-for="(testimonial, index) in testimonials"
+            v-show="active === index"
+            :key="`indicator-${testimonial.id}`"
+            class="group/action relative overflow-hidden bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-pink-600"
+            @click="handleButtonClick(testimonial.id)"
           >
             <span class="relative z-10 flex items-center gap-2">
-              <i class="iconfont icon-sparkles text-white text-lg group-hover/action:animate-pulse"/>
+              <i class="iconfont icon-sparkles text-white text-lg group-hover/action:animate-pulse" />
               我想见她!
             </span>
             <!-- 按钮 hover 效果 -->
             <div
-                class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover/action:opacity-100 transition-opacity duration-300"
+              class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover/action:opacity-100 transition-opacity duration-300"
             />
           </button>
         </div>
 
         <!-- 右侧箭头 -->
         <button
-            class="group/button flex size-12 items-center justify-center rounded-2xl bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm border border-zinc-200/60 dark:border-zinc-600/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-purple-50 dark:hover:bg-purple-900/20"
-            @click="handleNext"
+          class="group/button flex size-12 items-center justify-center rounded-2xl bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm border border-zinc-200/60 dark:border-zinc-600/60 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+          @click="handleNext"
         >
-          <i class="iconfont icon-next text-zinc-600 dark:text-zinc-400 text-lg group-hover/button:translate-x-0.5 transition-transform duration-300"/>
+          <i class="iconfont icon-next text-zinc-600 dark:text-zinc-400 text-lg group-hover/button:translate-x-0.5 transition-transform duration-300" />
         </button>
       </div>
 
       <!-- 底部指示器 -->
       <div class="flex justify-center gap-2 mt-6">
         <button
-            v-for="(testimonial, index) in testimonials"
-            :key="`dot-${index}`"
-            class="group/dot flex items-center justify-center"
-            @click="setActiveIndex(index)"
+          v-for="(testimonial, index) in testimonials"
+          :key="`dot-${index}`"
+          class="group/dot flex items-center justify-center"
+          @click="setActiveIndex(index)"
         >
           <div
-              class="size-2 rounded-full transition-all duration-300"
-              :class="[
+            class="size-2 rounded-full transition-all duration-300"
+            :class="[
               active === index
                 ? 'bg-gradient-to-r from-purple-500 to-pink-500 w-8'
                 : 'bg-zinc-300 dark:bg-zinc-600 hover:bg-zinc-400 dark:hover:bg-zinc-500 w-2'

@@ -3,23 +3,23 @@
     <!--  返回主页-->
     <div class="absolute top-4 left-4 z-20">
       <GradientButton @click="handleGradientButtonClick">
-        <i class="iconfont icon-fanhui_fanhui mr-2"/>
+        <i class="iconfont icon-fanhui_fanhui mr-2" />
         返回主页
       </GradientButton>
     </div>
 
     <!-- Live2D 舞台：置底 -->
     <div
-        ref="oml2dRes"
-        class="absolute inset-0"
+      ref="oml2dRes"
+      class="absolute inset-0"
     />
 
     <!-- Slider 组件 -->
     <div class="absolute left-8 top-20 z-10 w-[560px] max-w-[45vw]">
       <TestimonialSlider
-          class="slider"
-          :testimonials="testimonials"
-          @model-change="loadModelByIndex"
+        class="slider"
+        :testimonials="testimonials"
+        @model-change="loadModelByIndex"
       />
     </div>
   </div>

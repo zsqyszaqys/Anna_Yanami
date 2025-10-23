@@ -1,34 +1,94 @@
 <template>
   <!-- 自定义 Confirm 组件 -->
-  <div v-if="visible" class="custom-confirm-overlay" @click.self="handleOverlayClick">
-    <div class="custom-confirm" :class="type">
+  <div
+    v-if="visible"
+    class="custom-confirm-overlay"
+    @click.self="handleOverlayClick"
+  >
+    <div
+      class="custom-confirm"
+      :class="type"
+    >
       <div class="confirm-header">
         <div class="confirm-icon">
-          <svg v-if="type === 'success'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg
+            v-if="type === 'success'"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
-          <svg v-else-if="type === 'error'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg
+            v-else-if="type === 'error'"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
-          <svg v-else fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          <svg
+            v-else
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"
+            />
           </svg>
         </div>
         <div class="confirm-content">
-          <h3 class="confirm-title">{{ title }}</h3>
-          <p class="confirm-message">{{ message }}</p>
+          <h3 class="confirm-title">
+            {{ title }}
+          </h3>
+          <p class="confirm-message">
+            {{ message }}
+          </p>
         </div>
-        <button class="confirm-close" @click="handleCancel">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        <button
+          class="confirm-close"
+          @click="handleCancel"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>
       <div class="confirm-actions">
-        <button class="confirm-button cancel-button" @click="handleCancel">
+        <button
+          class="confirm-button cancel-button"
+          @click="handleCancel"
+        >
           取消
         </button>
-        <button class="confirm-button confirm-button-primary" @click="handleConfirm" :class="type">
+        <button
+          class="confirm-button confirm-button-primary"
+          :class="type"
+          @click="handleConfirm"
+        >
           {{ confirmText }}
         </button>
       </div>

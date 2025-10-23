@@ -1,24 +1,55 @@
 <template>
   <!-- 模态框容器，v-if 控制显示/隐藏 -->
-  <div v-if="modelValue" class="modal-overlay" @click.self="close">
+  <div
+    v-if="modelValue"
+    class="modal-overlay"
+    @click.self="close"
+  >
     <div class="modal-content">
       <!-- 头部 -->
       <div class="modal-header">
         <div class="header-content">
           <div class="title-section">
             <div class="icon-wrapper">
-              <svg class="create-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              <svg
+                class="create-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
               </svg>
             </div>
             <div>
-              <h3 class="modal-title">新建分组</h3>
-              <p class="create-subtitle">创建一个新的内容分组</p>
+              <h3 class="modal-title">
+                新建分组
+              </h3>
+              <p class="create-subtitle">
+                创建一个新的内容分组
+              </p>
             </div>
           </div>
-          <button class="close-button" @click="close">
-            <svg class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <button
+            class="close-button"
+            @click="close"
+          >
+            <svg
+              class="close-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -26,45 +57,57 @@
 
       <!-- 表单区域 -->
       <div class="modal-body">
-        <form @submit.prevent="handleCreate" class="create-form">
+        <form
+          class="create-form"
+          @submit.prevent="handleCreate"
+        >
           <!-- 分组名称 -->
           <div class="form-group">
-            <label for="new-group-name" class="form-label">
+            <label
+              for="new-group-name"
+              class="form-label"
+            >
               <span class="label-text">分组名称</span>
               <span class="required-indicator">*</span>
             </label>
             <div class="input-wrapper">
               <input
-                  id="new-group-name"
-                  v-model="newGroup.name"
-                  type="text"
-                  class="form-input"
-                  placeholder="为分组起一个好听的名字..."
-                  required
-                  :disabled="isCreating"
+                id="new-group-name"
+                v-model="newGroup.name"
+                type="text"
+                class="form-input"
+                placeholder="为分组起一个好听的名字..."
+                required
+                :disabled="isCreating"
               >
-              <div class="input-focus-border"></div>
+              <div class="input-focus-border" />
             </div>
           </div>
 
           <!-- 描述信息 -->
           <div class="form-group">
-            <label for="new-group-description" class="form-label">
+            <label
+              for="new-group-description"
+              class="form-label"
+            >
               <span class="label-text">描述信息</span>
               <span class="optional-indicator">可选</span>
             </label>
             <div class="input-wrapper">
               <textarea
-                  id="new-group-description"
-                  v-model="newGroup.description"
-                  rows="3"
-                  class="form-textarea"
-                  placeholder="描述这个分组的用途或特点..."
-                  :disabled="isCreating"
-              ></textarea>
-              <div class="input-focus-border"></div>
+                id="new-group-description"
+                v-model="newGroup.description"
+                rows="3"
+                class="form-textarea"
+                placeholder="描述这个分组的用途或特点..."
+                :disabled="isCreating"
+              />
+              <div class="input-focus-border" />
             </div>
-            <div class="character-count" v-if="newGroup.description">
+            <div
+              v-if="newGroup.description"
+              class="character-count"
+            >
               {{ newGroup.description.length }}/200
             </div>
           </div>
@@ -72,18 +115,45 @@
           <!-- 表单操作按钮 -->
           <div class="form-actions">
             <button
-                type="submit"
-                class="button button-primary"
-                :class="{ 'button-loading': isCreating }"
-                :disabled="isCreating || !newGroup.name.trim()"
+              type="submit"
+              class="button button-primary"
+              :class="{ 'button-loading': isCreating }"
+              :disabled="isCreating || !newGroup.name.trim()"
             >
               <span class="button-content">
-                <svg v-if="isCreating" class="button-spinner" fill="none" viewBox="0 0 24 24">
-                  <circle class="spinner-circle" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                <svg
+                  v-if="isCreating"
+                  class="button-spinner"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="spinner-circle"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <path
+                    class="spinner-path"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
-                <svg v-else class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                <svg
+                  v-else
+                  class="button-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
                 </svg>
                 {{ isCreating ? '创建中...' : '创建分组' }}
               </span>
@@ -96,11 +166,11 @@
 
   <!-- 自定义 Alert 组件 -->
   <CustomConfirm
-      v-model:visible="showAlert"
-      :title="alertTitle"
-      :message="alertMessage"
-      :type="alertType"
-      @close="handleAlertClose"
+    v-model:visible="showAlert"
+    :title="alertTitle"
+    :message="alertMessage"
+    :type="alertType"
+    @close="handleAlertClose"
   />
 </template>
 

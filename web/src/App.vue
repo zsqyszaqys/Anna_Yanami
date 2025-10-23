@@ -7,7 +7,7 @@
     class="global-github-corner"
   />
   <SleekLineCursor />
-  <Live2DWidget v-if="!$route.meta.hideGlobalWidget"></Live2DWidget>
+  <Live2DWidget v-if="!$route.meta.hideGlobalWidget" />
   <router-view />
 </template>
 

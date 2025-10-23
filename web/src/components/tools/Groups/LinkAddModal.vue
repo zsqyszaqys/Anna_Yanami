@@ -1,24 +1,54 @@
 <template>
-  <div v-if="modelValue" class="modal-overlay" @click.self="close">
+  <div
+    v-if="modelValue"
+    class="modal-overlay"
+    @click.self="close"
+  >
     <div class="modal-content">
       <!-- 头部 -->
       <div class="modal-header">
         <div class="header-content">
           <div class="title-section">
             <div class="icon-wrapper">
-              <svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+              <svg
+                class="link-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                />
               </svg>
             </div>
             <div>
-              <h3 class="modal-title">新增链接</h3>
-              <p class="modal-subtitle">添加到当前分组</p>
+              <h3 class="modal-title">
+                新增链接
+              </h3>
+              <p class="modal-subtitle">
+                添加到当前分组
+              </p>
             </div>
           </div>
-          <button class="close-button" @click="close">
-            <svg class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          <button
+            class="close-button"
+            @click="close"
+          >
+            <svg
+              class="close-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -26,103 +56,148 @@
 
       <!-- 表单区域 -->
       <div class="modal-body">
-        <form @submit.prevent="handleCreate" class="link-form">
+        <form
+          class="link-form"
+          @submit.prevent="handleCreate"
+        >
           <!-- 标题 -->
           <div class="form-group">
-            <label for="link-title" class="form-label">
+            <label
+              for="link-title"
+              class="form-label"
+            >
               <span class="label-text">标题</span>
               <span class="required-indicator">*</span>
             </label>
             <div class="input-wrapper">
               <input
-                  id="link-title"
-                  v-model="newLink.title"
-                  type="text"
-                  class="form-input"
-                  placeholder="输入链接标题..."
-                  required
-                  :disabled="isCreating"
+                id="link-title"
+                v-model="newLink.title"
+                type="text"
+                class="form-input"
+                placeholder="输入链接标题..."
+                required
+                :disabled="isCreating"
               >
-              <div class="input-focus-border"></div>
+              <div class="input-focus-border" />
             </div>
           </div>
 
           <!-- URL -->
           <div class="form-group">
-            <label for="link-url" class="form-label">
+            <label
+              for="link-url"
+              class="form-label"
+            >
               <span class="label-text">URL 地址</span>
               <span class="required-indicator">*</span>
             </label>
             <div class="input-wrapper">
               <input
-                  id="link-url"
-                  v-model="newLink.url"
-                  type="url"
-                  class="form-input"
-                  placeholder="https://example.com"
-                  required
-                  :disabled="isCreating"
+                id="link-url"
+                v-model="newLink.url"
+                type="url"
+                class="form-input"
+                placeholder="https://example.com"
+                required
+                :disabled="isCreating"
               >
-              <div class="input-focus-border"></div>
+              <div class="input-focus-border" />
             </div>
           </div>
 
           <!-- 描述 -->
           <div class="form-group">
-            <label for="link-description" class="form-label">
+            <label
+              for="link-description"
+              class="form-label"
+            >
               <span class="label-text">描述</span>
               <span class="optional-indicator">可选</span>
             </label>
             <div class="input-wrapper">
               <textarea
-                  id="link-description"
-                  v-model="newLink.description"
-                  rows="3"
-                  class="form-textarea"
-                  placeholder="链接的简短描述..."
-                  :disabled="isCreating"
-              ></textarea>
-              <div class="input-focus-border"></div>
+                id="link-description"
+                v-model="newLink.description"
+                rows="3"
+                class="form-textarea"
+                placeholder="链接的简短描述..."
+                :disabled="isCreating"
+              />
+              <div class="input-focus-border" />
             </div>
-            <div class="character-count" v-if="newLink.description">
+            <div
+              v-if="newLink.description"
+              class="character-count"
+            >
               {{ newLink.description.length }}/200
             </div>
           </div>
 
           <!-- OG 图片地址 -->
           <div class="form-group">
-            <label for="link-og-image" class="form-label">
+            <label
+              for="link-og-image"
+              class="form-label"
+            >
               <span class="label-text">图片地址</span>
               <span class="optional-indicator">可选</span>
             </label>
             <div class="input-wrapper">
               <input
-                  id="link-og-image"
-                  v-model="newLink.ogImageUrl"
-                  type="text"
-                  class="form-input"
-                  placeholder="输入图片的 URL"
-                  :disabled="isCreating"
+                id="link-og-image"
+                v-model="newLink.ogImageUrl"
+                type="text"
+                class="form-input"
+                placeholder="输入图片的 URL"
+                :disabled="isCreating"
               >
-              <div class="input-focus-border"></div>
+              <div class="input-focus-border" />
             </div>
           </div>
 
           <!-- 表单操作按钮 -->
           <div class="form-actions">
             <button
-                type="submit"
-                class="button button-primary"
-                :class="{ 'button-loading': isCreating }"
-                :disabled="isCreating || !newLink.title.trim() || !newLink.url.trim()"
+              type="submit"
+              class="button button-primary"
+              :class="{ 'button-loading': isCreating }"
+              :disabled="isCreating || !newLink.title.trim() || !newLink.url.trim()"
             >
               <span class="button-content">
-                <svg v-if="isCreating" class="button-spinner" fill="none" viewBox="0 0 24 24">
-                  <circle class="spinner-circle" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                <svg
+                  v-if="isCreating"
+                  class="button-spinner"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="spinner-circle"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <path
+                    class="spinner-path"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
-                <svg v-else class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                <svg
+                  v-else
+                  class="button-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
                 </svg>
                 {{ isCreating ? '创建中...' : '创建链接' }}
               </span>
@@ -133,14 +208,12 @@
     </div>
   </div>
   <custom-confirm
-      v-model:visible="showAlert"
-      :title="alertTitle"
-      :message="alertMessage"
-      :type="alertType"
-      @close="handleAlertClose"
-  >
-
-  </custom-confirm>
+    v-model:visible="showAlert"
+    :title="alertTitle"
+    :message="alertMessage"
+    :type="alertType"
+    @close="handleAlertClose"
+  />
 </template>
 
 <script lang="ts" setup>

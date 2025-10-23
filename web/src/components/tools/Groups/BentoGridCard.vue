@@ -1,7 +1,7 @@
 <template>
   <div
-      :key="name"
-      :class="
+    :key="name"
+    :class="
       cn(
         'group relative col-span-1 xl:col-span-2 flex flex-col justify-end overflow-hidden rounded-xl',
         // 黑色主题样式
@@ -11,36 +11,53 @@
       )
     "
   >
-    <slot name="background"/>
+    <slot name="background" />
 
     <!-- 优化后的分组修改按钮 -->
     <button
-        class="settings-button"
-        title="编辑分组"
-        @click.stop="$emit('settings-click')"
-        aria-label="编辑分组设置"
+      class="settings-button"
+      title="编辑分组"
+      aria-label="编辑分组设置"
+      @click.stop="$emit('settings-click')"
     >
       <div class="button-content">
-        <svg class="settings-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <svg
+          class="settings-icon"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
         </svg>
-        <div class="button-glow"></div>
+        <div class="button-glow" />
       </div>
-      <div class="tooltip">编辑分组</div>
+      <div class="tooltip">
+        编辑分组
+      </div>
     </button>
 
     <div
-        class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10"
+      class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10"
     >
       <component
-          :is="icon"
-          v-if="icon"
-          class="size-12 origin-left transform-gpu text-white transition-all duration-300 ease-in-out group-hover:scale-75"
+        :is="icon"
+        v-if="icon"
+        class="size-12 origin-left transform-gpu text-white transition-all duration-300 ease-in-out group-hover:scale-75"
       />
       <div
-          v-else
-          class="size-12 origin-left transform-gpu text-white transition-all duration-300 ease-in-out group-hover:scale-75"
+        v-else
+        class="size-12 origin-left transform-gpu text-white transition-all duration-300 ease-in-out group-hover:scale-75"
       />
       <h3 class="text-xl font-semibold text-white">
         {{ name }}
@@ -51,17 +68,17 @@
     </div>
 
     <div
-        class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+      class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
     >
       <a
-          :href="href"
-          class="pointer-events-auto inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gray-800 border border-gray-600"
+        :href="href"
+        class="pointer-events-auto inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-gray-800 border border-gray-600"
       >
         {{ cta }} →
       </a>
     </div>
     <div
-        class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-white/[.03]"
+      class="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-white/[.03]"
     />
   </div>
 </template>

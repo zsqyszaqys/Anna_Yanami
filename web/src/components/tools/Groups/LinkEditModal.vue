@@ -1,23 +1,52 @@
 <template>
-  <div v-if="modelValue && link" class="modal-overlay" @click.self="close">
+  <div
+    v-if="modelValue && link"
+    class="modal-overlay"
+    @click.self="close"
+  >
     <div class="modal-content">
       <!-- 头部 -->
       <div class="modal-header">
         <div class="header-content">
           <div class="icon-wrapper">
-            <svg class="header-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+            <svg
+              class="header-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+              />
             </svg>
           </div>
           <div class="header-text">
-            <h3 class="modal-title">编辑链接</h3>
-            <p class="modal-subtitle">修改链接信息</p>
+            <h3 class="modal-title">
+              编辑链接
+            </h3>
+            <p class="modal-subtitle">
+              修改链接信息
+            </p>
           </div>
         </div>
-        <button class="close-button" @click="close">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        <button
+          class="close-button"
+          @click="close"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
       </div>
@@ -27,75 +56,123 @@
         <form @submit.prevent="handleUpdate">
           <!-- 标题 -->
           <div class="form-group">
-            <label for="edit-link-title" class="form-label">
-              <svg class="label-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            <label
+              for="edit-link-title"
+              class="form-label"
+            >
+              <svg
+                class="label-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                />
               </svg>
               标题
             </label>
             <input
-                id="edit-link-title"
-                v-model="editableLink.title"
-                type="text"
-                class="form-input"
-                placeholder="输入链接标题"
-                required
+              id="edit-link-title"
+              v-model="editableLink.title"
+              type="text"
+              class="form-input"
+              placeholder="输入链接标题"
+              required
             >
           </div>
 
           <!-- URL -->
           <div class="form-group">
-            <label for="edit-link-url" class="form-label">
-              <svg class="label-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+            <label
+              for="edit-link-url"
+              class="form-label"
+            >
+              <svg
+                class="label-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                />
               </svg>
               URL 地址
             </label>
             <input
-                id="edit-link-url"
-                v-model="editableLink.url"
-                type="url"
-                class="form-input"
-                placeholder="https://example.com"
-                required
+              id="edit-link-url"
+              v-model="editableLink.url"
+              type="url"
+              class="form-input"
+              placeholder="https://example.com"
+              required
             >
           </div>
 
           <!-- 描述 -->
           <div class="form-group">
-            <label for="edit-link-description" class="form-label">
-              <svg class="label-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+            <label
+              for="edit-link-description"
+              class="form-label"
+            >
+              <svg
+                class="label-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                />
               </svg>
               描述
             </label>
             <textarea
-                id="edit-link-description"
-                v-model="editableLink.description"
-                rows="3"
-                class="form-textarea"
-                placeholder="输入链接描述（可选）"
-            ></textarea>
+              id="edit-link-description"
+              v-model="editableLink.description"
+              rows="3"
+              class="form-textarea"
+              placeholder="输入链接描述（可选）"
+            />
           </div>
 
           <!-- OG 图片地址 -->
           <div class="form-group">
-            <label for="edit-link-og-image" class="form-label">
-              <svg class="label-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            <label
+              for="edit-link-og-image"
+              class="form-label"
+            >
+              <svg
+                class="label-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
               </svg>
               图片地址
             </label>
             <input
-                id="edit-link-og-image"
-                v-model="editableLink.ogImageUrl"
-                type="text"
-                class="form-input"
-                placeholder="https://example.com/image.jpg"
+              id="edit-link-og-image"
+              v-model="editableLink.ogImageUrl"
+              type="text"
+              class="form-input"
+              placeholder="https://example.com/image.jpg"
             >
           </div>
 
@@ -103,11 +180,25 @@
           <div class="form-group checkbox-group">
             <label class="checkbox-label">
               <div class="checkbox-wrapper">
-                <input type="checkbox" v-model="editableLink.isFavorite" class="checkbox-input">
+                <input
+                  v-model="editableLink.isFavorite"
+                  type="checkbox"
+                  class="checkbox-input"
+                >
                 <span class="checkbox-custom">
-                  <svg v-if="editableLink.isFavorite" class="check-icon" fill="none" stroke="currentColor"
-                       viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  <svg
+                    v-if="editableLink.isFavorite"
+                    class="check-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </span>
               </div>
@@ -117,11 +208,25 @@
 
           <!-- 表单操作按钮 -->
           <div class="form-actions">
-            <button type="submit" class="button button-primary" :disabled="isUpdating">
+            <button
+              type="submit"
+              class="button button-primary"
+              :disabled="isUpdating"
+            >
               <span class="button-content">
-                <svg v-if="isUpdating" class="button-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-7.364l-2.828 2.828M7.464 17.536l-2.828 2.828m12.728 0l-2.828-2.828M7.464 6.464L4.636 3.636"/>
+                <svg
+                  v-if="isUpdating"
+                  class="button-spinner"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-7.364l-2.828 2.828M7.464 17.536l-2.828 2.828m12.728 0l-2.828-2.828M7.464 6.464L4.636 3.636"
+                  />
                 </svg>
                 <span>{{ isUpdating ? '保存中...' : '保存更改' }}</span>
               </span>
@@ -133,18 +238,46 @@
       <!-- 危险区域 -->
       <div class="danger-zone">
         <div class="danger-header">
-          <svg class="danger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+          <svg
+            class="danger-icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"
+            />
           </svg>
-          <h4 class="danger-title">危险操作</h4>
+          <h4 class="danger-title">
+            危险操作
+          </h4>
         </div>
-        <p class="danger-description">删除链接后，可以从回收站恢复。</p>
-        <button type="button" class="button button-danger" :disabled="isDeleting" @click="handleDelete">
+        <p class="danger-description">
+          删除链接后，可以从回收站恢复。
+        </p>
+        <button
+          type="button"
+          class="button button-danger"
+          :disabled="isDeleting"
+          @click="handleDelete"
+        >
           <span class="button-content">
-            <svg v-if="isDeleting" class="button-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-7.364l-2.828 2.828M7.464 17.536l-2.828 2.828m12.728 0l-2.828-2.828M7.464 6.464L4.636 3.636"/>
+            <svg
+              v-if="isDeleting"
+              class="button-spinner"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 2v4m0 12v4m8-10h-4M6 12H2m15.364-7.364l-2.828 2.828M7.464 17.536l-2.828 2.828m12.728 0l-2.828-2.828M7.464 6.464L4.636 3.636"
+              />
             </svg>
             <span>{{ isDeleting ? '删除中...' : '删除此链接' }}</span>
           </span>
@@ -155,13 +288,12 @@
 
   <!-- 自定义 Alert 组件 -->
   <CustomConfirm
-      v-model:visible="showAlert"
-      :title="alertTitle"
-      :message="alertMessage"
-      :type="alertType"
-      @close="handleAlertClose"
+    v-model:visible="showAlert"
+    :title="alertTitle"
+    :message="alertMessage"
+    :type="alertType"
+    @close="handleAlertClose"
   />
-
 </template>
 
 <script lang="ts" setup>

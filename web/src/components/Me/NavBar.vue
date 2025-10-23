@@ -114,9 +114,9 @@
     >
       <LinkSectionView />
     </section>
-    <section id="wallet">
-      Wallet
-    </section>
+    <!--    <section id="wallet">-->
+    <!--      Wallet-->
+    <!--    </section>-->
     <section id="live-2d">
       <BendingGallery
         :items="items"
@@ -124,14 +124,51 @@
         :border-radius="0.1"
       />
     </section>
-    <section id="code">
-      QR code
-    </section>
     <section id="technology">
       <TechnologySlider class="technology-slider" />
     </section>
+
     <section id="me">
-      <ConnectCard />
+      <!-- 左栏容器 -->
+      <div class="left-column">
+        <MorphingText
+          class="mt-6"
+          :texts="texts"
+        />
+        <ConnectCard />
+      </div>
+
+      <!-- 右栏容器 -->
+      <div class="right-column">
+        <div class="lightspeed-wrapper">
+          <LightSpeed
+            :key="preset"
+            :effect-options="selectedPreset"
+          />
+          <div class="absolute inset-0 flex items-center justify-center text-2xl text-neutral-500 pointer-events-none">
+            选择一套预设
+          </div>
+        </div>
+        <div>
+          <label
+            for="preset-select"
+            class="mr-4 text-white"
+          >Select a Preset:</label>
+          <select
+            id="preset-select"
+            v-model="preset"
+            class="rounded-md bg-zinc-800 px-4 py-2 text-white"
+          >
+            <option
+              v-for="effectKey in Object.keys(lightSpeedPresets)"
+              :key="effectKey"
+              :value="effectKey"
+            >
+              {{ getName(effectKey) }}
+            </option>
+          </select>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -144,6 +181,9 @@ import TechnologySlider from '@/components/Me/TechnologyImages.vue';
 import RandomText from '@/components/Me/RandomText.vue';
 import LinkSectionView from "@/views/ME/LinkSectionView.vue";
 import BendingGallery from "@/components/tools/Card/BendingGallery.vue";
+import LightSpeed from "@/components/tools/Light/LightSpeed.vue";
+import {lightSpeedPresets} from "@/components/tools/Light/presets";
+import MorphingText from "@/components/tools/MorphingText.vue";
 
 import Furina from '/public/Gallery/Furina.jpg';
 import Elysia from '/public/Gallery/Elysia.png';
@@ -166,6 +206,8 @@ export default {
     RandomText,
     LinkSectionView,
     BendingGallery,
+    LightSpeed,
+    MorphingText,
   },
   setup() {
     const section_ref = ref(null);
@@ -188,16 +230,40 @@ export default {
       '或许你对我感兴趣话，下面有我的联系方式',
       '这样我们就可以建立起一条双向边',
       '通过不断的交流来加大我们的权重吧',
-      '如果是可爱的小姐姐的的话就更好了嘿嘿，我愿意被小姐姐骗',
       '点击右上角可跳转本项目github仓库',
       '本项目内置了live2c模型，在live-2d区块查看',
       "live-2d模型对话功能开发ing",
       'MADE BY @SDU ANNA_YANAMI IN 2025/10',
     ];
+
+    const texts = [
+      "你好",
+      "我是Anna_Yanami",
+      "下面就是我的联系方式了",
+      "点击之后展开",
+      "你可以添加我的社交软件",
+      "也可以查看我的github仓库",
+      "很高兴认识你~",
+      "欢迎交流~",
+    ];
     let currentLineIndex = 0;
     let typingIndex = 0;
     let typingTimer = null;
     let isDeleting = false;
+
+    const preset = ref("one");
+    const selectedPreset = computed(() => lightSpeedPresets[preset.value]);
+    function getName(key) {
+      const names = {
+        one: "Light 1",
+        two: "Light 2",
+        three: "Light 3",
+        four: "Light 4",
+        five: "Light 5",
+        six: "Light 6",
+      };
+      return names[key];
+    }
 
     //live-2d
     const items = ref([
@@ -206,7 +272,7 @@ export default {
         text: "",
       },
       {
-        image:Elysia,
+        image: Elysia,
         text: "",
       },
       {
@@ -214,7 +280,7 @@ export default {
         text: "",
       },
       {
-        image:Robin,
+        image: Robin,
         text: "",
       },
       {
@@ -255,7 +321,6 @@ export default {
         }
       }
     };
-
     const resetTyping = () => {
       if (typingTextRef.value) {
         typingTextRef.value.textContent = '';
@@ -316,9 +381,8 @@ export default {
     const navItems = [
       {id: 'home', iconClass: 'iconfont icon-home', text: 'Home'},
       {id: 'links', iconClass: 'iconfont icon-link', text: 'Links'},
-      {id: 'wallet', iconClass: 'iconfont icon-xiangmu', text: 'Project'},
+      // {id: 'wallet', iconClass: 'iconfont icon-xiangmu', text: 'Project'},
       {id: 'live-2d', iconClass: 'iconfont icon-picture', text: 'live-2d'},
-      {id: 'code', iconClass: 'iconfont icon-qr-code', text: 'QR code'},
       {id: 'technology', iconClass: 'iconfont icon-yingyong', text: 'technology'}
     ];
 
@@ -381,6 +445,12 @@ export default {
       typingTextRef,
       items,
 
+      preset,
+      selectedPreset,
+      lightSpeedPresets,
+      getName,
+      texts,
+
       // 方法
       toggleMute,
       changeVolume,
@@ -394,4 +464,102 @@ export default {
 
 <style scoped>
 @import "@/assets/css/AboutMe/NavBar.css";
+
+#me {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #111827;
+}
+
+/* 左栏样式 */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  flex: 0.8;
+  max-width: 45%;
+  height: auto;
+  align-self: flex-start;
+}
+/* 右栏样式 */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex: 1.2;
+  max-width: 50%;
+  height: 100%;
+  position: relative;
+}
+
+.lightspeed-wrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border-radius: 1rem;
+  border: 1px solid #374151;
+  overflow: hidden; /* 确保内容不溢出 */
+}
+
+/* 悬浮下拉框样式 */
+.floating-select {
+  position: absolute;
+  left: 1rem; /* 距离左边 */
+  bottom: 1rem; /* 距离底部 */
+  z-index: 50; /* 确保在 LightSpeed 之上 */
+}
+
+/* 下拉框触发器样式 */
+.floating-select-trigger {
+  background-color: rgba(31, 41, 55, 0.9) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(75, 85, 99, 0.7) !important;
+  border-radius: 0.5rem;
+}
+
+/* 确保下拉内容向上弹出 */
+:deep(.floating-select-content) {
+  z-index: 100 !important;
+  position: relative;
+}
+
+/* 如果使用 Tailwind，可能需要覆盖默认的弹出方向 */
+:deep([data-side="top"]) {
+  bottom: 100% !important;
+  top: auto !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  #me {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .left-column,
+  .right-column {
+    max-width: 100%;
+    flex: none;
+    width: 100%;
+  }
+
+  .right-column {
+    height: 60vh;
+  }
+
+  .floating-select {
+    left: 0.5rem;
+    bottom: 0.5rem;
+  }
+}
 </style>

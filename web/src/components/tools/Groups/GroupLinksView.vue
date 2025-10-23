@@ -1,20 +1,20 @@
 <template>
   <div class="relative h-screen w-full overflow-hidden">
     <VorTex
-        background-color="black"
-        :range-y="800"
-        :particle-count="500"
-        :base-hue="120"
-        class="absolute inset-0"
+      background-color="black"
+      :range-y="800"
+      :particle-count="500"
+      :base-hue="120"
+      class="absolute inset-0"
     >
       <div class="relative mx-auto grid h-full w-full grid-rows-[auto,1fr,auto] gap-4 px-4 py-4">
         <!-- 工具栏区域 -->
         <header class="row-start-1 row-end-2 flex items-center justify-between">
           <WaterButton
-              class="rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm text-white/80 hover:bg-white/20 transition-colors"
-              @click="router.back()"
+            class="rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm text-white/80 hover:bg-white/20 transition-colors"
+            @click="router.back()"
           >
-            <i class="iconfont icon-fanhui_fanhui text-white/80 text-base"/>
+            <i class="iconfont icon-fanhui_fanhui text-white/80 text-base" />
             Exit
           </WaterButton>
         </header>
@@ -24,72 +24,72 @@
           <!-- 使用自动行高，让内容自然流动 -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-4">
             <div
-                v-if="loading"
-                class="col-span-full grid place-items-center py-8 text-white/80"
+              v-if="loading"
+              class="col-span-full grid place-items-center py-8 text-white/80"
             >
               加载中…
             </div>
             <div
-                v-else-if="!links.length"
-                class="col-span-full grid place-items-center py-8 text-white/80"
+              v-else-if="!links.length"
+              class="col-span-full grid place-items-center py-8 text-white/80"
             >
               暂无数据
             </div>
 
             <!-- 卡片内容 -->
             <CardContainer
-                v-for="link in links"
-                :key="link.id"
-                class="min-h-[300px]"
-                @click="openAndTrack(link)"
+              v-for="link in links"
+              :key="link.id"
+              class="min-h-[300px]"
+              @click="openAndTrack(link)"
             >
               <CardBody
-                  class="group/card relative h-full rounded-xl border border-emerald-500/20 bg-gradient-to-br from-gray-800 to-gray-900 p-6 backdrop-blur-sm flex flex-col"
+                class="group/card relative h-full rounded-xl border border-emerald-500/20 bg-gradient-to-br from-gray-800 to-gray-900 p-6 backdrop-blur-sm flex flex-col"
               >
                 <CardItem
-                    :translate-z="50"
-                    class="text-xl font-bold text-white line-clamp-2"
+                  :translate-z="50"
+                  class="text-xl font-bold text-white line-clamp-2"
                 >
                   {{ link.title }}
                 </CardItem>
                 <CardItem
-                    as="p"
-                    translate-z="60"
-                    class="mt-2 flex-1 text-sm text-gray-300 line-clamp-3"
+                  as="p"
+                  translate-z="60"
+                  class="mt-2 flex-1 text-sm text-gray-300 line-clamp-3"
                 >
                   {{ link.description || '暂无描述' }}
                 </CardItem>
                 <CardItem
-                    :translate-z="100"
-                    :rotate-x="20"
-                    :rotate-z="-10"
-                    class="mt-4 w-full"
+                  :translate-z="100"
+                  :rotate-x="20"
+                  :rotate-z="-10"
+                  class="mt-4 w-full"
                 >
                   <img
-                      :src="link.ogImageUrl || '/placeholder-image.jpg'"
-                      height="1000"
-                      width="1000"
-                      class="h-40 w-full rounded-xl object-cover group-hover/card:shadow-xl"
-                      alt="thumbnail"
-                      @error="handleImageError"
+                    :src="link.ogImageUrl || '/placeholder-image.jpg'"
+                    height="1000"
+                    width="1000"
+                    class="h-40 w-full rounded-xl object-cover group-hover/card:shadow-xl"
+                    alt="thumbnail"
+                    @error="handleImageError"
                   >
                 </CardItem>
                 <div class="mt-4 flex items-center justify-between">
                   <CardItem
-                      :translate-z="20"
-                      :translate-x="-30"
-                      as="button"
-                      class="rounded-xl px-4 py-2 text-xs font-normal"
-                      @click.stop="openEditLinkModal(link)"
+                    :translate-z="20"
+                    :translate-x="-30"
+                    as="button"
+                    class="rounded-xl px-4 py-2 text-xs font-normal"
+                    @click.stop="openEditLinkModal(link)"
                   >
-                    <InteractiveHoverButton text="Modift"/>
+                    <InteractiveHoverButton text="Modift" />
                   </CardItem>
                   <CardItem
-                      :translate-z="20"
-                      :translate-x="30"
-                      as="button"
-                      class="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white dark:bg-white dark:text-black"
-                      @click.stop="openAndTrack(link)"
+                    :translate-z="20"
+                    :translate-x="30"
+                    as="button"
+                    class="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white dark:bg-white dark:text-black"
+                    @click.stop="openAndTrack(link)"
                   >
                     Start
                   </CardItem>
@@ -101,75 +101,75 @@
 
         <!-- 新的分页条（替换原有的） -->
         <nav
-            class="pagination-container"
-            aria-label="Pagination"
+          class="pagination-container"
+          aria-label="Pagination"
         >
           <!-- 首页按钮 -->
           <button
-              class="pagination-btn"
-              :disabled="page === 1"
-              title="首页"
-              @click="goto(1)"
+            class="pagination-btn"
+            :disabled="page === 1"
+            title="首页"
+            @click="goto(1)"
           >
-            <i class="fas fa-angle-double-left"/>
+            <i class="fas fa-angle-double-left" />
           </button>
 
           <!-- 上一页按钮 -->
           <button
-              class="pagination-btn"
-              :disabled="page === 1"
-              title="上一页"
-              @click="prev"
+            class="pagination-btn"
+            :disabled="page === 1"
+            title="上一页"
+            @click="prev"
           >
-            <i class="fas fa-angle-left"/>
+            <i class="fas fa-angle-left" />
           </button>
 
           <!-- 数字页码（带省略号） -->
           <template
-              v-for="item in pageList"
-              :key="item.key"
+            v-for="item in pageList"
+            :key="item.key"
           >
             <button
-                v-if="item.type === 'page'"
-                class="pagination-page"
-                :class="item.page === page ? 'active' : ''"
-                @click="goto(item.page!)"
+              v-if="item.type === 'page'"
+              class="pagination-page"
+              :class="item.page === page ? 'active' : ''"
+              @click="goto(item.page!)"
             >
               {{ item.page }}
             </button>
             <span
-                v-else
-                class="pagination-dots"
+              v-else
+              class="pagination-dots"
             >…</span>
           </template>
 
           <!-- 下一页按钮 -->
           <button
-              class="pagination-btn"
-              :disabled="page === totalPages"
-              title="下一页"
-              @click="next"
+            class="pagination-btn"
+            :disabled="page === totalPages"
+            title="下一页"
+            @click="next"
           >
-            <i class="fas fa-angle-right"/>
+            <i class="fas fa-angle-right" />
           </button>
 
           <!-- 末页按钮 -->
           <button
-              class="pagination-btn"
-              :disabled="page === totalPages"
-              title="末页"
-              @click="goto(totalPages)"
+            class="pagination-btn"
+            :disabled="page === totalPages"
+            title="末页"
+            @click="goto(totalPages)"
           >
-            <i class="fas fa-angle-double-right"/>
+            <i class="fas fa-angle-double-right" />
           </button>
 
           <!-- 页码信息 -->
           <div class="pagination-text">
             <span
-                v-if="loading"
-                class="loading-text"
+              v-if="loading"
+              class="loading-text"
             >
-              <div class="loading-indicator"/>
+              <div class="loading-indicator" />
               加载中...
             </span>
             <span v-else>
@@ -179,8 +179,12 @@
 
           <!--  新增按钮-->
           <div class="ml-auto">
-            <button @click="isAddLinkModalOpen = true" class="fab-add-link-side" title="新增链接">
-              <i class="iconfont icon-add"></i>
+            <button
+              class="fab-add-link-side"
+              title="新增链接"
+              @click="isAddLinkModalOpen = true"
+            >
+              <i class="iconfont icon-add" />
             </button>
           </div>
         </nav>
@@ -189,19 +193,18 @@
 
     <!--编辑模态框-->
     <LinkEditModal
-        v-model="isEditLinkModalOpen"
-        :link="selectedLink"
-        @link-updated="handleLinkUpdated"
-        @link-deleted="handleLinkDeleted"
+      v-model="isEditLinkModalOpen"
+      :link="selectedLink"
+      @link-updated="handleLinkUpdated"
+      @link-deleted="handleLinkDeleted"
     />
 
     <!--    新建连接模态框-->
     <LinkAddModal
-        v-model="isAddLinkModalOpen"
-        :group-id="groupId"
-        @link-created="handleLinkCreated"
+      v-model="isAddLinkModalOpen"
+      :group-id="groupId"
+      @link-created="handleLinkCreated"
     />
-
   </div>
 </template>
 

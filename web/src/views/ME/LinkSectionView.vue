@@ -1,36 +1,51 @@
 <template>
   <!--  新增分组按钮-->
   <div class="fixed bottom-10 right-10 z-20">
-    <button @click="isAddModalOpen = true" class="add-group-button">
+    <button
+      class="add-group-button"
+      @click="isAddModalOpen = true"
+    >
       <div class="button-content">
-        <svg class="add-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        <svg
+          class="add-icon"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          />
         </svg>
-        <div class="button-glow"></div>
-        <div class="pulse-ring"></div>
+        <div class="button-glow" />
+        <div class="pulse-ring" />
       </div>
-      <div class="tooltip">新建分组</div>
+      <div class="tooltip">
+        新建分组
+      </div>
     </button>
   </div>
 
   <!--  分组-->
   <BentoGrid class="grid w-full auto-rows-[18rem] grid-cols-4 gap-4 lg:grid-rows-4">
     <BentoGridCard
-        v-for="(feature, index) in features"
-        :key="index"
-        v-bind="feature"
-        :class="feature.class"
-        @click="openGroup(feature, $event)"
-        @settings-click="openSettingsModal(feature.groupId)"
+      v-for="(feature, index) in features"
+      :key="index"
+      v-bind="feature"
+      :class="feature.class"
+      @click="openGroup(feature, $event)"
+      @settings-click="openSettingsModal(feature.groupId)"
     >
       <template
-          v-if="feature.image"
-          #background
+        v-if="feature.image"
+        #background
       >
         <div class="absolute inset-0 overflow-hidden">
           <div
-              class="w-full h-full transition-all duration-300 ease-in-out transform opacity-90 group-hover:opacity-20 group-hover:scale-105"
-              :style="{
+            class="w-full h-full transition-all duration-300 ease-in-out transform opacity-90 group-hover:opacity-20 group-hover:scale-105"
+            :style="{
               backgroundImage: `url('${feature.image}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -44,75 +59,75 @@
 
   <!--  分页按钮-->
   <nav
-      class="pagination-container"
-      aria-label="Pagination"
+    class="pagination-container"
+    aria-label="Pagination"
   >
     <!-- 首页按钮 -->
     <button
-        class="pagination-btn"
-        :disabled="page === 1"
-        title="首页"
-        @click="goto(1)"
+      class="pagination-btn"
+      :disabled="page === 1"
+      title="首页"
+      @click="goto(1)"
     >
-      <i class="fas fa-angle-double-left"/>
+      <i class="fas fa-angle-double-left" />
     </button>
 
     <!-- 上一页按钮 -->
     <button
-        class="pagination-btn"
-        :disabled="page === 1"
-        title="上一页"
-        @click="prev"
+      class="pagination-btn"
+      :disabled="page === 1"
+      title="上一页"
+      @click="prev"
     >
-      <i class="fas fa-angle-left"/>
+      <i class="fas fa-angle-left" />
     </button>
 
     <!-- 数字页码（带省略号） -->
     <template
-        v-for="item in pageList"
-        :key="item.key"
+      v-for="item in pageList"
+      :key="item.key"
     >
       <button
-          v-if="item.type === 'page'"
-          class="pagination-page"
-          :class="item.page === page ? 'active' : ''"
-          @click="goto(item.page!)"
+        v-if="item.type === 'page'"
+        class="pagination-page"
+        :class="item.page === page ? 'active' : ''"
+        @click="goto(item.page!)"
       >
         {{ item.page }}
       </button>
       <span
-          v-else
-          class="pagination-dots"
+        v-else
+        class="pagination-dots"
       >…</span>
     </template>
 
     <!-- 下一页按钮 -->
     <button
-        class="pagination-btn"
-        :disabled="page === totalPages"
-        title="下一页"
-        @click="next"
+      class="pagination-btn"
+      :disabled="page === totalPages"
+      title="下一页"
+      @click="next"
     >
-      <i class="fas fa-angle-right"/>
+      <i class="fas fa-angle-right" />
     </button>
 
     <!-- 末页按钮 -->
     <button
-        class="pagination-btn"
-        :disabled="page === totalPages"
-        title="末页"
-        @click="goto(totalPages)"
+      class="pagination-btn"
+      :disabled="page === totalPages"
+      title="末页"
+      @click="goto(totalPages)"
     >
-      <i class="fas fa-angle-double-right"/>
+      <i class="fas fa-angle-double-right" />
     </button>
 
     <!-- 页码信息 -->
     <div class="pagination-text">
       <span
-          v-if="loading"
-          class="loading-text"
+        v-if="loading"
+        class="loading-text"
       >
-        <div class="loading-indicator"/>
+        <div class="loading-indicator" />
         加载中...
       </span>
       <span v-else>
@@ -123,20 +138,17 @@
 
   <!--  设置模态框-->
   <GroupSettingsModal
-      v-model="isSettingModalOpen"
-      :group="selectedGroup"
-      @group-updated="handleGroupUpdated"
-      @group-deleted="handleGroupDeleted"
-  >
-  </GroupSettingsModal>
+    v-model="isSettingModalOpen"
+    :group="selectedGroup"
+    @group-updated="handleGroupUpdated"
+    @group-deleted="handleGroupDeleted"
+  />
 
   <!--    新增模态框-->
   <GroupAddModal
-      v-model="isAddModalOpen"
-      @group-created="handleGroupCreated"
-  >
-
-  </GroupAddModal>
+    v-model="isAddModalOpen"
+    @group-created="handleGroupCreated"
+  />
 </template>
 
 <script lang="ts" setup>
