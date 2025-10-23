@@ -44,6 +44,7 @@ const routes = [
         component: omltwoD,
         meta: {
             requestAuth: false,
+            hideGlobalWidget: true,
         },
     }
 ]

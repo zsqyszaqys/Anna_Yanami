@@ -1,25 +1,25 @@
 <template>
   <div class="relative w-full h-screen overflow-hidden custom-background">
-<!--  返回主页-->
+    <!--  返回主页-->
     <div class="absolute top-4 left-4 z-20">
       <GradientButton @click="handleGradientButtonClick">
-        <i class="iconfont icon-fanhui_fanhui mr-2" />
+        <i class="iconfont icon-fanhui_fanhui mr-2"/>
         返回主页
       </GradientButton>
     </div>
 
     <!-- Live2D 舞台：置底 -->
     <div
-      ref="oml2dRes"
-      class="absolute inset-0"
+        ref="oml2dRes"
+        class="absolute inset-0"
     />
 
     <!-- Slider 组件 -->
     <div class="absolute left-8 top-20 z-10 w-[560px] max-w-[45vw]">
       <TestimonialSlider
-        class="slider"
-        :testimonials="testimonials"
-        @model-change="loadModelByIndex"
+          class="slider"
+          :testimonials="testimonials"
+          @model-change="loadModelByIndex"
       />
     </div>
   </div>
@@ -88,7 +88,7 @@ const handleGradientButtonClick = () => {
   if (oml2dInstance) {
     oml2dInstance.tipsMessage('你要离开我吗?再陪我一秒好不好', 3000, 10);
   }
-  setTimeout(()=>{
+  setTimeout(() => {
     router.back()
   }, 1000);
 }
@@ -217,7 +217,7 @@ const initLive2D = () => {
 
         return newItems;
       },
-      style:{
+      style: {
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         backdropFilter: 'blur(12px)',
         border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -225,12 +225,12 @@ const initLive2D = () => {
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
       },
     },
-    statusBar:{
-      style:{
-        zIndex:100,
+    statusBar: {
+      style: {
+        zIndex: 100,
       },
     },
-    tips:(_, modelIndex)=>{
+    tips: (_, modelIndex) => {
       const characterMessages = {
         0: [ // 芙宁娜
           "欢迎来到水的国度~",
@@ -276,9 +276,9 @@ const initLive2D = () => {
         ]
       };
 
-      return{
+      return {
         style: {
-          zIndex:100,
+          zIndex: 100,
           pointerEvents: 'none',
           // 背景和边框
           backgroundColor: "rgba(255, 255, 255, 0.4)",
@@ -309,7 +309,7 @@ const initLive2D = () => {
           // 文字阴影
           textShadow: "0 1px 2px rgba(255, 255, 255, 0.8)",
         },
-        copyTips:{
+        copyTips: {
           message: [
             "复制了什么有趣的内容呢？🎉",
             "记得要注明出处哦~ 📝",
@@ -318,13 +318,13 @@ const initLive2D = () => {
           ],
           priority: 10,
         },
-        idleTips:{
-          message:characterMessages[modelIndex],
-          interval:10000,
-          wordTheDay:true,
-          priority:2,
+        idleTips: {
+          message: characterMessages[modelIndex],
+          interval: 10000,
+          wordTheDay: true,
+          priority: 2,
         },
-        messageLine:4,
+        messageLine: 4,
       }
     }
   });
@@ -398,7 +398,8 @@ onMounted(() => {
     background-attachment: scroll; /* 移动端取消固定背景 */
   }
 }
-.slider{
+
+.slider {
   opacity: 0.6;
 }
 

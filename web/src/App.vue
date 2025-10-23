@@ -7,6 +7,7 @@
     class="global-github-corner"
   />
   <SleekLineCursor />
+  <Live2DWidget v-if="!$route.meta.hideGlobalWidget"></Live2DWidget>
   <router-view />
 </template>
 
@@ -14,12 +15,14 @@
 import { defineComponent } from 'vue';
 import GithubCorners from '@uivjs/vue-github-corners';
 import SleekLineCursor from "@/components/tools/cursor/SleekLineCursor.vue";
+import Live2DWidget from "@/components/tools/live/Live2DWidget.vue";
 import "@/assets/fonts/iconfont.css";
 
 export default defineComponent({
   components: {
     GithubCorners,
     SleekLineCursor,
+    Live2DWidget,
   }
 });
 </script>
