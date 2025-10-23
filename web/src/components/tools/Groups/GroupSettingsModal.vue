@@ -109,7 +109,7 @@
             class="button button-danger"
             :class="{ 'button-loading': isDeleting }"
             :disabled="isDeleting"
-            @click="handleDelete"
+            @click="showDeleteConfirm"
         >
           <span class="button-content">
             <svg v-if="isDeleting" class="button-spinner" fill="none" viewBox="0 0 24 24">
@@ -125,10 +125,22 @@
       </div>
     </div>
   </div>
+
+  <!-- 自定义 Confirm 组件 -->
+  <CustomConfirm
+      v-model:visible="showConfirm"
+      :title="confirmTitle"
+      :message="confirmMessage"
+      :type="confirmType"
+      :confirm-text="confirmButtonText"
+      @confirm="handleConfirm"
+      @cancel="handleConfirmCancel"
+  />
 </template>
 
 <script lang="ts" setup>
 import { ref, watch, type PropType } from 'vue';
+import CustomConfirm from '@/components/tools/CustomConfirm.vue';
 
 // 前端使用的 Group 类型，全部用驼峰式
 interface Group {
@@ -161,6 +173,16 @@ const editableGroup = ref<Partial<Group>>({});
 const isUpdating = ref(false);
 const isDeleting = ref(false);
 
+// Confirm 相关状态
+const showConfirm = ref(false);
+const confirmTitle = ref('');
+const confirmMessage = ref('');
+const confirmType = ref<'success' | 'error' | 'warning'>('warning');
+const confirmButtonText = ref('确定');
+
+// 操作类型标识
+let currentAction = '';
+
 watch(() => props.group, (newGroup) => {
   if (newGroup) {
     editableGroup.value = { ...newGroup };
@@ -171,7 +193,39 @@ function close() {
   emit('update:modelValue', false);
 }
 
-const API_BASE_URL = 'http://localhost:3000/api/me'; // 后端 API 基础路径
+function showCustomConfirm(title: string, message: string, type: 'success' | 'error' | 'warning' = 'warning', action = '', confirmText = '确定') {
+  confirmTitle.value = title;
+  confirmMessage.value = message;
+  confirmType.value = type;
+  confirmButtonText.value = confirmText;
+  currentAction = action;
+  showConfirm.value = true;
+}
+
+function handleConfirm() {
+  if (currentAction === 'delete') {
+    performDelete();
+  }
+}
+
+function handleConfirmCancel() {
+  // 取消操作，不需要做任何事情
+  currentAction = '';
+}
+
+function showDeleteConfirm() {
+  if (!props.group) return;
+
+  showCustomConfirm(
+      '确认删除',
+      `确定要删除分组 "${props.group.name}" 吗？此操作不可撤销，所有相关数据将永久丢失。`,
+      'warning',
+      'delete',
+      '确认删除'
+  );
+}
+
+const API_BASE_URL = 'http://localhost:3000/api/me';
 
 async function handleUpdate() {
   if (!props.group || isUpdating.value) return;
@@ -191,34 +245,29 @@ async function handleUpdate() {
         slug: editableGroup.value.slug,
         color: editableGroup.value.color,
         icon: editableGroup.value.icon,
-        order_index: editableGroup.value.orderIndex, // 转换
-        is_pinned: editableGroup.value.isPinned,     // 转换
+        order_index: editableGroup.value.orderIndex,
+        is_pinned: editableGroup.value.isPinned,
       })
     });
 
     const result = await response.json();
 
-    // 根据你的统一返回格式进行判断
     if (!response.ok || result.status === false) {
       throw new Error(result.message || '更新失败');
     }
 
     emit('group-updated');
-    alert('分组更新成功！');
+    showCustomConfirm('操作成功', '分组更新成功！', 'success');
     close();
   } catch (error: any) {
-    alert(`更新失败: ${error.message}`);
+    showCustomConfirm('操作失败', `更新失败: ${error.message}`, 'error');
   } finally {
     isUpdating.value = false;
   }
 }
 
-async function handleDelete() {
+async function performDelete() {
   if (!props.group || isDeleting.value) return;
-
-  if (!window.confirm(`确定要删除分组 "${props.group.name}" 吗？此操作不可撤销。`)) {
-    return;
-  }
 
   isDeleting.value = true;
   try {
@@ -237,10 +286,10 @@ async function handleDelete() {
     }
 
     emit('group-deleted', props.group.id);
-    alert('分组删除成功！');
+    showCustomConfirm('操作成功', '分组删除成功！', 'success');
     close();
   } catch (error: any) {
-    alert(`删除失败: ${error.message}`);
+    showCustomConfirm('操作失败', `删除失败: ${error.message}`, 'error');
   } finally {
     isDeleting.value = false;
   }

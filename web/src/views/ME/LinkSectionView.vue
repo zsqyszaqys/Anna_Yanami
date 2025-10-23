@@ -1,12 +1,15 @@
 <template>
-  <!--  新增分组-->
-  <div class="fixed top-5 right-5 z-20">
+  <!--  新增分组按钮-->
+  <div class="fixed bottom-10 right-10 z-20">
     <button @click="isAddModalOpen = true" class="add-group-button">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2">
-        <path
-            d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
-      </svg>
-      新建分组
+      <div class="button-content">
+        <svg class="add-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        <div class="button-glow"></div>
+        <div class="pulse-ring"></div>
+      </div>
+      <div class="tooltip">新建分组</div>
     </button>
   </div>
 
@@ -543,23 +546,243 @@ onMounted(fetchGroups);
   }
 }
 
-add-group-button {
-  display: inline-flex;
+/* Groups.vue */
+.add-group-button {
+  /* 基本样式 */
+  display: flex;
   align-items: center;
-  padding: 0.75rem 1.5rem;
-  background-color: #38a169; /* 绿色 */
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  font-weight: 600;
-  border-radius: 12px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(56, 161, 105, 0.4);
-  transition: all 0.3s ease;
+
+  /* 尺寸和形状 */
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+  /* 阴影和过渡 */
+  box-shadow:
+      0 8px 25px rgba(102, 126, 234, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* 定位和层级 */
+  position: relative;
+  overflow: hidden;
 }
 
+.button-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.add-icon {
+  width: 28px;
+  height: 28px;
+  color: white;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  z-index: 1;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  animation: pulse 3s infinite;
+  opacity: 0;
+  z-index: 0;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.8);
+  transform: translateX(-50%);
+}
+
+/* 悬停效果 */
 .add-group-button:hover {
-  background-color: #2f855a;
-  box-shadow: 0 6px 20px rgba(56, 161, 105, 0.5);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow:
+      0 12px 35px rgba(102, 126, 234, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.add-group-button:hover .add-icon {
+  transform: scale(1.1) rotate(90deg);
+}
+
+.add-group-button:hover .button-glow {
+  width: 80px;
+  height: 80px;
+  opacity: 1;
+}
+
+.add-group-button:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 点击效果 */
+.add-group-button:active {
+  transform: translateY(-2px) scale(1.02);
+  transition: transform 0.1s ease;
+}
+
+.add-group-button:active .add-icon {
+  transform: scale(0.95) rotate(45deg);
+}
+
+/* 焦点状态（无障碍支持） */
+.add-group-button:focus {
+  outline: none;
+  box-shadow:
+      0 0 0 3px rgba(102, 126, 234, 0.4),
+      0 12px 35px rgba(102, 126, 234, 0.6);
+}
+
+.add-group-button:focus:not(:hover) {
+  transform: scale(1.05);
+}
+
+/* 脉动动画 */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* 可选：添加微妙的浮动动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.add-group-button {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .add-group-button {
+    width: 56px;
+    height: 56px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .add-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tooltip {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .add-group-button {
+    box-shadow:
+        0 8px 25px rgba(102, 126, 234, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .add-group-button:hover {
+    box-shadow:
+        0 12px 35px rgba(102, 126, 234, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* 加载状态（如果需要的话） */
+.add-group-button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.add-group-button.loading .add-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

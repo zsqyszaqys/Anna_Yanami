@@ -1,5 +1,4 @@
 <template>
-  <!-- 模态框容器，v-if 控制显示/隐藏 -->
   <div v-if="modelValue" class="modal-overlay" @click.self="close">
     <div class="modal-content">
       <!-- 头部 -->
@@ -7,18 +6,19 @@
         <div class="header-content">
           <div class="title-section">
             <div class="icon-wrapper">
-              <svg class="create-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              <svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
               </svg>
             </div>
             <div>
-              <h3 class="modal-title">新建分组</h3>
-              <p class="create-subtitle">创建一个新的内容分组</p>
+              <h3 class="modal-title">新增链接</h3>
+              <p class="modal-subtitle">添加到当前分组</p>
             </div>
           </div>
           <button class="close-button" @click="close">
             <svg class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
         </div>
@@ -26,20 +26,20 @@
 
       <!-- 表单区域 -->
       <div class="modal-body">
-        <form @submit.prevent="handleCreate" class="create-form">
-          <!-- 分组名称 -->
+        <form @submit.prevent="handleCreate" class="link-form">
+          <!-- 标题 -->
           <div class="form-group">
-            <label for="new-group-name" class="form-label">
-              <span class="label-text">分组名称</span>
+            <label for="link-title" class="form-label">
+              <span class="label-text">标题</span>
               <span class="required-indicator">*</span>
             </label>
             <div class="input-wrapper">
               <input
-                  id="new-group-name"
-                  v-model="newGroup.name"
+                  id="link-title"
+                  v-model="newLink.title"
                   type="text"
                   class="form-input"
-                  placeholder="为分组起一个好听的名字..."
+                  placeholder="输入链接标题..."
                   required
                   :disabled="isCreating"
               >
@@ -47,25 +47,64 @@
             </div>
           </div>
 
-          <!-- 描述信息 -->
+          <!-- URL -->
           <div class="form-group">
-            <label for="new-group-description" class="form-label">
-              <span class="label-text">描述信息</span>
+            <label for="link-url" class="form-label">
+              <span class="label-text">URL 地址</span>
+              <span class="required-indicator">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input
+                  id="link-url"
+                  v-model="newLink.url"
+                  type="url"
+                  class="form-input"
+                  placeholder="https://example.com"
+                  required
+                  :disabled="isCreating"
+              >
+              <div class="input-focus-border"></div>
+            </div>
+          </div>
+
+          <!-- 描述 -->
+          <div class="form-group">
+            <label for="link-description" class="form-label">
+              <span class="label-text">描述</span>
               <span class="optional-indicator">可选</span>
             </label>
             <div class="input-wrapper">
               <textarea
-                  id="new-group-description"
-                  v-model="newGroup.description"
+                  id="link-description"
+                  v-model="newLink.description"
                   rows="3"
                   class="form-textarea"
-                  placeholder="描述这个分组的用途或特点..."
+                  placeholder="链接的简短描述..."
                   :disabled="isCreating"
               ></textarea>
               <div class="input-focus-border"></div>
             </div>
-            <div class="character-count" v-if="newGroup.description">
-              {{ newGroup.description.length }}/200
+            <div class="character-count" v-if="newLink.description">
+              {{ newLink.description.length }}/200
+            </div>
+          </div>
+
+          <!-- OG 图片地址 -->
+          <div class="form-group">
+            <label for="link-og-image" class="form-label">
+              <span class="label-text">图片地址</span>
+              <span class="optional-indicator">可选</span>
+            </label>
+            <div class="input-wrapper">
+              <input
+                  id="link-og-image"
+                  v-model="newLink.ogImageUrl"
+                  type="text"
+                  class="form-input"
+                  placeholder="输入图片的 URL"
+                  :disabled="isCreating"
+              >
+              <div class="input-focus-border"></div>
             </div>
           </div>
 
@@ -75,7 +114,7 @@
                 type="submit"
                 class="button button-primary"
                 :class="{ 'button-loading': isCreating }"
-                :disabled="isCreating || !newGroup.name.trim()"
+                :disabled="isCreating || !newLink.title.trim() || !newLink.url.trim()"
             >
               <span class="button-content">
                 <svg v-if="isCreating" class="button-spinner" fill="none" viewBox="0 0 24 24">
@@ -83,9 +122,9 @@
                   <path class="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                 </svg>
                 <svg v-else class="button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                 </svg>
-                {{ isCreating ? '创建中...' : '创建分组' }}
+                {{ isCreating ? '创建中...' : '创建链接' }}
               </span>
             </button>
           </div>
@@ -93,57 +132,62 @@
       </div>
     </div>
   </div>
-
-  <!-- 自定义 Alert 组件 -->
-  <CustomConfirm
+  <custom-confirm
       v-model:visible="showAlert"
       :title="alertTitle"
       :message="alertMessage"
       :type="alertType"
       @close="handleAlertClose"
-  />
+  >
+
+  </custom-confirm>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import {ref, watch} from 'vue';
 import CustomConfirm from "@/components/tools/CustomConfirm.vue";
 
-// 定义要创建的分组对象结构
-interface NewGroup {
-  name: string;
+// 定义要创建的链接对象结构
+interface NewLink {
+  title: string;
+  url: string;
   description?: string;
-  // 可以添加 order_index, is_pinned 等
+  ogImageUrl?: string;
+  isFavorite: boolean;
 }
 
-// 这个组件只需要一个 v-model prop 来控制显示
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    required: true,
-  },
-});
-
-const emit = defineEmits(['update:modelValue', 'group-created']);
-
-// 用于绑定表单数据的 ref，并提供初始值
-const newGroup = ref<NewGroup>({
-  name: '',
-  description: '',
-});
-
-const isCreating = ref(false);
-
-// Alert 相关状态
 const showAlert = ref(false);
 const alertTitle = ref('');
 const alertMessage = ref('');
 const alertType = ref<'success' | 'error'>('success');
 
-function close() {
-  emit('update:modelValue', false);
-  // 关闭时重置表单，以便下次打开是干净的
-  newGroup.value = { name: '', description: '' };
-}
+const props = defineProps({
+  // v-model 控制显示
+  modelValue: {
+    type: Boolean,
+    required: true,
+  },
+  // 需要知道要添加到哪个分组
+  groupId: {
+    type: Number,
+    required: true,
+  },
+});
+
+const emit = defineEmits(['update:modelValue', 'link-created']);
+
+// 用于表单绑定的 ref
+const initialFormState = {
+  title: '',
+  url: '',
+  description: '',
+  ogImageUrl: '',
+  isFavorite: false,
+};
+
+const newLink = ref<NewLink>({...initialFormState});
+
+const isCreating = ref(false);
 
 function showCustomAlert(title: string, message: string, type: 'success' | 'error' = 'success') {
   alertTitle.value = title;
@@ -156,13 +200,28 @@ function handleAlertClose() {
   showAlert.value = false;
 }
 
+function close() {
+  emit('update:modelValue', false);
+}
+
+// 每次打开时，重置表单
+watch(() => props.modelValue, (isOpen) => {
+  if (isOpen) {
+    newLink.value = {...initialFormState};
+  }
+});
+
 async function handleCreate() {
-  if (!newGroup.value.name.trim() || isCreating.value) return;
+  if (!newLink.value.title.trim() || !newLink.value.url.trim() || isCreating.value) {
+    alert('标题和 URL 是必填项！');
+    return;
+  }
 
   isCreating.value = true;
   try {
-    // API 调用 POST /api/me/groups
-    const response = await fetch('http://localhost:3000/api/me/groups', {
+    // API 调用 POST /api/me/links
+    // 你的后端文档指明了需要 groupId
+    const response = await fetch('http://localhost:3000/api/me/links', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -170,23 +229,22 @@ async function handleCreate() {
       },
       credentials: 'include',
       body: JSON.stringify({
-        name: newGroup.value.name,
-        description: newGroup.value.description,
-        // 如果需要，可以在这里发送 order_index, is_pinned 等
+        groupId: props.groupId, // 关键！
+        ...newLink.value,
       }),
     });
 
     const result = await response.json();
     if (!response.ok || result.status === false) {
-      throw new Error(result.message || '创建失败');
+      throw new Error(result.message || '创建链接失败');
     }
 
-    // 通知父组件创建成功
-    emit('group-created');
-    showCustomAlert('创建成功', '分组创建成功！', 'success');
+    emit('link-created');
+    showCustomAlert("创建成功","链接创建成功", "success");
     close();
   } catch (error: any) {
     showCustomAlert('创建失败', `创建失败: ${error.message}`, 'error');
+    console.error(error);
   } finally {
     isCreating.value = false;
   }
@@ -215,10 +273,9 @@ async function handleCreate() {
   padding: 0;
   border-radius: 20px;
   width: 90%;
-  max-width: 480px;
-  box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.1);
+  max-width: 520px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+  0 0 0 1px rgba(255, 255, 255, 0.1);
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
@@ -242,7 +299,7 @@ async function handleCreate() {
 }
 
 .icon-wrapper {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
   padding: 0.5rem;
   border-radius: 12px;
   display: flex;
@@ -250,7 +307,7 @@ async function handleCreate() {
   justify-content: center;
 }
 
-.create-icon {
+.link-icon {
   width: 1.5rem;
   height: 1.5rem;
   color: white;
@@ -264,7 +321,7 @@ async function handleCreate() {
   line-height: 1.2;
 }
 
-.create-subtitle {
+.modal-subtitle {
   font-size: 0.875rem;
   color: #a0aec0;
   margin: 0;
@@ -298,7 +355,7 @@ async function handleCreate() {
   padding: 2rem;
 }
 
-.create-form {
+.link-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -354,9 +411,9 @@ async function handleCreate() {
 
 .form-input:focus, .form-textarea:focus {
   outline: none;
-  border-color: #48bb78;
+  border-color: #4299e1;
   background: rgba(26, 32, 44, 0.9);
-  box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 .form-input::placeholder, .form-textarea::placeholder {
@@ -369,7 +426,7 @@ async function handleCreate() {
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #48bb78, #4299e1);
+  background: linear-gradient(90deg, #4299e1, #667eea);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -386,10 +443,80 @@ async function handleCreate() {
   margin-top: 0.25rem;
 }
 
+/* 自定义复选框样式 */
+.checkbox-group {
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.checkbox-label:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4a5568;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: rgba(26, 32, 44, 0.8);
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  border-color: #48bb78;
+}
+
+.checkbox-input:checked + .checkbox-custom .check-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.check-icon {
+  width: 14px;
+  height: 14px;
+  color: white;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+.checkbox-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .button {
@@ -421,14 +548,14 @@ async function handleCreate() {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
 }
 
 .button-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+  box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
 }
 
 .button-icon {
@@ -492,6 +619,19 @@ async function handleCreate() {
 
   .modal-body {
     padding: 1.5rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .title-section {
+    width: 100%;
+  }
+
+  .close-button {
+    align-self: flex-end;
   }
 }
 </style>
