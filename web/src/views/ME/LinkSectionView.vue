@@ -1,6 +1,6 @@
 <template>
   <!--  新增分组按钮-->
-  <div class="fixed bottom-10 right-10 z-20">
+  <div v-if="hasToken" class="fixed bottom-10 right-10 z-20">
     <button
       class="add-group-button"
       @click="isAddModalOpen = true"
@@ -157,6 +157,7 @@ import {ref, computed, onMounted, watch} from "vue";
 import router from "@/router";
 import GroupSettingsModal from "@/components/tools/Groups/GroupSettingsModal.vue";
 import GroupAddModal from "@/components/tools/Groups/GroupAddModal.vue";
+import store from "@/store";
 
 type Group = {
   id: number;
@@ -198,6 +199,24 @@ const page = ref(1);
 const pageSize = ref(10); // 固定每页显示10条
 const total = computed(() => groups.value.length);
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / pageSize.value)));
+
+const hasToken = ref(false);
+
+const checkAuth = () => {
+  let jwt_token = localStorage.getItem('jwt_token');
+  if(jwt_token){
+    store.dispatch("getInfo", {
+      success() {
+        hasToken.value = true;
+      },
+      error() {
+        hasToken.value = false;
+      }
+    })
+  }else{
+    hasToken.value = false;
+  }
+};
 
 watch(totalPages, (tp) => {
   if (page.value > tp) page.value = tp;
@@ -243,8 +262,6 @@ function handleGroupCreated(){
   console.log("新分组已创建，正在重新拉取列表...");
   fetchGroups();
 }
-
-
 
 function goto(p: number) {
   const clamped = Math.min(Math.max(1, p), totalPages.value);
@@ -366,7 +383,7 @@ async function fetchGroups() {
   loading.value = true;
   error.value = null;
   try {
-    const res = await fetch("http://localhost:3000/api/me/groups", {
+    const res = await fetch("https://app7510.acapp.acwing.com.cn/api/me/groups", {
       method: "GET",
       headers: {Accept: "application/json"},
       credentials: "include",
@@ -412,6 +429,11 @@ function openGroup(f: Feature, e?: MouseEvent) {
 watch([groups, page, pageSize], () => getFeatures());
 
 onMounted(fetchGroups);
+
+onMounted(() => {
+  checkAuth();
+});
+
 </script>
 
 <style scoped>

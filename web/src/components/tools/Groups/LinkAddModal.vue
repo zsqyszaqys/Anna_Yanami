@@ -294,7 +294,7 @@ async function handleCreate() {
   try {
     // API 调用 POST /api/me/links
     // 你的后端文档指明了需要 groupId
-    const response = await fetch('http://localhost:3000/api/me/links', {
+    const response = await fetch('https://app7510.acapp.acwing.com.cn/api/me/links', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

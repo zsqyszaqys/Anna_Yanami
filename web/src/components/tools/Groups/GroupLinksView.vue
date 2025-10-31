@@ -82,7 +82,7 @@
                     class="rounded-xl px-4 py-2 text-xs font-normal"
                     @click.stop="openEditLinkModal(link)"
                   >
-                    <InteractiveHoverButton text="Modift" />
+                    <InteractiveHoverButton v-if="isShow" text="Modift" />
                   </CardItem>
                   <CardItem
                     :translate-z="20"
@@ -178,7 +178,7 @@
           </div>
 
           <!--  新增按钮-->
-          <div class="ml-auto">
+          <div v-if="isShow" class="ml-auto">
             <button
               class="fab-add-link-side"
               title="新增链接"
@@ -210,7 +210,8 @@
 
 <script setup lang="ts">
 import {useRoute, useRouter} from 'vue-router';
-import {ref, computed, watch} from 'vue';
+import {ref, computed, watch, onMounted} from 'vue';
+import store from "@/store";
 
 import CardBody from "@/components/tools/Card/CardBody.vue";
 import CardContainer from "@/components/tools/Card/CardContainer.vue";
@@ -259,6 +260,23 @@ type Link = {
 
 type Page<T> = { records: T[]; total: number; size: number; current: number };
 
+const isShow = ref(false);
+
+const check = () => {
+  let jwt_token = localStorage.getItem('jwt_token');
+  if(jwt_token){
+    store.dispatch("getInfo", {
+      success() {
+        isShow.value = true;
+      },
+      error() {
+        isShow.value = true;
+      }
+    })
+  }else{
+    isShow.value = false;
+  }
+}
 
 // DTO -> 业务类型：把字符串日期转为 Date
 function toLink(d: LinkDTO): Link {
@@ -354,7 +372,7 @@ async function fetchLinks() {
       ...(q.value && {q: q.value}) // 如果有搜索词就添加
     });
 
-    const url = `http://localhost:3000/api/me/groups/${groupId.value}/links?${searchParams}`;
+    const url = `https://app7510.acapp.acwing.com.cn/api/me/groups/${groupId.value}/links?${searchParams}`;
     const res = await fetch(url, {
       headers: {Accept: 'application/json'},
       credentials: 'include'
@@ -416,7 +434,7 @@ async function openAndTrack(link: Link) {
   window.open(link.url, '_blank');
   try {
     await fetch(
-        `http://localhost:3000/api/me/links/${link.id}/click`,
+        `https://app7510.acapp.acwing.com.cn/api/me/links/${link.id}/click`,
         {method: 'POST', headers: {Accept: 'application/json'}, credentials: 'include'}
     );
     // 更新点击计数
@@ -463,6 +481,10 @@ function openEditLinkModal(link: Link) {
 
 // 监听参数变化，重新加载数据
 watch([groupId, pageNo, pageSize, sort, q], fetchLinks, {immediate: true});
+
+onMounted(()=>{
+  check();
+})
 
 </script>
 

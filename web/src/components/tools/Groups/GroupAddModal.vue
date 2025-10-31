@@ -232,7 +232,7 @@ async function handleCreate() {
   isCreating.value = true;
   try {
     // API 调用 POST /api/me/groups
-    const response = await fetch('http://localhost:3000/api/me/groups', {
+    const response = await fetch('https://app7510.acapp.acwing.com.cn/api/me/groups', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -9,7 +9,6 @@
           :class="{ active: activeSection === 'logo' }"
         >
           <a
-            href="#"
             @click="setActive('logo')"
           >
             <div class="icon">
@@ -31,7 +30,6 @@
           :class="{ active: activeSection === item.id }"
         >
           <a
-            :href="'#' + item.id"
             @click="setActive(item.id)"
           >
             <div class="icon">
@@ -43,7 +41,6 @@
 
         <li :class="{ active: activeSection === 'me' }">
           <a
-            href="#me"
             @click="setActive('me')"
           >
             <div class="icon">

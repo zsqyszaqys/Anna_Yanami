@@ -1,144 +1,146 @@
 <template>
-  <div class="shell">
-    <!--    注册表单-->
-    <div
-      id="a-container"
-      class="container a-container"
-    >
-      <form
-        id="a-form"
-        class="form"
-      >
-        <h2 class="form_title title">
-          创建账号
-        </h2>
-        <span class="form_span">使用电子邮箱注册喵~</span>
-        <input
-          v-model="name"
-          type="text"
-          class="form_input"
-          placeholder="Name"
-        >
-        <input
-          v-model="email"
-          type="text"
-          class="form_input"
-          placeholder="Email"
-        >
-        <input
-          v-model="password"
-          type="password"
-          class="form_input"
-          placeholder="Password"
-        >
-        <div
-          v-show="error_message"
-          class="error_message"
-        >
-          {{ error_message }}
-        </div>
-        <WaterButton
-          class="form_button button submit"
-          @click="register"
-        >
-          SIGN UP
-        </WaterButton>
-      </form>
-    </div>
-
-    <!--    登录表单-->
-    <div
-      id="b-container"
-      class="container b-container"
-    >
-      <form
-        id="b-form"
-        class="form"
-      >
-        <h2 class="form_title title">
-          登入账号
-        </h2>
-        <span class="form_span">使用用户名、邮箱或手机号登录喵~</span>
-        <input
-          v-model="email"
-          type="text"
-          class="form_input"
-          placeholder="邮箱"
-        >
-        <input
-          v-model="password"
-          type="password"
-          class="form_input"
-          placeholder="密码"
-        >
-        <div
-          v-show="error_message"
-          class="error_message"
-        >
-          {{ error_message }}
-        </div>
-        <a class="form_link">忘记密码？</a>
-        <WaterButton
-          class="form_button button submit"
-          @click="login"
-        >
-          SIGN IN
-        </WaterButton>
-      </form>
-    </div>
-
-    <div
-      id="switch-cnt"
-      class="switch"
-    >
-      <!-- 背景图片层 -->
+  <div class="page-container">
+    <div class="shell">
+      <!--    注册表单-->
       <div
-        class="bg-image"
-        :style="switchBackground"
-      />
-
-      <!-- 毛玻璃层 -->
-      <div class="glass-layer" />
-
-      <div class="switch_circle" />
-      <div class="switch_circle switch_circle-t" />
-
-      <div
-        id="switch-c1"
-        class="switch_container"
+        id="a-container"
+        class="container a-container"
       >
-        <h2
-          class="switch_title title floating-text"
-          style="letter-spacing: 0;"
+        <form
+          id="a-form"
+          class="form"
         >
-          Welcome Back！
-        </h2>
-        <p class="switch_description description floating-text">
-          已经有账号了嘛，去登入账号来进入奇妙世界吧！！！
-        </p>
-        <WaterButton class="switch_button button switch-btn floating-text">
-          SIGN IN
-        </WaterButton>
+          <h2 class="form_title title">
+            创建账号
+          </h2>
+          <span class="form_span">使用电子邮箱注册喵~</span>
+          <input
+            v-model="name"
+            type="text"
+            class="form_input"
+            placeholder="Name"
+          >
+          <input
+            v-model="email"
+            type="text"
+            class="form_input"
+            placeholder="Email"
+          >
+          <input
+            v-model="password"
+            type="password"
+            class="form_input"
+            placeholder="Password"
+          >
+          <div
+            v-show="error_message"
+            class="error_message"
+          >
+            {{ error_message }}
+          </div>
+          <WaterButton
+            class="form_button button submit"
+            @click="register"
+          >
+            SIGN UP
+          </WaterButton>
+        </form>
+      </div>
+
+      <!--    登录表单-->
+      <div
+        id="b-container"
+        class="container b-container"
+      >
+        <form
+          id="b-form"
+          class="form"
+        >
+          <h2 class="form_title title">
+            登入账号
+          </h2>
+          <span class="form_span">使用用户名、邮箱或手机号登录喵~</span>
+          <input
+            v-model="email"
+            type="text"
+            class="form_input"
+            placeholder="邮箱"
+          >
+          <input
+            v-model="password"
+            type="password"
+            class="form_input"
+            placeholder="密码"
+          >
+          <div
+            v-show="error_message"
+            class="error_message"
+          >
+            {{ error_message }}
+          </div>
+          <a class="form_link">忘记密码？</a>
+          <WaterButton
+            class="form_button button submit"
+            @click="login"
+          >
+            SIGN IN
+          </WaterButton>
+        </form>
       </div>
 
       <div
-        id="switch-c2"
-        class="switch_container is-hidden"
+        id="switch-cnt"
+        class="switch"
       >
-        <h2
-          class="switch_title title floating-text"
-          style="letter-spacing: 0;"
+        <!-- 背景图片层 -->
+        <div
+          class="bg-image"
+          :style="switchBackground"
+        />
+
+        <!-- 毛玻璃层 -->
+        <div class="glass-layer" />
+
+        <div class="switch_circle" />
+        <div class="switch_circle switch_circle-t" />
+
+        <div
+          id="switch-c1"
+          class="switch_container"
         >
-          Hello Friend！
-        </h2>
-        <p class="switch_description description floating-text">
-          去注册一个账号，进入我的世界喵~
-        </p>
-        <WaterButton class="switch_button button switch-btn floating-text">
-          SIGN UP
-        </WaterButton>
+          <h2
+            class="switch_title title floating-text"
+            style="letter-spacing: 0;"
+          >
+            Welcome Back！
+          </h2>
+          <p class="switch_description description floating-text">
+            已经有账号了嘛，去登入账号来进入奇妙世界吧！！！
+          </p>
+          <WaterButton class="switch_button button switch-btn floating-text">
+            SIGN IN
+          </WaterButton>
+        </div>
+
+        <div
+          id="switch-c2"
+          class="switch_container is-hidden"
+        >
+          <h2
+            class="switch_title title floating-text"
+            style="letter-spacing: 0;"
+          >
+            Hello Friend！
+          </h2>
+          <p class="switch_description description floating-text">
+            去注册一个账号，进入我的世界喵~
+          </p>
+          <WaterButton class="switch_button button switch-btn floating-text">
+            SIGN UP
+          </WaterButton>
+        </div>
       </div>
-    </div>
+   </div>
   </div>
 </template>
 
@@ -264,6 +266,28 @@ export default {
 /* 导入可变字体 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+
+  background-image: url('@/assets/AboutMe/TechnologyImages/03.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.page-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* 半透明黑色遮罩，调整透明度 */
+  z-index: -1; /* 确保在内容后面 */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -281,10 +305,12 @@ body {
   background-color: #ecf0f3;
   color: #a0a5a8;
   font-family: 'Inter', sans-serif; /* 使用可变字体 */
+  opacity: 0.5;
 }
 
 .shell {
   position: relative;
+  z-index: 5;
   width: 1000px;
   min-width: 1000px;
   min-height: 600px;
@@ -294,6 +320,11 @@ body {
   box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
   border-radius: 12px;
   overflow: hidden;
+
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
 }
 
 /* 响应式 */

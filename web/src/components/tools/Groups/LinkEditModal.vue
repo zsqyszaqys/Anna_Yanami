@@ -365,7 +365,7 @@ async function handleUpdate() {
   isUpdating.value = true;
   try {
     // 调用 API (PATCH /api/me/links/{id})
-    const response = await fetch(`http://localhost:3000/api/me/links/${props.link.id}`, {
+    const response = await fetch(`https://app7510.acapp.acwing.com.cn/api/me/links/${props.link.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -404,7 +404,7 @@ async function handleDelete() {
   isDeleting.value = true;
   try {
     // 调用 API (DELETE /api/me/links/{id})
-    await fetch(`http://localhost:3000/api/me/links/${props.link.id}`, {
+    await fetch(`https://app7510.acapp.acwing.com.cn/api/me/links/${props.link.id}`, {
       method: 'DELETE',
       headers: {'Accept': 'application/json'},
       credentials: 'include',

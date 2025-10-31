@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @PostMapping("/user/account/token")
+    @PostMapping("/api/user/account/token")
     public ResponseResult<String> get_token(@RequestParam Map<String, String> map) {
         try {
             // 从参数中获取登录标识和密码

@@ -14,7 +14,7 @@
     <slot name="background" />
 
     <!-- 优化后的分组修改按钮 -->
-    <button
+    <button v-if="isShow"
       class="settings-button"
       title="编辑分组"
       aria-label="编辑分组设置"
@@ -85,7 +85,9 @@
 
 <script lang="ts" setup>
 import {cn} from "@/lib/utils";
-import type {HTMLAttributes} from "vue";
+import {HTMLAttributes, onMounted} from "vue";
+import {useStore} from "vuex";
+import {ref} from "vue";
 
 interface Props {
   name: string;
@@ -95,7 +97,29 @@ interface Props {
   href: string;
   cta: string;
 }
+const isShow = ref(false);
 const props = defineProps<Props>();
+const store = useStore();
+
+const check = ()=>{
+  let jwt_token = localStorage.getItem('jwt_token');
+  if(jwt_token){
+    store.dispatch("getInfo", {
+      success() {
+        isShow.value = true;
+      },
+      error() {
+        isShow.value = true;
+      }
+    })
+  }else{
+    isShow.value = false;
+  }
+}
+
+onMounted(()=>{
+  check();
+})
 
 const emit = defineEmits('settings-click', 'main-click');
 </script>

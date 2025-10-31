@@ -335,7 +335,7 @@ function showDeleteConfirm() {
   );
 }
 
-const API_BASE_URL = 'http://localhost:3000/api/me';
+const API_BASE_URL = 'https://app7510.acapp.acwing.com.cn/api/me';
 
 async function handleUpdate() {
   if (!props.group || isUpdating.value) return;

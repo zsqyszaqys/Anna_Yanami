@@ -55,7 +55,7 @@ export default {
         login(context, data) {
             context.commit("setErrorMessage", "");
             $.ajax({
-                url: "http://localhost:3000/user/account/token",
+                url: "https://app7510.acapp.acwing.com.cn/api/user/account/token",
                 method: "POST",
                 data: {
                     loginId: data.loginId,
@@ -79,7 +79,7 @@ export default {
 
         getInfo(context, data) {
             $.ajax({
-                url: "http://localhost:3000/user/account/info",
+                url: "https://app7510.acapp.acwing.com.cn/api/user/account/info",
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + context.state.token,
@@ -110,7 +110,7 @@ export default {
         register(context, data) {
             context.commit("setErrorMessage", "");
             $.ajax({
-                url: "http://localhost:3000/user/account/register",
+                url: "https://app7510.acapp.acwing.com.cn/api/user/account/register",
                 method: "POST",
                 data: {
                     name: data.name,
